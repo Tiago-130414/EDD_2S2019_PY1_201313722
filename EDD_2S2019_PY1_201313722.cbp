@@ -32,6 +32,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="ListaCircular.cpp" />
+		<Unit filename="ListaCircular.h" />
+		<Unit filename="Menu.cpp" />
+		<Unit filename="Menu.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

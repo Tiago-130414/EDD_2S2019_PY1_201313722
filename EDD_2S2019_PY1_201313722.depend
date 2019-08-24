@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1566593186 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\main.cpp
+	<iostream>
+	"Menu.h"
+
+1566593186 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\menu.h
+
+1566620757 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\menu.cpp
+	"Menu.h"
+	"ListaCircular.h"
+	<iostream>
+
+1566621743 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listacircular.cpp
+	"ListaCircular.h"
+	<iostream>
+	<string>
+	<sstream>
+	<stdlib.h>
+	<conio.h>
+
+1566621753 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listacircular.h
+	<string>
+	<iostream>
+
