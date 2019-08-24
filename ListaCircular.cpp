@@ -10,7 +10,6 @@ ListaCircular::ListaCircular()
     filtroAP = "";
     siguiente = NULL;
     anterior = NULL;
-
 }
 
 ListaCircular* ListaCircular::crearNodo(string filtroAP)
@@ -22,11 +21,7 @@ ListaCircular* ListaCircular::crearNodo(string filtroAP)
 
 bool ListaCircular :: estaVacia(ListaCircular *&primero)
 {
-    if(primero == NULL){
-        return true;
-    }else{
-        return false;
-    }
+  return(primero==NULL)? true:false;
 }
 
 void ListaCircular :: insertar(ListaCircular *&primero,string filtro)
@@ -72,7 +67,6 @@ void ListaCircular :: limpiarLista(ListaCircular *&primero)
         primero->anterior = NULL;
         primero = NULL;
     }
-
 }
 
 
