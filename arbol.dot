@@ -1,0 +1,34 @@
+digraph arbol
+{
+	rankdir=TB;
+	ordering=out;	graph [splines=compound,nodesep=0.5];
+	subgraph cluster_0{
+	style=filled;
+	color=lightgrey;
+	labelloc=t;
+	node [shape = record, style="rounded,filled", fillcolor="orange:red",width=0.7,height=0.5];
+
+	NodoAndre[label="<izquierda>|Andre|<derecha>"];
+	NodoBoo[label="<izquierda>|Boo|<derecha>"];
+	NodoGeoff[label="<izquierda>|Geoff|<derecha>"];
+	NodoGilberto[label="<izquierda>|Gilberto|<derecha>"];
+	NodoMario1[label="<izquierda>|Mario1|<derecha>"];
+	NodoMario2[label="<izquierda>|Mario2|<derecha>"];
+	NodoMushroom[label="<izquierda>|Mushroom|<derecha>"];
+	NodoPikachu[label="<izquierda>|Pikachu|<derecha>"];
+	NodoSantiago[label="<izquierda>|Santiago|<derecha>"];
+
+
+	NodoBoo:izquierda->NodoAndre;
+	NodoBoo:derecha->NodoGeoff;
+	NodoGeoff:derecha->NodoGilberto;
+	NodoMario1:izquierda->NodoBoo;
+	NodoMario1:derecha->NodoPikachu;
+	NodoMario2:derecha->NodoMushroom;
+	NodoPikachu:izquierda->NodoMario2;
+	NodoPikachu:derecha->NodoSantiago;
+
+
+	label="Arbol Binario De Busqueda";
+	}
+}

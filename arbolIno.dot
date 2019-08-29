@@ -1,0 +1,26 @@
+digraph arbol
+{
+	rankdir=LR;
+	ordering=out;	graph [splines=compound,nodesep=0.5];
+	subgraph cluster_0{
+	style=filled;
+	color=lightgrey;
+	labelloc=t;
+	node [shape = rectangle, style="rounded,filled", fillcolor="orange:red",width=0.7,height=0.5];
+
+	NodoAndre[label="Andre"];
+	NodoBoo[label="Boo"];
+	NodoGeoff[label="Geoff"];
+	NodoGilberto[label="Gilberto"];
+	NodoMario1[label="Mario1"];
+	NodoMario2[label="Mario2"];
+	NodoMushroom[label="Mushroom"];
+	NodoPikachu[label="Pikachu"];
+	NodoSantiago[label="Santiago"];
+
+
+	NodoAndre->NodoBoo->NodoGeoff->NodoGilberto->NodoMario1->NodoMario2->NodoMushroom->NodoPikachu->NodoSantiago;
+
+	label="InOrder Traversal";
+	}
+}

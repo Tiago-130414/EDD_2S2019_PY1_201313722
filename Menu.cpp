@@ -43,6 +43,9 @@ void Menu::mostrarMenu()
             obj2.insertarNodo(raiz,"Geoff");
             obj2.insertarNodo(raiz,"Mario2");
             obj2.insertarNodo(raiz,"Mushroom");
+            obj2.insertarNodo(raiz,"Santiago");
+            obj2.insertarNodo(raiz,"Gilberto");
+            obj2.insertarNodo(raiz,"Andre");
 
             break;
         case 2:
@@ -59,6 +62,10 @@ void Menu::mostrarMenu()
             obj2.recorridoPost(raiz);
             break;
         case 5:
+            obj2.graficarArbol(raiz);
+            obj2.graficaLista(raiz);
+            obj2.graficaListaPostOrden(raiz);
+            obj2.graficaListaPreOrden(raiz);
             break;
         case 6:
             break;

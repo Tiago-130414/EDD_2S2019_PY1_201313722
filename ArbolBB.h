@@ -22,7 +22,24 @@ class ArbolBB
         void recorridoPre(ArbolBB *&raiz);
         void recorridoInO(ArbolBB *&raiz);
         void recorridoPost(ArbolBB *&raiz);
-
+        ArbolBB* eliminarNodo(ArbolBB *&raiz,string elimina);
+        void graficarArbol(ArbolBB *&raiz);
+        string listadoNodos(ArbolBB *&raiz);
+        string apuntadores(ArbolBB *raiz);
+        void limpiarCadenas();
+        void graficaLista(ArbolBB *&raiz);
+        string listadoNodosInorder(ArbolBB *raiz);
+        string apuntadoresInorder(ArbolBB *raiz);
+        string eliminarUltimaFlecha(string c);
+        string limpiarEspaciosBlanco(string c);
+        ///grafica PostOrder
+        void graficaListaPostOrden(ArbolBB *raiz);
+        string listadoNodosPostorder(ArbolBB *raiz);
+        string apuntadorNodosPostorder(ArbolBB *raiz);
+        ///grafica PreOrder
+        void graficaListaPreOrden(ArbolBB *raiz);
+        string listadoNodosPreorder(ArbolBB *raiz);
+        string apuntadorNodosPreorder(ArbolBB *raiz);
     protected:
 
     private:

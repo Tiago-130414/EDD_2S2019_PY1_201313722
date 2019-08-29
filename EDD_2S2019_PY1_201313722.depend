@@ -5,7 +5,7 @@
 
 1566593186 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\menu.h
 
-1566689488 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\menu.cpp
+1567049557 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\menu.cpp
 	"Menu.h"
 	"ArbolBB.h"
 	"ListaCircular.h"
@@ -23,15 +23,17 @@
 	<string>
 	<iostream>
 
-1566689241 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\arbolbb.cpp
+1567049719 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\arbolbb.cpp
 	"ArbolBB.h"
 	<iostream>
 	<sstream>
 	<stdlib.h>
 	<conio.h>
 	<string.h>
+	<string>
+	<fstream>
 
-1566689220 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\arbolbb.h
+1567049635 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\arbolbb.h
 	<iostream>
 	<string>
 	<string.h>
