@@ -18,6 +18,9 @@ class ListaCircular
         void insertar(ListaCircular *&primero,string filtro);
         void Mostrar(ListaCircular *&primero);
         void limpiarLista(ListaCircular *&primero);
+        void graficaListaCircular(ListaCircular *&primero);
+        string listarNodos(ListaCircular *&primero);
+        string apuntadores(ListaCircular *&primero);
 
     protected:
 

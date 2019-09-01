@@ -272,6 +272,7 @@ string ArbolBB::apuntadoresInorder(ArbolBB *raiz){
     }
     return apIno;
 }
+
 //////////GRAFICA RECORRIDO POSTORDER
 void ArbolBB::graficaListaPostOrden(ArbolBB *raiz){
     string cad5="";
@@ -339,6 +340,7 @@ string ArbolBB::apuntadorNodosPostorder(ArbolBB *raiz){
     }
     return apIno;
 }
+
 //////////GRAFICA RECORRIDO PREORDER
 void ArbolBB::graficaListaPreOrden(ArbolBB *raiz){
   string cad5="";
@@ -405,6 +407,7 @@ string ArbolBB::apuntadorNodosPreorder(ArbolBB *raiz){
     }
     return apIno;
 }
+
 //////////METODOS STRING
 void ArbolBB::limpiarCadenas(){
     cad = "";

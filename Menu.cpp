@@ -30,12 +30,12 @@ void Menu::mostrarMenu()
         switch(op)
         {
         case 1:
-            obj.insertar(p,"Hola1");
-            obj.insertar(p,"Hola2");
-            obj.insertar(p,"Hola3");
-            obj.insertar(p,"Hola4");
-            obj.insertar(p,"Hola5");
-            obj.insertar(p,"Hola6");
+            obj.insertar(p,"Hola10");
+            obj.insertar(p,"Hola21");
+            obj.insertar(p,"Hola32");
+            obj.insertar(p,"Hola43");
+            obj.insertar(p,"Hola54");
+            obj.insertar(p,"Hola65");
 
             obj2.insertarNodo(raiz,"Mario1");
             obj2.insertarNodo(raiz,"Pikachu");
@@ -66,6 +66,7 @@ void Menu::mostrarMenu()
             obj2.graficaLista(raiz);
             obj2.graficaListaPostOrden(raiz);
             obj2.graficaListaPreOrden(raiz);
+            obj.graficaListaCircular(p);
             break;
         case 6:
             break;

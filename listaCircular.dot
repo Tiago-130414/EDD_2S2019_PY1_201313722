@@ -1,0 +1,37 @@
+digraph arbol
+{
+	rankdir=LR;
+	graph [nodesep=0.3];
+	subgraph cluster_0{
+	style=filled;
+	color=lightgrey;
+	labelloc=t;
+	node [shape = record, style="rounded,filled"fillcolor="orange:red",width=0.7,height=0.5];
+
+	FiltroHola10[label="{ |Hola10| }"];
+	FiltroHola21[label="{ |Hola21| }"];
+	FiltroHola32[label="{ |Hola32| }"];
+	FiltroHola43[label="{ |Hola43| }"];
+	FiltroHola54[label="{ |Hola54| }"];
+	FiltroHola65[label="{ |Hola65| }"];
+
+
+	FiltroHola10->FiltroHola21
+	FiltroHola21->FiltroHola10
+	FiltroHola21->FiltroHola32
+	FiltroHola32->FiltroHola21
+	FiltroHola32->FiltroHola43
+	FiltroHola43->FiltroHola32
+	FiltroHola43->FiltroHola54
+	FiltroHola54->FiltroHola43
+	FiltroHola54->FiltroHola65
+	FiltroHola65->FiltroHola54
+	FiltroHola65->FiltroHola10
+	FiltroHola10->FiltroHola65
+
+
+	label="Filtros Aplicados
+
+";
+	}
+}
