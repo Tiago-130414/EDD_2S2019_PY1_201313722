@@ -7,6 +7,8 @@ class Menu
     public:
         Menu();
         void mostrarMenu();
+        void menuReportes();
+        void traversalReport();
 
     protected:
 
