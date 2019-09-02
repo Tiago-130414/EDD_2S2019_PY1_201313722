@@ -75,7 +75,6 @@ void Menu::mostrarMenu()
 
 void Menu::menuReportes()
 {
-
     int op=0;
     do{
         cout<<"=============== REPORTS ==============="<<endl;
