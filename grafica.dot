@@ -1,0 +1,77 @@
+digraph G {
+graph [ splines=compound,ranksep="0.5", nodesep="0.5"];
+Matriz[width = 1.0 group = "Mt0",  style=filled,shape="underline",fillcolor="yellow:blue" label="Matriz"];
+F0[label="0"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
+F2[label="2"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
+F5[label="5"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
+F6[label="6"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
+F7[label="7"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
+F9[label="9"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
+F0->F2;
+F2->F0;
+F2->F5;
+F5->F2;
+F5->F6;
+F6->F5;
+F6->F7;
+F7->F6;
+F7->F9;
+F9->F7;
+C1[label="1"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
+C3[label="3"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
+C4[label="4"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
+C8[label="8"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =8] ;
+C9[label="9"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
+C10[label="10"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =10] ;
+C1->C3;
+C3->C1;
+C3->C4;
+C4->C3;
+C4->C8;
+C8->C4;
+C8->C9;
+C9->C8;
+C9->C10;
+C10->C9;
+{rank = same; Matriz;C1;C3;C4;C8;C9;C10}
+Matriz ->C1;
+Matriz ->F0;
+01[label="azul"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
+23[label="negro"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
+54[label="blanco"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
+68[label="amarillo"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =8] ;
+79[label="celeste"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
+910[label="rosa"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =10] ;
+F0->01[constraint = false];
+01->F0[constraint = false];
+F2->23[constraint = false];
+23->F2[constraint = false];
+F5->54[constraint = false];
+54->F5[constraint = false];
+F6->68[constraint = false];
+68->F6[constraint = false];
+F7->79[constraint = false];
+79->F7[constraint = false];
+F9->910[constraint = false];
+910->F9[constraint = false];
+{rank = same;F0;01;}
+{rank = same;F2;23;}
+{rank = same;F5;54;}
+{rank = same;F6;68;}
+{rank = same;F7;79;}
+{rank = same;F9;910;}
+C1->01;
+01->C1;
+C3->23;
+23->C3;
+C4->54;
+54->C4;
+C8->68;
+68->C8;
+C9->79;
+79->C9;
+C10->910;
+910->C10;
+
+
+}

@@ -1,12 +1,16 @@
 #include "Menu.h"
 #include "ArbolBB.h"
 #include "ListaCircular.h"
+#include "Matriz.h"
 #include <iostream>
 using namespace std;
 ListaCircular obj;
 ListaCircular *p = NULL;
 ArbolBB obj2;
 ArbolBB *raiz = NULL;
+
+Matriz obj3;
+
 Menu::Menu()
 {
     mostrarMenu();
@@ -26,7 +30,7 @@ void Menu::mostrarMenu()
         cout<<"6.- Reports"<<endl;
         cout<<"7.- Exit"<<endl;
         cin>>op;
-        system("cls");
+        //system("cls");
         switch(op)
         {
         case 1:
@@ -46,6 +50,14 @@ void Menu::mostrarMenu()
             obj2.insertarNodo(raiz,"Santiago");
             obj2.insertarNodo(raiz,"Gilberto");
             obj2.insertarNodo(raiz,"Andre");
+
+            obj3.insertarNodo(0,1,"azul");
+            obj3.insertarNodo(2,3,"negro");
+            obj3.insertarNodo(5,4,"blanco");
+            obj3.insertarNodo(6,8,"amarillo");
+            obj3.insertarNodo(7,9,"celeste");
+            obj3.insertarNodo(9,10,"rosa");
+            obj3.escribirDot();
             break;
         case 2:
             obj.Mostrar(p);

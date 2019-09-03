@@ -26,7 +26,19 @@ class Matriz
         Matriz();
         NodoFC *filas;
         NodoFC *columnas;
-
+        void insertarNodo(int fila,int columna,string color);
+        void enlazarColumna(NodoFC *&pivote,NodoFC *&nuevoCol,int columna);
+        void enlazarFila(NodoFC *&pivote,NodoFC *&nuevoFil,int fila);
+        int stringToInt(string castear);
+        string intToString(int val);
+        void imprimir();
+        void escribirDot();
+        string creandoNodosFilaGuia();
+        string creandoNodosColumnaGuia();
+        string nodosContenidoFila();
+        string rankSame();
+        string enlazarColumnaConNodo();
+        string enlazarNodosMediosColumna();
     protected:
 
     private:
