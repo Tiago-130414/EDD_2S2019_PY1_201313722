@@ -2,13 +2,15 @@
 #include "ArbolBB.h"
 #include "ListaCircular.h"
 #include "Matriz.h"
+#include "ListaDobleLN.h"
 #include <iostream>
 using namespace std;
 ListaCircular obj;
 ListaCircular *p = NULL;
 ArbolBB obj2;
 ArbolBB *raiz = NULL;
-
+ListaDobleLN obj4;
+ListaDobleLN *t;
 Matriz obj3;
 
 Menu::Menu()
@@ -34,6 +36,7 @@ void Menu::mostrarMenu()
         switch(op)
         {
         case 1:
+            /**
             obj.insertar(p,"Hola10");
             obj.insertar(p,"Hola21");
             obj.insertar(p,"Hola32");
@@ -56,8 +59,21 @@ void Menu::mostrarMenu()
             obj3.insertarNodo(5,4,"blanco");
             obj3.insertarNodo(6,8,"amarillo");
             obj3.insertarNodo(7,9,"celeste");
-            obj3.insertarNodo(9,10,"rosa");
-            obj3.escribirDot();
+            obj3.insertarNodo(7,8,"verde");
+            obj3.insertarNodo(7,7,"verde");
+            obj3.insertarNodo(7,6,"verde");
+            obj3.insertarNodo(5,2,"verde");
+            obj3.insertarNodo(10,13,"naranja");
+            obj3.insertarNodo(9,11,"naranja");
+            obj3.escribirDot();**/
+
+            obj4.insertarNodo(1,2,"azul",t);
+            obj4.insertarNodo(1,2,"azul1",t);
+            obj4.insertarNodo(1,2,"azul2",t);
+            obj4.insertarNodo(1,2,"azul3",t);
+            obj4.insertarNodo(1,2,"azul4",t);
+            obj4.mostrar(t);
+            obj4.graficaLista(t);
             break;
         case 2:
             obj.Mostrar(p);

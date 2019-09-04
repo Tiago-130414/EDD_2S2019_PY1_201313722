@@ -1,0 +1,28 @@
+digraph arbol
+{
+	rankdir=LR;
+	graph [nodesep=0.3];
+	subgraph cluster_0{
+	style=filled;
+	color=lightgrey;
+	labelloc=t;
+	node [shape = record, style="filled"fillcolor="orange:red",width=0.7,height=0.5];
+
+	NodoazulX1Y2[label="{(1,2)azul}"];
+	Nodoazul1X1Y2[label="{(1,2)azul1}"];
+	Nodoazul2X1Y2[label="{(1,2)azul2}"];
+	Nodoazul3X1Y2[label="{(1,2)azul3}"];
+	Nodoazul4X1Y2[label="{(1,2)azul4}"];
+
+
+	NodoazulX1Y2->Nodoazul1X1Y2;
+	Nodoazul1X1Y2->Nodoazul2X1Y2;
+	Nodoazul2X1Y2->Nodoazul3X1Y2;
+	Nodoazul3X1Y2->Nodoazul4X1Y2;
+
+
+	label="Filtros Aplicados";
+
+
+	}
+}

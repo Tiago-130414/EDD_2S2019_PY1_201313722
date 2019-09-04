@@ -5,11 +5,12 @@
 
 1567394328 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\menu.h
 
-1567494952 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\menu.cpp
+1567570816 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\menu.cpp
 	"Menu.h"
 	"ArbolBB.h"
 	"ListaCircular.h"
 	"Matriz.h"
+	"ListaDobleLN.h"
 	<iostream>
 
 1567377213 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listacircular.cpp
@@ -43,13 +44,24 @@
 	<stdlib.h>
 	<conio.h>
 
-1567495206 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\matriz.cpp
+1567496343 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\matriz.cpp
 	"Matriz.h"
 	<string>
 	<iostream>
 	<sstream>
+	<fstream>
 
 1567493764 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\matriz.h
 	<string>
 	<iostream>
+
+1567574171 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listadobleln.cpp
+	"ListaDobleLN.h"
+	<string>
+	<iostream>
+	<fstream>
+	<sstream>
+
+1567571241 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listadobleln.h
+	<string>
 

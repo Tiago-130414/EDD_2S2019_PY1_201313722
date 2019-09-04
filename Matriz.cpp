@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <fstream>
 using namespace std;
 NodoFC::NodoFC(int fil,int col,string co)
 {
@@ -145,19 +146,24 @@ void Matriz::imprimir()
 
 void Matriz::escribirDot()
 {
-    FILE* archivo;
-    archivo = fopen("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\grafica.dot", "wt");
-    fputs("digraph G {\ngraph [ splines=compound,ranksep=\"0.5\", nodesep=\"0.5\"];\n", archivo);
-    fputs("Matriz[width = 1.0 group = \"Mt0\",  style=filled,shape=\"underline\",fillcolor=\"yellow:blue\" label=\"Matriz\"];\n",archivo);
-    fputs(creandoNodosFilaGuia().c_str(),archivo);
-    fputs(creandoNodosColumnaGuia().c_str(),archivo);
-    fputs(nodosContenidoFila().c_str(),archivo);
-    fputs(rankSame().c_str(),archivo);
-    fputs(enlazarColumnaConNodo().c_str(),archivo);
-    fputs(enlazarNodosMediosColumna().c_str(),archivo);
-    fputs("\n",archivo);
-    fputs("\n}",archivo);
-    fclose(archivo);
+    ofstream archivo;
+    archivo.open("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\grafica.dot",ios::out);
+    if(archivo.fail())
+    {
+        cout<<"Error al crear archivo";
+        exit(1);
+    }
+    archivo<<"digraph G {\ngraph [ranksep=\"0.5\", nodesep=\"0.5\"];\n"<<endl;
+    archivo<<"Matriz[width = 1.0 group = \"Mt0\",  style=filled,shape=\"underline\",fillcolor=\"yellow:blue\" label=\"Matriz\"];\n"<<endl;
+    archivo<<creandoNodosFilaGuia()<<endl;
+    archivo<<creandoNodosColumnaGuia()<<endl;
+    archivo<<nodosContenidoFila()<<endl;
+    archivo<<rankSame()<<endl;
+    archivo<<enlazarColumnaConNodo()<<endl;
+    archivo<<enlazarNodosMediosColumna()<<endl;
+    archivo<<"\n"<<endl;
+    archivo<<"\n}"<<endl;
+    archivo.close();
     system("dot C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\grafica.dot -o C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\grafica.png -Tpng -Gcharset=utf8");
     system("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\grafica.png");
 
