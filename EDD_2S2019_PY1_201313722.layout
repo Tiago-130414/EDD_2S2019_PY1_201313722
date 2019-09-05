@@ -2,9 +2,14 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="ArbolBB.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="ListaSimple.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="142" topLine="0" />
+			<Cursor1 position="320" topLine="7" />
+		</Cursor>
+	</File>
+	<File name="ArbolBB.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="158" topLine="3" />
 		</Cursor>
 	</File>
 	<File name="ListaCircular.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -12,49 +17,57 @@
 			<Cursor1 position="765" topLine="8" />
 		</Cursor>
 	</File>
-	<File name="Matriz.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="ListaDobleLN.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="342" topLine="0" />
+			<Cursor1 position="2350" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Menu.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="ListaCircular.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1569" topLine="21" />
-		</Cursor>
-	</File>
-	<File name="Matriz.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="813" topLine="1" />
-		</Cursor>
-	</File>
-	<File name="ArbolBB.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="158" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ListaCircular.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2391" topLine="0" />
+			<Cursor1 position="3378" topLine="99" />
 		</Cursor>
 		<Folding>
 			<Collapse line="16" />
-			<Collapse line="23" />
-			<Collapse line="28" />
-			<Collapse line="49" />
-			<Collapse line="62" />
-			<Collapse line="72" />
-			<Collapse line="106" />
-			<Collapse line="121" />
 		</Folding>
+	</File>
+	<File name="Matriz.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="397" topLine="24" />
+		</Cursor>
+	</File>
+	<File name="Menu.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="233" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ListaSimple.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="555" topLine="0" />
+		</Cursor>
 	</File>
 	<File name="Menu.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="171" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="ListaDobleLN.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="158" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="90" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ArbolBB.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="142" topLine="24" />
+		</Cursor>
+	</File>
+	<File name="Matriz.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="59" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

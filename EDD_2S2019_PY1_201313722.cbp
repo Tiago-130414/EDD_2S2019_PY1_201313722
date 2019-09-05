@@ -36,6 +36,10 @@
 		<Unit filename="ArbolBB.h" />
 		<Unit filename="ListaCircular.cpp" />
 		<Unit filename="ListaCircular.h" />
+		<Unit filename="ListaDobleLN.cpp" />
+		<Unit filename="ListaDobleLN.h" />
+		<Unit filename="ListaSimple.cpp" />
+		<Unit filename="ListaSimple.h" />
 		<Unit filename="Matriz.cpp" />
 		<Unit filename="Matriz.h" />
 		<Unit filename="Menu.cpp" />

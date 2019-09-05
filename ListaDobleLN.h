@@ -2,24 +2,31 @@
 #define LISTADOBLELN_H
 #include <string>
 using namespace std;
-class ListaDobleLN
+class nodoListaDobleLN
 {
     public:
-        ListaDobleLN();
+        nodoListaDobleLN();
         int posicionX;
         int posicionY;
         int tamanio;
         string colorRGB;
-        ListaDobleLN *siguiente;
-        ListaDobleLN *anterior;
+        nodoListaDobleLN *siguiente;
+        nodoListaDobleLN *anterior;
+
+};
+class ListaDobleLN
+{
+    public:
+        ListaDobleLN();
+        nodoListaDobleLN *primero;
         //funciones
-        bool estaVacia(ListaDobleLN *&primero);
-        ListaDobleLN* crearNodo(int posX,int posY,string color);
-        void insertarNodo(int pX,int pY,string co,ListaDobleLN *&primero);
-        void mostrar(ListaDobleLN *&primero);
-        void graficaLista(ListaDobleLN *&primero);
-        string defineNodos(ListaDobleLN *&primero);
-        string apuntarNodos(ListaDobleLN *&primero);
+        bool estaVacia();
+        nodoListaDobleLN* crearNodo(int posX,int posY,string color);
+        void insertarNodo(int pX,int pY,string co);
+        void mostrar();
+        void graficaLista();
+        string defineNodos();
+        string apuntarNodos();
         string intToString(int val);
     protected:
 

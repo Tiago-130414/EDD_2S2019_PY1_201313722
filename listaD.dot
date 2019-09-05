@@ -8,20 +8,18 @@ digraph arbol
 	labelloc=t;
 	node [shape = record, style="filled"fillcolor="orange:red",width=0.7,height=0.5];
 
-	NodoazulX1Y2[label="{(1,2)azul}"];
-	Nodoazul1X1Y2[label="{(1,2)azul1}"];
-	Nodoazul2X1Y2[label="{(1,2)azul2}"];
-	Nodoazul3X1Y2[label="{(1,2)azul3}"];
-	Nodoazul4X1Y2[label="{(1,2)azul4}"];
+	NodoblancoX1Y2[label="{(1,2)blanco}"];
+	NodonegroX2Y2[label="{(2,2)negro}"];
+	NodoazulX5Y2[label="{(5,2)azul}"];
+	NodorojoX9Y9[label="{(9,9)rojo}"];
 
 
-	NodoazulX1Y2->Nodoazul1X1Y2;
-	Nodoazul1X1Y2->Nodoazul2X1Y2;
-	Nodoazul2X1Y2->Nodoazul3X1Y2;
-	Nodoazul3X1Y2->Nodoazul4X1Y2;
+	NodoblancoX1Y2->NodonegroX2Y2;
+	NodonegroX2Y2->NodoazulX5Y2;
+	NodoazulX5Y2->NodorojoX9Y9;
 
 
-	label="Filtros Aplicados";
+	label="Linealizacion Por:";
 
 
 	}

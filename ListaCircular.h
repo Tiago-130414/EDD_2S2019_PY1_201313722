@@ -3,24 +3,32 @@
 #include <string>
 #include <iostream>
 using namespace std;
-
-class ListaCircular
+class nodoListaCircular
 {
     public:
         //node attributes
+        nodoListaCircular();
         string filtroAP;
-        ListaCircular *siguiente;
-        ListaCircular *anterior;
+        nodoListaCircular *siguiente;
+        nodoListaCircular *anterior;
+
+};
+class ListaCircular
+{
+    public:
+        //first node
+        nodoListaCircular *primero;
         //prototype of function
         ListaCircular();
-        ListaCircular* crearNodo(string filtroAP);
-        bool estaVacia(ListaCircular *&primero);
-        void insertar(ListaCircular *&primero,string filtro);
-        void Mostrar(ListaCircular *&primero);
-        void limpiarLista(ListaCircular *&primero);
-        void graficaListaCircular(ListaCircular *&primero);
-        string listarNodos(ListaCircular *&primero);
-        string apuntadores(ListaCircular *&primero);
+        nodoListaCircular* crearNodo(string filtroAP);
+        bool estaVacia();
+        void insertar(string filtro);
+        void Mostrar();
+        void limpiarLista();
+        void graficaListaCircular();
+        string listarNodos();
+        string apuntadores();
+
 
     protected:
 

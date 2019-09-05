@@ -11,6 +11,7 @@ string cad="";
 string cad3="";
 string cadInO="";
 string apIno="\t";
+
 ArbolBB::ArbolBB()
 {
     //ctor

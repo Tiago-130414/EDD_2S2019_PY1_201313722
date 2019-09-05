@@ -5,15 +5,15 @@
 
 1567394328 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\menu.h
 
-1567570816 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\menu.cpp
+1567667291 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\menu.cpp
 	"Menu.h"
 	"ArbolBB.h"
 	"ListaCircular.h"
-	"Matriz.h"
+	"ListaSimple.h"
 	"ListaDobleLN.h"
 	<iostream>
 
-1567377213 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listacircular.cpp
+1567659301 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listacircular.cpp
 	"ListaCircular.h"
 	<iostream>
 	<string>
@@ -22,11 +22,11 @@
 	<conio.h>
 	<fstream>
 
-1567376363 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listacircular.h
+1567659175 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listacircular.h
 	<string>
 	<iostream>
 
-1567374516 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\arbolbb.cpp
+1567660621 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\arbolbb.cpp
 	"ArbolBB.h"
 	<iostream>
 	<sstream>
@@ -44,24 +44,31 @@
 	<stdlib.h>
 	<conio.h>
 
-1567496343 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\matriz.cpp
+1567669069 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\matriz.cpp
 	"Matriz.h"
 	<string>
 	<iostream>
 	<sstream>
 	<fstream>
+	"ListaDobleLN.h"
 
-1567493764 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\matriz.h
+1567669069 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\matriz.h
 	<string>
 	<iostream>
 
-1567574171 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listadobleln.cpp
+1567661262 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listadobleln.cpp
 	"ListaDobleLN.h"
 	<string>
 	<iostream>
 	<fstream>
 	<sstream>
 
-1567571241 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listadobleln.h
+1567660139 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listadobleln.h
 	<string>
+
+1567667291 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listasimple.cpp
+	"ListaSimple.h"
+
+1567617704 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listasimple.h
+	"Matriz.h"
 

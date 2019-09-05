@@ -3,127 +3,52 @@ graph [ranksep="0.5", nodesep="0.5"];
 
 Matriz[width = 1.0 group = "Mt0",  style=filled,shape="underline",fillcolor="yellow:blue" label="Matriz"];
 
-F0[label="0"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
+F1[label="1"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
 F2[label="2"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
 F5[label="5"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
-F6[label="6"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
-F7[label="7"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
 F9[label="9"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
-F10[label="10"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
-F0->F2;
-F2->F0;
+F1->F2;
+F2->F1;
 F2->F5;
 F5->F2;
-F5->F6;
-F6->F5;
-F6->F7;
-F7->F6;
-F7->F9;
-F9->F7;
-F9->F10;
-F10->F9;
+F5->F9;
+F9->F5;
 
-C1[label="1"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
 C2[label="2"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
-C3[label="3"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
-C4[label="4"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
-C6[label="6"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =6] ;
-C7[label="7"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =7] ;
-C8[label="8"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =8] ;
 C9[label="9"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
-C11[label="11"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =11] ;
-C13[label="13"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =13] ;
-C1->C2;
-C2->C1;
-C2->C3;
-C3->C2;
-C3->C4;
-C4->C3;
-C4->C6;
-C6->C4;
-C6->C7;
-C7->C6;
-C7->C8;
-C8->C7;
-C8->C9;
-C9->C8;
-C9->C11;
-C11->C9;
-C11->C13;
-C13->C11;
-{rank = same; Matriz;C1;C2;C3;C4;C6;C7;C8;C9;C11;C13}
-Matriz ->C1;
-Matriz ->F0;
+C2->C9;
+C9->C2;
+{rank = same; Matriz;C2;C9}
+Matriz ->C2;
+Matriz ->F1;
 
-01[label="azul"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
-23[label="negro"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
-52[label="verde"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
-68[label="amarillo"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =8] ;
-76[label="verde"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =6] ;
-911[label="naranja"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =11] ;
-1013[label="naranja"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =13] ;
-F0->01[constraint = false];
-01->F0[constraint = false];
-F2->23[constraint = false];
-23->F2[constraint = false];
+12[label="blanco"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
+22[label="negro"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
+52[label="azul"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
+99[label="rojo"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
+F1->12[constraint = false];
+12->F1[constraint = false];
+F2->22[constraint = false];
+22->F2[constraint = false];
 F5->52[constraint = false];
 52->F5[constraint = false];
-F6->68[constraint = false];
-68->F6[constraint = false];
-F7->76[constraint = false];
-76->F7[constraint = false];
-F9->911[constraint = false];
-911->F9[constraint = false];
-F10->1013[constraint = false];
-1013->F10[constraint = false];
-54[label="blanco"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
-77[label="verde"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =7] ;
-78[label="verde"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =8] ;
-79[label="celeste"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
-52->54[constraint = false];
+F9->99[constraint = false];
+99->F9[constraint = false];
 
-54->52[constraint = false];
-76->77[constraint = false];
+{rank = same;F1;12;}
+{rank = same;F2;22;}
+{rank = same;F5;52;}
+{rank = same;F9;99;}
 
-77->76[constraint = false];
-77->78[constraint = false];
+C2->12;
+12->C2;
+C9->99;
+99->C9;
 
-78->77[constraint = false];
-78->79[constraint = false];
-
-79->78[constraint = false];
-
-{rank = same;F0;01;}
-{rank = same;F2;23;}
-{rank = same;F5;52;54;}
-{rank = same;F6;68;}
-{rank = same;F7;76;77;78;79;}
-{rank = same;F9;911;}
-{rank = same;F10;1013;}
-
-C1->01;
-01->C1;
-C2->52;
-52->C2;
-C3->23;
-23->C3;
-C4->54;
-54->C4;
-C6->76;
-76->C6;
-C7->77;
-77->C7;
-C8->68;
-68->C8;
-C9->79;
-79->C9;
-C11->911;
-911->C11;
-C13->1013;
-1013->C13;
-
-68->78
-78->68[constraint = false];
+12->22
+22->12[constraint = false];
+22->52
+52->22[constraint = false];
 
 
 

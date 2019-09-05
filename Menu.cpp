@@ -1,17 +1,15 @@
 #include "Menu.h"
 #include "ArbolBB.h"
 #include "ListaCircular.h"
-#include "Matriz.h"
+#include "ListaSimple.h"
 #include "ListaDobleLN.h"
 #include <iostream>
 using namespace std;
 ListaCircular obj;
-ListaCircular *p = NULL;
 ArbolBB obj2;
 ArbolBB *raiz = NULL;
 ListaDobleLN obj4;
-ListaDobleLN *t;
-Matriz obj3;
+ListaSimple objL;
 
 Menu::Menu()
 {
@@ -37,12 +35,14 @@ void Menu::mostrarMenu()
         {
         case 1:
             /**
-            obj.insertar(p,"Hola10");
-            obj.insertar(p,"Hola21");
-            obj.insertar(p,"Hola32");
-            obj.insertar(p,"Hola43");
-            obj.insertar(p,"Hola54");
-            obj.insertar(p,"Hola65");
+            obj.insertar("Hola10");
+            obj.insertar("Hola21");
+            obj.insertar("Hola32");
+            obj.insertar("Hola43");
+            obj.insertar("Hola54");
+            obj.insertar("Hola65");
+            obj.Mostrar();
+            obj.graficaListaCircular();
 
             obj2.insertarNodo(raiz,"Mario1");
             obj2.insertarNodo(raiz,"Pikachu");
@@ -65,7 +65,7 @@ void Menu::mostrarMenu()
             obj3.insertarNodo(5,2,"verde");
             obj3.insertarNodo(10,13,"naranja");
             obj3.insertarNodo(9,11,"naranja");
-            obj3.escribirDot();**/
+            obj3.escribirDot();
 
             obj4.insertarNodo(1,2,"azul",t);
             obj4.insertarNodo(1,2,"azul1",t);
@@ -74,12 +74,18 @@ void Menu::mostrarMenu()
             obj4.insertarNodo(1,2,"azul4",t);
             obj4.mostrar(t);
             obj4.graficaLista(t);
+            **/
+            objL.insertarCapa();
+
+
+
+
             break;
         case 2:
-            obj.Mostrar(p);
+            //obj.Mostrar(p);
             break;
         case 3:
-            obj.limpiarLista(p);
+            //obj.limpiarLista(p);
             break;
         case 4:
             obj2.recorridoInO(raiz);
@@ -89,7 +95,7 @@ void Menu::mostrarMenu()
             obj2.recorridoPost(raiz);
             break;
         case 5:
-            obj.graficaListaCircular(p);
+            //obj.graficaListaCircular(p);
             break;
         case 6:
             menuReportes();

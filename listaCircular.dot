@@ -14,6 +14,12 @@ digraph arbol
 	FiltroHola43[label="{ |Hola43| }"];
 	FiltroHola54[label="{ |Hola54| }"];
 	FiltroHola65[label="{ |Hola65| }"];
+	FiltroHola1[label="{ |Hola1| }"];
+	FiltroHola2[label="{ |Hola2| }"];
+	FiltroHola3[label="{ |Hola3| }"];
+	FiltroHola4[label="{ |Hola4| }"];
+	FiltroHola5[label="{ |Hola5| }"];
+	FiltroHola6[label="{ |Hola6| }"];
 
 
 	FiltroHola10->FiltroHola21
@@ -26,8 +32,20 @@ digraph arbol
 	FiltroHola54->FiltroHola43
 	FiltroHola54->FiltroHola65
 	FiltroHola65->FiltroHola54
-	FiltroHola65->FiltroHola10
-	FiltroHola10->FiltroHola65
+	FiltroHola65->FiltroHola1
+	FiltroHola1->FiltroHola65
+	FiltroHola1->FiltroHola2
+	FiltroHola2->FiltroHola1
+	FiltroHola2->FiltroHola3
+	FiltroHola3->FiltroHola2
+	FiltroHola3->FiltroHola4
+	FiltroHola4->FiltroHola3
+	FiltroHola4->FiltroHola5
+	FiltroHola5->FiltroHola4
+	FiltroHola5->FiltroHola6
+	FiltroHola6->FiltroHola5
+	FiltroHola6->FiltroHola10
+	FiltroHola10->FiltroHola6
 
 
 	label="Filtros Aplicados

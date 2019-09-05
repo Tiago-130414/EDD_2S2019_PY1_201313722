@@ -6,31 +6,36 @@
 #include <conio.h>
 #include <fstream>
 using namespace std;
-ListaCircular::ListaCircular()
+nodoListaCircular::nodoListaCircular()
 {
     filtroAP = "";
     siguiente = NULL;
-    anterior = NULL;
+    anterior  = NULL;
 }
 
-ListaCircular* ListaCircular::crearNodo(string filtroAP)
+ListaCircular::ListaCircular()
 {
-    ListaCircular *nuevo_nodo = new ListaCircular();
+    primero = NULL;
+}
+
+nodoListaCircular* ListaCircular::crearNodo(string filtroAP)
+{
+    nodoListaCircular *nuevo_nodo = new nodoListaCircular();
     nuevo_nodo->filtroAP = filtroAP;
     return nuevo_nodo;
 }
 
-bool ListaCircular :: estaVacia(ListaCircular *&primero)
+bool ListaCircular :: estaVacia()
 {
   return(primero==NULL)? true:false;
 }
 
-void ListaCircular :: insertar(ListaCircular *&primero,string filtro)
+void ListaCircular :: insertar(string filtro)
 {
-    ListaCircular *temp = primero;
-    ListaCircular *nuevo = crearNodo(filtro);
+    nodoListaCircular *temp = primero;
+    nodoListaCircular *nuevo = crearNodo(filtro);
 
-    if(estaVacia(primero))
+    if(estaVacia())
     {
       nuevo->siguiente = nuevo;
       nuevo->anterior = nuevo;
@@ -46,12 +51,12 @@ void ListaCircular :: insertar(ListaCircular *&primero,string filtro)
     }
 }
 
-void ListaCircular :: Mostrar(ListaCircular *&primero)
+void ListaCircular :: Mostrar()
 {
-    if(estaVacia(primero)){
+    if(estaVacia()){
      cout<<"Lista Filtros Vacia"<<endl;
     }else{
-        ListaCircular *temp = primero;
+        nodoListaCircular *temp = primero;
         do{
             cout<<temp->filtroAP<<endl;
             temp = temp->siguiente;
@@ -59,9 +64,9 @@ void ListaCircular :: Mostrar(ListaCircular *&primero)
     }
 }
 
-void ListaCircular :: limpiarLista(ListaCircular *&primero)
+void ListaCircular :: limpiarLista()
 {
-    if(estaVacia(primero)){
+    if(estaVacia()){
         cout<<"Lista Filtros Vacia"<<endl;
     }else{
         primero->siguiente = NULL;
@@ -70,9 +75,9 @@ void ListaCircular :: limpiarLista(ListaCircular *&primero)
     }
 }
 
-void ListaCircular::graficaListaCircular(ListaCircular *&primero){
-    string cad2;
-    string cad4;
+void ListaCircular::graficaListaCircular(){
+    string cad2="";
+    string cad4="";
     ofstream archivo;
     archivo.open("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\listaCircular.dot",ios::out);
     if(archivo.fail())
@@ -88,8 +93,8 @@ void ListaCircular::graficaListaCircular(ListaCircular *&primero){
     archivo<<"\tcolor=lightgrey;"<<endl;
     archivo<<"\tlabelloc=t;"<<endl;
     archivo<<"\tnode [shape = record, style=\"rounded,filled\"fillcolor=\"orange:red\",width=0.7,height=0.5];"<<endl;
-    cad2 = listarNodos(primero);
-    cad4 = apuntadores(primero);
+    cad2 = listarNodos();
+    cad4 = apuntadores();
     archivo<<"\n";
     archivo<<cad2<<endl;
     archivo<<"\n";
@@ -101,15 +106,14 @@ void ListaCircular::graficaListaCircular(ListaCircular *&primero){
     archivo.close();
     system("dot C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\listaCircular.dot -o C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\listaCircular.png -Tpng -Gcharset=utf8");
     system("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\listaCircular.png");
-    //limpiarCadenas();
 }
 
-string ListaCircular::listarNodos(ListaCircular *&primero){
+string ListaCircular::listarNodos(){
     string c="";
-    if(estaVacia(primero)){
+    if(estaVacia()){
         cout<<"Lista Filtros Vacia"<<endl;
     }else{
-        ListaCircular *temp = primero;
+        nodoListaCircular *temp = primero;
         do{
             c += "\tFiltro" + temp->filtroAP+"[label=\"{ |"+temp->filtroAP+"| }\"];\n";
             temp = temp->siguiente;
@@ -118,14 +122,14 @@ string ListaCircular::listarNodos(ListaCircular *&primero){
     return c;
 }
 
-string ListaCircular :: apuntadores(ListaCircular *&primero)
+string ListaCircular :: apuntadores()
 {
     string c ="";
-    if(estaVacia(primero))
+    if(estaVacia())
     {
         return c="";
     }else{
-        ListaCircular *temp = primero;
+        nodoListaCircular *temp = primero;
         do{
         c+="\tFiltro"+ temp->filtroAP+"->"+"Filtro"+temp->siguiente->filtroAP+"\n";
         c+="\tFiltro"+ temp->siguiente->filtroAP+"->Filtro"+temp->filtroAP+"\n";
