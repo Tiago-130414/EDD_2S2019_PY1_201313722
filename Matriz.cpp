@@ -3,7 +3,10 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include "ListaDobleLN.h"
 using namespace std;
+ListaDobleLN linealizarF;
+ListaDobleLN linealizarC;
 NodoFC::NodoFC(int fil,int col,string co)
 {
     //ctor
@@ -136,7 +139,7 @@ void Matriz::imprimir()
         NodoFC *tempInterior = tempoC->abajo;
         while(tempInterior!=NULL)
         {
-            cout<<"caca: " +tempInterior->color<<"-Fila: "<<tempInterior->fila<<"Columna: "<<tempInterior->columna<<"color: "<<tempInterior->color<<endl;
+            cout<<"-Fila: "<<tempInterior->fila<<"Columna: "<<tempInterior->columna<<"color: "<<tempInterior->color<<endl;
             tempInterior = tempInterior->abajo;
         }
         tempoC = tempoC->siguiente;
@@ -456,3 +459,38 @@ int Matriz::stringToInt(string s)
     cast >> x;
     return x;
 }
+
+
+void Matriz::linealizarFilas(){
+    NodoFC *tempoF = filas;
+    cout<<tempoF->siguiente->color<<endl;
+    while(tempoF!=NULL)
+    {
+        NodoFC *tempInterior = tempoF->siguiente;
+        while(tempInterior!=NULL)
+        {
+             linealizarF.insertarNodo(tempInterior->fila,tempInterior->columna,tempInterior->color);
+            tempInterior = tempInterior->siguiente;
+        }
+        tempoF = tempoF->abajo;
+    }
+    linealizarF.graficaLista();
+}
+
+void Matriz::linealizarColumnas()
+{
+    NodoFC *tempoC = columnas;
+    while(tempoC!=NULL)
+    {
+        NodoFC *tempInterior = tempoC->abajo;
+        while(tempInterior!=NULL)
+        {
+             linealizarC.insertarNodo(tempInterior->fila,tempInterior->columna,tempInterior->color);
+            tempInterior = tempInterior->abajo;
+        }
+        tempoC = tempoC->siguiente;
+    }
+    linealizarC.graficaLista();
+
+}
+
