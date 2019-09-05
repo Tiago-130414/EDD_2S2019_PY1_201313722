@@ -39,6 +39,8 @@ class Matriz
         string rankSame();
         string enlazarColumnaConNodo();
         string enlazarNodosMediosColumna();
+        void linealizarFilas();
+        void linealizarColumnas();
     protected:
 
     private:
