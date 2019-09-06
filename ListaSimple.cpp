@@ -16,7 +16,6 @@ bool ListaSimple::estaVacia(){
     return (primero==NULL)? true:false;
 }
 
-
 void ListaSimple::insertarCapa()
 {
     nodoLista *nuevo = new nodoLista();

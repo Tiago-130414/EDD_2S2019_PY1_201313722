@@ -3,6 +3,7 @@
 #include "ListaCircular.h"
 #include "ListaSimple.h"
 #include "ListaDobleLN.h"
+#include "leerArchivo.h"
 #include <iostream>
 using namespace std;
 ListaCircular obj;
@@ -10,6 +11,7 @@ ArbolBB obj2;
 ArbolBB *raiz = NULL;
 ListaDobleLN obj4;
 ListaSimple objL;
+leerArchivo lee;
 
 Menu::Menu()
 {
@@ -75,11 +77,7 @@ void Menu::mostrarMenu()
             obj4.mostrar(t);
             obj4.graficaLista(t);
             **/
-            objL.insertarCapa();
-
-
-
-
+            lee.leer("prueba.csv");
             break;
         case 2:
             //obj.Mostrar(p);

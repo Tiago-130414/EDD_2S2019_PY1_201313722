@@ -44,6 +44,8 @@
 		<Unit filename="Matriz.h" />
 		<Unit filename="Menu.cpp" />
 		<Unit filename="Menu.h" />
+		<Unit filename="leerArchivo.cpp" />
+		<Unit filename="leerArchivo.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
