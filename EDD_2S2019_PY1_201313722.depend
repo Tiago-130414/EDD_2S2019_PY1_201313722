@@ -3,9 +3,10 @@
 	<iostream>
 	"Menu.h"
 
-1567394328 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\menu.h
+1567969492 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\menu.h
+	<string>
 
-1567730914 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\menu.cpp
+1567983388 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\menu.cpp
 	"Menu.h"
 	"ArbolBB.h"
 	"ListaCircular.h"
@@ -13,6 +14,7 @@
 	"ListaDobleLN.h"
 	"leerArchivo.h"
 	<iostream>
+	<fstream>
 
 1567659301 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listacircular.cpp
 	"ListaCircular.h"
@@ -45,7 +47,7 @@
 	<stdlib.h>
 	<conio.h>
 
-1567669069 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\matriz.cpp
+1568005179 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\matriz.cpp
 	"Matriz.h"
 	<string>
 	<iostream>
@@ -53,7 +55,7 @@
 	<fstream>
 	"ListaDobleLN.h"
 
-1567669069 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\matriz.h
+1568004687 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\matriz.h
 	<string>
 	<iostream>
 
@@ -67,13 +69,18 @@
 1567660139 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listadobleln.h
 	<string>
 
-1567670045 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listasimple.cpp
+1568005356 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listasimple.cpp
 	"ListaSimple.h"
+	<string>
+	<sstream>
+	<fstream>
+	<bits/stdc++.h>
 
-1567617704 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listasimple.h
+1567970089 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listasimple.h
 	"Matriz.h"
+	<string>
 
-1567733625 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\leerarchivo.cpp
+1567815081 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\leerarchivo.cpp
 	"leerArchivo.h"
 	<iostream>
 	<fstream>

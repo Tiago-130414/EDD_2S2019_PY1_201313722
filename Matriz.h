@@ -32,7 +32,7 @@ class Matriz
         int stringToInt(string castear);
         string intToString(int val);
         void imprimir();
-        void escribirDot();
+        void escribirDot(string nomImg);
         string creandoNodosFilaGuia();
         string creandoNodosColumnaGuia();
         string nodosContenidoFila();

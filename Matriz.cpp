@@ -128,7 +128,7 @@ void Matriz::enlazarFila(NodoFC *&pivote,NodoFC *&nuevoFil,int fila)
         }
     }
 }
-
+///mostrar matriz en consola
 void Matriz::imprimir()
 {
     NodoFC *tempoF = filas;
@@ -146,11 +146,14 @@ void Matriz::imprimir()
     }
 }
 
-
-void Matriz::escribirDot()
+///generar grafica de matriz
+void Matriz::escribirDot(string nomImg)
 {
+    string arrCad = nomImg+".dot";
+    string compilarDot;
+    string abrirImagen;
     ofstream archivo;
-    archivo.open("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\grafica.dot",ios::out);
+    archivo.open("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\"+arrCad,ios::out);
     if(archivo.fail())
     {
         cout<<"Error al crear archivo";
@@ -167,9 +170,12 @@ void Matriz::escribirDot()
     archivo<<"\n"<<endl;
     archivo<<"\n}"<<endl;
     archivo.close();
-    system("dot C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\grafica.dot -o C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\grafica.png -Tpng -Gcharset=utf8");
-    system("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\grafica.png");
-
+    compilarDot = "dot C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\"+nomImg+".dot -o C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\"+nomImg+".png -Tpng -Gcharset=utf8";
+    system(compilarDot.c_str());
+    abrirImagen ="C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\"+nomImg+".png";
+    system(abrirImagen.c_str());
+    //system("dot C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\grafica.dot -o C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\grafica.png -Tpng -Gcharset=utf8");
+    //system("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\grafica.png");
 }
 
 

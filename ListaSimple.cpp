@@ -1,7 +1,13 @@
 #include "ListaSimple.h"
+#include <string>
+#include <sstream>
+#include <fstream>
+#include<bits/stdc++.h>
 using namespace std;
+int f=0;
 nodoLista::nodoLista()
 {
+    numeroCapa = 0;
     siguiente = NULL;
 }
 
@@ -16,22 +22,20 @@ bool ListaSimple::estaVacia(){
     return (primero==NULL)? true:false;
 }
 
-void ListaSimple::insertarCapa()
+void ListaSimple::insertarCapa(int capa,string nom)
 {
     nodoLista *nuevo = new nodoLista();
-    nuevo->capa.insertarNodo(1,2,"blanco");
-    nuevo->capa.insertarNodo(2,2,"negro");
-    nuevo->capa.insertarNodo(5,2,"azul");
-    nuevo->capa.insertarNodo(9,9,"rojo");
-    nuevo->capa.escribirDot();
-    nuevo->capa.imprimir();
-    nuevo->capa.linealizarFilas();
+    nuevo->nombreArchivo = nom;
+    nuevo->numeroCapa = capa;
+    insertarDatosMatriz(nom,nuevo);
+    //pasar nombre de archivo para que guarde en matriz
+
     if(estaVacia()){
         primero = nuevo;
-        ultimo = primero;
+        //ultimo = primero;
     }else{
-        ultimo->siguiente = nuevo;
-        ultimo = nuevo;
+        nuevo->siguiente = primero;
+        primero = nuevo;
     }
 }
 
@@ -41,10 +45,42 @@ void ListaSimple::mostrar(){
     }else{
         nodoLista *temp = primero;
         while(temp!=NULL){
-            cout<<temp<<endl;
+            cout<<"capa"<<intToString(temp->numeroCapa)<<endl;
+            cout<<"nombreArchivo:"<<temp->nombreArchivo<<endl;
             temp = temp->siguiente;
         }
 
     }
+}
 
+void ListaSimple::insertarDatosMatriz(string datMatriz,nodoLista *&nuevo){
+    ifstream file(datMatriz);
+    if(!file.is_open()) cout<<"Error: Archivo no abierto"<<'\n';
+    string RGB;
+    string RGBU;
+    int c=0;
+    int fi=0;
+    while(file.good()){
+       getline(file,RGBU,'\n');
+       stringstream s(RGBU);
+       c=0;
+       while(getline(s,RGB,',')){
+        if(RGB!="x"&&RGB!=" "&&RGB!="\n"){
+           nuevo->capa.insertarNodo(fi,c,RGB);
+        }
+        c++;
+       }
+       fi++;
+       cout<<"--------------"<<endl;
+    }
+    file.close();
+    string nomArchivo = "capa"+intToString(nuevo->numeroCapa);
+    nuevo->capa.escribirDot(nomArchivo);
+}
+
+string ListaSimple::intToString(int val)
+{
+    string cad="";
+    cad = static_cast<std::ostringstream*>(&(std::ostringstream() << val))->str();
+    return cad;
 }

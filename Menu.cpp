@@ -5,13 +5,14 @@
 #include "ListaDobleLN.h"
 #include "leerArchivo.h"
 #include <iostream>
+#include <fstream>
 using namespace std;
-ListaCircular obj;
-ArbolBB obj2;
-ArbolBB *raiz = NULL;
-ListaDobleLN obj4;
-ListaSimple objL;
-leerArchivo lee;
+ListaCircular obj;//lista circular de filtros
+ArbolBB obj2;//objeto de tipo arbol
+ArbolBB *raiz = NULL;//puntero tipo arbol
+ListaDobleLN obj4;//lista de linealizacion
+ListaSimple objL;//lista de matrices
+leerArchivo lee;//leer archivos csv
 
 Menu::Menu()
 {
@@ -77,7 +78,10 @@ void Menu::mostrarMenu()
             obj4.mostrar(t);
             obj4.graficaLista(t);
             **/
-            lee.leer("prueba.csv");
+            leerArchivoCapas("inicial.csv");
+            //objL.insertarCapa(0,"capa1.csv");
+            //objL.insertarCapa(1,"capa2.csv");
+
             break;
         case 2:
             //obj.Mostrar(p);
@@ -158,4 +162,36 @@ void Menu:: traversalReport()
                 break;
         }
     }while(op!=4);
+}
+
+void Menu::leerArchivoCapas(string archivo){
+    ifstream file(archivo);
+    if(!file.is_open()) cout<<"Error: Archivo no abierto"<<'\n';
+    string layer;
+    string nameFile;
+    while(file.good()){
+        layer="";
+        nameFile="";
+        getline(file,layer,',');
+        getline(file,nameFile,'\n');
+        //capa
+        if(layer!=" "&&layer!="\n"&&layer!=""){
+            if(nameFile!=" "&&nameFile!="\n"&&nameFile!=""){
+                if(nameFile!="File"&&layer!="Layer"){
+                    objL.insertarCapa(stringToInt(layer),nameFile);
+                }
+            }
+        }
+    }
+    file.close();
+
+}
+
+////////////////////castear
+int Menu::stringToInt(string s)
+{
+    stringstream cast(s);
+    int x = 0;
+    cast >> x;
+    return x;
 }
