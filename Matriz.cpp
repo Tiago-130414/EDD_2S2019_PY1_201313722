@@ -25,7 +25,7 @@ Matriz::Matriz()
     columnas = NULL;
     filas = NULL;
 }
-
+///insertar valores en matriz
 void Matriz::insertarNodo(int fil,int col,string co)
 {
     NodoFC *nuevoCol = new NodoFC(0,col,"Columna ");
@@ -450,7 +450,7 @@ string Matriz::enlazarNodosMediosColumna()
 
     return cad;
 }
-
+///metodos int y string
 string Matriz::intToString(int val)
 {
     string cad="";
@@ -466,7 +466,7 @@ int Matriz::stringToInt(string s)
     return x;
 }
 
-
+///grafica linealizacion
 void Matriz::linealizarFilas(){
     NodoFC *tempoF = filas;
     cout<<tempoF->siguiente->color<<endl;

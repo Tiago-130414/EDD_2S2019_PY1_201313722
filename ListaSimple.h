@@ -18,12 +18,12 @@ class ListaSimple
     public:
         ListaSimple();
         bool estaVacia();
-        void insertarCapa(int capa,string nom);
+        void insertarCapa(int capa,string nom,string temp,string nombreImagen);
         void mostrar();
         string intToString(int val);
         nodoLista *primero;
         nodoLista *ultimo;
-        void insertarDatosMatriz(string datMatriz,nodoLista *&);
+        void insertarDatosMatriz(string datMatriz,nodoLista *&,string nombreImagen);
 
     protected:
 

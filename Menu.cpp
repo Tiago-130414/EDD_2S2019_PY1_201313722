@@ -13,7 +13,6 @@ ArbolBB *raiz = NULL;//puntero tipo arbol
 ListaDobleLN obj4;//lista de linealizacion
 ListaSimple objL;//lista de matrices
 leerArchivo lee;//leer archivos csv
-
 Menu::Menu()
 {
     mostrarMenu();
@@ -21,6 +20,12 @@ Menu::Menu()
 
 void Menu::mostrarMenu()
 {
+    string carpetaRaiz;
+    string carpeta;
+    string csv;
+    string rutaImagen;
+    string rutaSinArchivo;
+
     int op =0;
     do
     {
@@ -33,70 +38,39 @@ void Menu::mostrarMenu()
         cout<<"6.- Reports"<<endl;
         cout<<"7.- Exit"<<endl;
         cin>>op;
-        //system("cls");
+        system("cls");
         switch(op)
         {
         case 1:
-            /**
-            obj.insertar("Hola10");
-            obj.insertar("Hola21");
-            obj.insertar("Hola32");
-            obj.insertar("Hola43");
-            obj.insertar("Hola54");
-            obj.insertar("Hola65");
-            obj.Mostrar();
-            obj.graficaListaCircular();
-
-            obj2.insertarNodo(raiz,"Mario1");
-            obj2.insertarNodo(raiz,"Pikachu");
-            obj2.insertarNodo(raiz,"Boo");
-            obj2.insertarNodo(raiz,"Geoff");
-            obj2.insertarNodo(raiz,"Mario2");
-            obj2.insertarNodo(raiz,"Mushroom");
-            obj2.insertarNodo(raiz,"Santiago");
-            obj2.insertarNodo(raiz,"Gilberto");
-            obj2.insertarNodo(raiz,"Andre");
-
-            obj3.insertarNodo(0,1,"azul");
-            obj3.insertarNodo(2,3,"negro");
-            obj3.insertarNodo(5,4,"blanco");
-            obj3.insertarNodo(6,8,"amarillo");
-            obj3.insertarNodo(7,9,"celeste");
-            obj3.insertarNodo(7,8,"verde");
-            obj3.insertarNodo(7,7,"verde");
-            obj3.insertarNodo(7,6,"verde");
-            obj3.insertarNodo(5,2,"verde");
-            obj3.insertarNodo(10,13,"naranja");
-            obj3.insertarNodo(9,11,"naranja");
-            obj3.escribirDot();
-
-            obj4.insertarNodo(1,2,"azul",t);
-            obj4.insertarNodo(1,2,"azul1",t);
-            obj4.insertarNodo(1,2,"azul2",t);
-            obj4.insertarNodo(1,2,"azul3",t);
-            obj4.insertarNodo(1,2,"azul4",t);
-            obj4.mostrar(t);
-            obj4.graficaLista(t);
-            **/
-            leerArchivoCapas("inicial.csv");
-            //objL.insertarCapa(0,"capa1.csv");
-            //objL.insertarCapa(1,"capa2.csv");
-
+            cout<<"Ingrese nombre de carpeta en disco C: donde se encuentran archivos: "<<endl;
+            cin>>carpetaRaiz;
+            cout<<"Ingrese nombre de carpeta donde se encuentran Imagen: "<<endl;
+            cin>>carpeta;
+            cout<<"Ingrese nombre de archivo csv de config. inicial: "<<endl;
+            cin>>csv;
+            rutaImagen ="C:/"+carpetaRaiz +"/"+ carpeta +"/";
+            rutaSinArchivo = rutaImagen;
+            rutaImagen = string(rutaImagen)+string(csv);
+            cout<<rutaImagen<<endl;
+            cout<<rutaSinArchivo<<endl;
+            obj2.insertarNodo(raiz,carpeta,rutaImagen.c_str(),rutaSinArchivo.c_str());
             break;
         case 2:
-            //obj.Mostrar(p);
+            seleccionarImagenArbol();
             break;
         case 3:
             //obj.limpiarLista(p);
             break;
         case 4:
-            obj2.recorridoInO(raiz);
-            cout<<"-------"<<endl;
-            obj2.recorridoPre(raiz);
-            cout<<"-------"<<endl;
-            obj2.recorridoPost(raiz);
+
             break;
         case 5:
+            obj2.recorridoInO(raiz);
+            cout<<"------------------"<<endl;
+            obj2.recorridoPost(raiz);
+            cout<<"------------------"<<endl;
+            obj2.recorridoPre(raiz);
+            cout<<"------------------"<<endl;
             //obj.graficaListaCircular(p);
             break;
         case 6:
@@ -164,6 +138,18 @@ void Menu:: traversalReport()
     }while(op!=4);
 }
 
+
+void Menu::seleccionarImagenArbol(){
+    string nombre;
+    cout<<"=============== SELECT IMAGE ==============="<<endl;
+    obj2.recorridoInO(raiz);
+    cout<<"\nIngrese Nombre de Imagen: "<<endl;
+    cin>>nombre;
+    system("cls");
+}
+
+
+
 void Menu::leerArchivoCapas(string archivo){
     ifstream file(archivo);
     if(!file.is_open()) cout<<"Error: Archivo no abierto"<<'\n';
@@ -174,17 +160,31 @@ void Menu::leerArchivoCapas(string archivo){
         nameFile="";
         getline(file,layer,',');
         getline(file,nameFile,'\n');
-        //capa
-        if(layer!=" "&&layer!="\n"&&layer!=""){
-            if(nameFile!=" "&&nameFile!="\n"&&nameFile!=""){
-                if(nameFile!="File"&&layer!="Layer"){
-                    objL.insertarCapa(stringToInt(layer),nameFile);
+            if(layer!=" "&&layer!="\n"&&layer!=""){
+                if(nameFile!=" "&&nameFile!="\n"&&nameFile!=""){
+                    if(nameFile!="File"&&layer!="Layer"){
+                            //objL.insertarCapa(stringToInt(layer),nameFile);
+                    }
                 }
             }
-        }
     }
     file.close();
+}
 
+////////////////////leer archivo de configuracion
+void Menu::leerArchivoConfig(string archivo){
+    ifstream file(archivo);
+    if(!file.is_open()) cout<<"Error: Archivo no abierto"<<'\n';
+    string config;
+    string value;
+    while(file.good()){
+        config="";
+        value="";
+        getline(file,config,',');
+        getline(file,value,'\n');
+        cout<<config<<value<<endl;
+    }
+    file.close();
 }
 
 ////////////////////castear

@@ -1,5 +1,6 @@
 #ifndef ARBOLBB_H
 #define ARBOLBB_H
+#include "ListaSimple.h"
 #include <iostream>
 #include <string>
 #include <string.h>
@@ -14,11 +15,12 @@ class ArbolBB
         string nombreIMG;
         ArbolBB *izquierda;
         ArbolBB *derecha;
+        ListaSimple cubo;
         //prototypes of function
         ArbolBB();
         bool estaVacio(ArbolBB *&raiz);
-        ArbolBB* crearNodo(string imagen);
-        void insertarNodo(ArbolBB *&raiz,string imagen);
+        ArbolBB* crearNodo(string imagen,string rutaArchivo,string rutaSinArchivo);
+        void insertarNodo(ArbolBB *&raiz,string imagen,string rutaArchivoCSV,string rutaSinArchivo);
         void recorridoPre(ArbolBB *&raiz);
         void recorridoInO(ArbolBB *&raiz);
         void recorridoPost(ArbolBB *&raiz);
@@ -40,6 +42,10 @@ class ArbolBB
         void graficaListaPreOrden(ArbolBB *raiz);
         string listadoNodosPreorder(ArbolBB *raiz);
         string apuntadorNodosPreorder(ArbolBB *raiz);
+        ///metodos para insertar imagen
+        void leerArchivoCapas(string archivo,ArbolBB *&nuevo,string rutaTemp,string nombreImagen);
+        ///metodos string
+        int stringToInt(string n);
     protected:
 
     private:

@@ -22,28 +22,55 @@ bool ArbolBB::estaVacio(ArbolBB *&raiz)
     return (raiz==NULL)? true:false;
 }
 
-ArbolBB* ArbolBB::crearNodo(string imagen)
+ArbolBB* ArbolBB::crearNodo(string imagen,string rutaArchivo,string rutaSinArchivo)
 {
     ArbolBB *nuevo_nodo = new ArbolBB();
     nuevo_nodo->nombreIMG = imagen;
     nuevo_nodo->izquierda = NULL;
     nuevo_nodo->derecha = NULL;
+    leerArchivoCapas(rutaArchivo,nuevo_nodo,rutaSinArchivo,imagen);
     return nuevo_nodo;
 }
 
-void ArbolBB::insertarNodo(ArbolBB *&raiz,string imagen){
+void ArbolBB::insertarNodo(ArbolBB *&raiz,string imagen,string rutaArchivoCSV,string rutaSinAr){
     if(raiz==NULL){
-        ArbolBB *nuevo = crearNodo(imagen);
+        ArbolBB *nuevo = crearNodo(imagen,rutaArchivoCSV,rutaSinAr);
         raiz = nuevo;
     }else{
         string r = raiz->nombreIMG;
         if(imagen<r){
-            insertarNodo(raiz->izquierda,imagen);
+            insertarNodo(raiz->izquierda,imagen,rutaArchivoCSV,rutaSinAr);
         }else{
-            insertarNodo(raiz->derecha,imagen);
+            insertarNodo(raiz->derecha,imagen,rutaArchivoCSV,rutaSinAr);
         }
     }
 }
+
+///insercion de datos en estructuras mediante archivos csv
+
+void ArbolBB::leerArchivoCapas(string archivo,ArbolBB *&nuevo,string rutaTemp,string nombreImagen){
+    ifstream file(archivo.c_str());
+    if(!file.is_open()) cout<<"Error: Archivo abierto"<<'\n';
+    string layer;
+    string nameFile;
+    while(file.good()){
+        layer="";
+        nameFile="";
+        getline(file,layer,',');
+        getline(file,nameFile,'\n');
+            if(layer!=" "&&layer!="\n"&&layer!=""){
+                if(nameFile!=" "&&nameFile!="\n"&&nameFile!=""){
+                    if(nameFile!="File"&&layer!="Layer"){
+                            //aqui me quede
+                        nuevo->cubo.insertarCapa(stringToInt(layer),nameFile,rutaTemp,nombreImagen);
+                    }
+                }
+            }
+    }
+    file.close();
+}
+
+
 ////////////RECORRIDOS ARBOL
 void ArbolBB::recorridoPre(ArbolBB *&raiz)
 {
@@ -67,7 +94,7 @@ void ArbolBB::recorridoInO(ArbolBB *&raiz)
     }else
     {
         recorridoInO(raiz->izquierda);
-        cout<<raiz->nombreIMG<<"-";
+        cout<<raiz->nombreIMG<<endl;;
         recorridoInO(raiz->derecha);
     }
 
@@ -436,3 +463,9 @@ string ArbolBB::limpiarEspaciosBlanco(string c){
     return out;
 }
 
+int ArbolBB::stringToInt(string n){
+    stringstream cast(n);
+    int x =0;
+    cast>>x;
+    return x;
+}

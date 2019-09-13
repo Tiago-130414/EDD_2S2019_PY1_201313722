@@ -1,0 +1,65 @@
+digraph G {
+graph [ranksep="0.5", nodesep="0.5"];
+
+Matriz[width = 1.0 group = "Mt0",  style=filled,shape="underline",fillcolor="yellow:blue" label="Matriz"];
+
+F7[label="7"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
+F9[label="9"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
+F10[label="10"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
+F11[label="11"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
+F7->F9;
+F9->F7;
+F9->F10;
+F10->F9;
+F10->F11;
+F11->F10;
+
+C2[label="2"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
+C3[label="3"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
+C4[label="4"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
+C2->C3;
+C3->C2;
+C3->C4;
+C4->C3;
+{rank = same; Matriz;C2;C3;C4}
+Matriz ->C2;
+Matriz ->F7;
+
+72[label="102-255-102"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
+92[label="102-255-102"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
+103[label="102-255-102"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
+114[label="102-255-102"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
+F7->72[constraint = false];
+72->F7[constraint = false];
+F9->92[constraint = false];
+92->F9[constraint = false];
+F10->103[constraint = false];
+103->F10[constraint = false];
+F11->114[constraint = false];
+114->F11[constraint = false];
+73[label="102-255-102"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
+72->73[constraint = false];
+
+73->72[constraint = false];
+
+{rank = same;F7;72;73;}
+{rank = same;F9;92;}
+{rank = same;F10;103;}
+{rank = same;F11;114;}
+
+C2->72;
+72->C2;
+C3->73;
+73->C3;
+C4->114;
+114->C4;
+
+72->92
+92->72[constraint = false];
+73->103
+103->73[constraint = false];
+
+
+
+
+}

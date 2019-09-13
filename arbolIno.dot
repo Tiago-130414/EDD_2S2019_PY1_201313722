@@ -8,18 +8,11 @@ digraph arbol
 	labelloc=t;
 	node [shape = rectangle, style="rounded,filled", fillcolor="orange:red",width=0.7,height=0.5];
 
-	NodoAndre[label="Andre"];
-	NodoBoo[label="Boo"];
-	NodoGeoff[label="Geoff"];
-	NodoGilberto[label="Gilberto"];
-	NodoMario1[label="Mario1"];
-	NodoMario2[label="Mario2"];
-	NodoMushroom[label="Mushroom"];
-	NodoPikachu[label="Pikachu"];
-	NodoSantiago[label="Santiago"];
+	NodoPrimera[label="Primera"];
+	NodoR[label="R"];
 
 
-	NodoAndre->NodoBoo->NodoGeoff->NodoGilberto->NodoMario1->NodoMario2->NodoMushroom->NodoPikachu->NodoSantiago;
+	NodoPrimera->NodoR;
 
 	label="InOrder Traversal";
 	}

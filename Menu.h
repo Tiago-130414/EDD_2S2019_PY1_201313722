@@ -10,7 +10,9 @@ class Menu
         void menuReportes();
         void traversalReport();
         void leerArchivoCapas(string archivo);
+        void leerArchivoConfig(string archivo);
         int stringToInt(string s);
+        void seleccionarImagenArbol();
 
 
     protected:

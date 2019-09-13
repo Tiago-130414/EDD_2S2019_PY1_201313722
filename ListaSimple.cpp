@@ -22,17 +22,17 @@ bool ListaSimple::estaVacia(){
     return (primero==NULL)? true:false;
 }
 
-void ListaSimple::insertarCapa(int capa,string nom)
+void ListaSimple::insertarCapa(int capa,string nom,string temp,string nombreImagen)
 {
+    string ruta = string(temp)+string(nom);
     nodoLista *nuevo = new nodoLista();
     nuevo->nombreArchivo = nom;
     nuevo->numeroCapa = capa;
-    insertarDatosMatriz(nom,nuevo);
-    //pasar nombre de archivo para que guarde en matriz
-
+    if(nom!="config.csv"){
+        insertarDatosMatriz(ruta.c_str(),nuevo,nombreImagen);
+    }
     if(estaVacia()){
         primero = nuevo;
-        //ultimo = primero;
     }else{
         nuevo->siguiente = primero;
         primero = nuevo;
@@ -53,8 +53,8 @@ void ListaSimple::mostrar(){
     }
 }
 
-void ListaSimple::insertarDatosMatriz(string datMatriz,nodoLista *&nuevo){
-    ifstream file(datMatriz);
+void ListaSimple::insertarDatosMatriz(string datMatriz,nodoLista *&nuevo,string nombreImagen){
+    ifstream file(datMatriz.c_str());
     if(!file.is_open()) cout<<"Error: Archivo no abierto"<<'\n';
     string RGB;
     string RGBU;
@@ -71,11 +71,11 @@ void ListaSimple::insertarDatosMatriz(string datMatriz,nodoLista *&nuevo){
         c++;
        }
        fi++;
-       cout<<"--------------"<<endl;
     }
     file.close();
-    string nomArchivo = "capa"+intToString(nuevo->numeroCapa);
-    nuevo->capa.escribirDot(nomArchivo);
+    //////////////servira para graficar matriz x capa
+    string nomArchivo = nombreImagen+"capa"+intToString(nuevo->numeroCapa);
+    nuevo->capa.escribirDot(nomArchivo.c_str());
 }
 
 string ListaSimple::intToString(int val)
