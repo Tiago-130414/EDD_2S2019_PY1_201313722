@@ -46,6 +46,7 @@ class ArbolBB
         void leerArchivoCapas(string archivo,ArbolBB *&nuevo,string rutaTemp,string nombreImagen);
         ///metodos string
         int stringToInt(string n);
+        ArbolBB * search(ArbolBB *root, string key);
     protected:
 
     private:

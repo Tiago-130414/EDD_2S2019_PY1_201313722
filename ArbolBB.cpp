@@ -70,7 +70,20 @@ void ArbolBB::leerArchivoCapas(string archivo,ArbolBB *&nuevo,string rutaTemp,st
     file.close();
 }
 
+////////////BUSCAR NODO EN ARBOL
+ArbolBB * ArbolBB::search(ArbolBB *root, string key)
+{
+    // Base Cases: root is null or key is present at root
+    if (root == NULL || root->nombreIMG == key)
+       return root;
 
+    // Key is greater than root's key
+    if (root->nombreIMG < key)
+       return search(root->derecha, key);
+
+    // Key is smaller than root's key
+    return search(root->izquierda, key);
+}
 ////////////RECORRIDOS ARBOL
 void ArbolBB::recorridoPre(ArbolBB *&raiz)
 {

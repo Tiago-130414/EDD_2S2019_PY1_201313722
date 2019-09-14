@@ -24,7 +24,7 @@ class ListaSimple
         nodoLista *primero;
         nodoLista *ultimo;
         void insertarDatosMatriz(string datMatriz,nodoLista *&,string nombreImagen);
-
+        void generarHTML(string);
     protected:
 
     private:

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include<bits/stdc++.h>
 #include "ListaDobleLN.h"
 using namespace std;
 ListaDobleLN linealizarF;
@@ -500,3 +501,85 @@ void Matriz::linealizarColumnas()
 
 }
 
+///numero columnas
+int Matriz::numeroColumnas(){
+    int nc=0;
+    NodoFC *tempoC = columnas;
+    while(tempoC!=NULL)
+    {
+        nc+=1;
+        tempoC = tempoC->siguiente;
+    }
+    return nc;
+}
+///numero filas
+int Matriz::numeroFilas(){
+    int nf=0;
+    NodoFC *tempoF = filas;
+    while(tempoF!=NULL)
+    {
+        nf+=1;
+        tempoF = tempoF->abajo;
+    }
+    return nf;
+}
+///vector de linealizacion
+
+string Matriz::LinMF(){
+    string datosLinealizados="";
+    NodoFC *tempoF = filas;
+    NodoFC *tempoC = columnas;
+    while(tempoC!=NULL)
+    {
+        //cout<<tempoC->color<<"-Fila: "<<tempoC->fila<<"-Columna: "<<tempoC->columna<<endl;
+        NodoFC *tempInterior = tempoF->siguiente;
+        while(tempInterior!=NULL)
+        {
+            stringstream s(tempInterior->color);
+            string r="";
+            string g="";
+            string b="";
+            string RGB="";
+            int R=0;
+            int G=0;
+            int B=0;
+            int i=0;
+            int j=0;
+            getline(s,r,'-');
+            getline(s,g,'-');
+            getline(s,b,'\n');
+            R = stringToInt(r);
+            G = stringToInt(g);
+            B = stringToInt(b);
+            RGB = rgbToHex(R,G,B,true);
+            i = tempInterior->fila;
+            j = tempInterior->columna;
+            int k = calcularK(i,j);
+            datosLinealizados += ".pixel:nth-child("+intToString(k)+"){\n";
+            datosLinealizados += "background: "+ RGB+";\n";
+            datosLinealizados +="}\n";
+            //cout<<"-Fila: "<<tempInterior->fila<<"Columna: "<<tempInterior->columna<<"color: "<<tempInterior->color<<endl;
+            tempInterior = tempInterior->siguiente;
+        }
+        tempoC = tempoC->abajo;
+    }
+
+    return datosLinealizados;
+}
+
+int Matriz::calcularK(int fila,int columna){
+    int K=0;
+    K =fila*numeroColumnas() + columna;
+    return K;
+}
+
+
+///convertir rgb a hex
+string Matriz::rgbToHex(int r, int g, int b, bool with_head)
+{
+	stringstream ss;
+	if (with_head)
+		ss << "#";
+	ss << hex << (r << 16 | g << 8 | b);
+	return ss.str();
+}

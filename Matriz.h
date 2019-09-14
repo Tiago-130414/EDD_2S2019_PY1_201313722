@@ -2,6 +2,7 @@
 #define MATRIZ_H
 #include <string>
 #include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
 class NodoFC
 {
@@ -41,6 +42,13 @@ class Matriz
         string enlazarNodosMediosColumna();
         void linealizarFilas();
         void linealizarColumnas();
+        ///cantidad de filas y columnas
+        int numeroFilas();
+        int numeroColumnas();
+        ///linealizar matriz por filas
+         string LinMF();
+         int calcularK(int fila,int columna);
+         string rgbToHex(int r, int g, int b, bool with_head = false);
     protected:
 
     private:

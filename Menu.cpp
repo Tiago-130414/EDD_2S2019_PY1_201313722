@@ -4,6 +4,7 @@
 #include "ListaSimple.h"
 #include "ListaDobleLN.h"
 #include "leerArchivo.h"
+#include <direct.h> //crear carpetas
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -13,6 +14,7 @@ ArbolBB *raiz = NULL;//puntero tipo arbol
 ListaDobleLN obj4;//lista de linealizacion
 ListaSimple objL;//lista de matrices
 leerArchivo lee;//leer archivos csv
+string imagenSeleccionada;
 Menu::Menu()
 {
     mostrarMenu();
@@ -20,6 +22,7 @@ Menu::Menu()
 
 void Menu::mostrarMenu()
 {
+    mkdir("c:/EXPORT");
     string carpetaRaiz;
     string carpeta;
     string csv;
@@ -60,18 +63,13 @@ void Menu::mostrarMenu()
             break;
         case 3:
             //obj.limpiarLista(p);
+            objL.generarHTML("prueba");
             break;
         case 4:
 
             break;
         case 5:
-            obj2.recorridoInO(raiz);
-            cout<<"------------------"<<endl;
-            obj2.recorridoPost(raiz);
-            cout<<"------------------"<<endl;
-            obj2.recorridoPre(raiz);
-            cout<<"------------------"<<endl;
-            //obj.graficaListaCircular(p);
+
             break;
         case 6:
             menuReportes();
@@ -140,15 +138,12 @@ void Menu:: traversalReport()
 
 
 void Menu::seleccionarImagenArbol(){
-    string nombre;
     cout<<"=============== SELECT IMAGE ==============="<<endl;
     obj2.recorridoInO(raiz);
     cout<<"\nIngrese Nombre de Imagen: "<<endl;
-    cin>>nombre;
+    cin>>imagenSeleccionada;
     system("cls");
 }
-
-
 
 void Menu::leerArchivoCapas(string archivo){
     ifstream file(archivo);
