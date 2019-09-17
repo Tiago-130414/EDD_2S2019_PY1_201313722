@@ -11,6 +11,7 @@ using namespace std;
 ListaCircular obj;//lista circular de filtros
 ArbolBB obj2;//objeto de tipo arbol
 ArbolBB *raiz = NULL;//puntero tipo arbol
+ArbolBB *temp = NULL;
 ListaDobleLN obj4;//lista de linealizacion
 ListaSimple objL;//lista de matrices
 leerArchivo lee;//leer archivos csv
@@ -28,7 +29,6 @@ void Menu::mostrarMenu()
     string csv;
     string rutaImagen;
     string rutaSinArchivo;
-
     int op =0;
     do
     {
@@ -63,13 +63,17 @@ void Menu::mostrarMenu()
             break;
         case 3:
             //obj.limpiarLista(p);
-            objL.generarHTML("prueba");
+            //
+            temp = obj2.buscar(raiz,"R");
+            cout<<temp->nombreIMG<<endl;
+            temp->cubo.generarCss("prueba");
+            temp->cubo.generarHTML("prueba");
             break;
         case 4:
-
+            menuReportes();
             break;
         case 5:
-
+            menuReportes();
             break;
         case 6:
             menuReportes();

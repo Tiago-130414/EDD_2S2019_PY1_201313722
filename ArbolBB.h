@@ -12,7 +12,7 @@ class ArbolBB
 {
     public:
         //attributes
-        string nombreIMG;
+        string nombreIMG =" ";
         ArbolBB *izquierda;
         ArbolBB *derecha;
         ListaSimple cubo;
@@ -46,7 +46,7 @@ class ArbolBB
         void leerArchivoCapas(string archivo,ArbolBB *&nuevo,string rutaTemp,string nombreImagen);
         ///metodos string
         int stringToInt(string n);
-        ArbolBB * search(ArbolBB *root, string key);
+        ArbolBB* buscar(ArbolBB *&raiz, string key);
     protected:
 
     private:

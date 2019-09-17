@@ -529,9 +529,8 @@ string Matriz::LinMF(){
     string datosLinealizados="";
     NodoFC *tempoF = filas;
     NodoFC *tempoC = columnas;
-    while(tempoC!=NULL)
+    while(tempoF!=NULL)
     {
-        //cout<<tempoC->color<<"-Fila: "<<tempoC->fila<<"-Columna: "<<tempoC->columna<<endl;
         NodoFC *tempInterior = tempoF->siguiente;
         while(tempInterior!=NULL)
         {
@@ -545,6 +544,7 @@ string Matriz::LinMF(){
             int B=0;
             int i=0;
             int j=0;
+            int k=0;
             getline(s,r,'-');
             getline(s,g,'-');
             getline(s,b,'\n');
@@ -554,14 +554,16 @@ string Matriz::LinMF(){
             RGB = rgbToHex(R,G,B,true);
             i = tempInterior->fila;
             j = tempInterior->columna;
-            int k = calcularK(i,j);
+            k = calcularK(i,j);
+            cout<<intToString(i)<<endl;
+            cout<<intToString(j)<<endl;
+            cout<<intToString(k)<<endl;
             datosLinealizados += ".pixel:nth-child("+intToString(k)+"){\n";
             datosLinealizados += "background: "+ RGB+";\n";
             datosLinealizados +="}\n";
-            //cout<<"-Fila: "<<tempInterior->fila<<"Columna: "<<tempInterior->columna<<"color: "<<tempInterior->color<<endl;
             tempInterior = tempInterior->siguiente;
         }
-        tempoC = tempoC->abajo;
+        tempoF = tempoF->abajo;
     }
 
     return datosLinealizados;
