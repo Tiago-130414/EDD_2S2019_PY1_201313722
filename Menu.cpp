@@ -171,8 +171,6 @@ void Menu::imageLayerReport(string& image)
 {
     int numCapa =0;
     bool exist;
-    if(image.empty())
-    {
         cout<<"=============== IMAGE LAYER REPORT ===============\n"<<endl;
         obj2.recorridoInO(raiz);
         cout<<"\nIngrese Nombre de Imagen: "<<endl;
@@ -194,12 +192,6 @@ void Menu::imageLayerReport(string& image)
         {
             cout<<"imagen no generada"<<endl;
         }
-    }
-    else
-    {
-        cout<<"=============== IMAGE LAYER REPORT ===============\n"<<endl;
-
-    }
 }
 
 ///seleccionar imagen
