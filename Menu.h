@@ -4,20 +4,21 @@
 using namespace std;
 class Menu
 {
-    public:
-        Menu();
-        void mostrarMenu();
-        void menuReportes();
-        void traversalReport();
-        void leerArchivoCapas(string archivo);
-        void leerArchivoConfig(string archivo);
-        int stringToInt(string s);
-        void seleccionarImagenArbol();
+public:
+    Menu();
+    void mostrarMenu();
+    void menuReportes();
+    void traversalReport();
+    void leerArchivoCapas(string archivo);
+    void leerArchivoConfig(string archivo);
+    int stringToInt(string s);
+    void seleccionarImagenArbol(string& imagen);
+    void imageLayerReport(string& image);
 
 
-    protected:
+protected:
 
-    private:
+private:
 };
 
 #endif // MENU_H

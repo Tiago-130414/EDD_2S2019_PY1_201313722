@@ -16,6 +16,7 @@ ListaDobleLN obj4;//lista de linealizacion
 ListaSimple objL;//lista de matrices
 leerArchivo lee;//leer archivos csv
 string imagenSeleccionada;
+string imagenGCapa;
 Menu::Menu()
 {
     mostrarMenu();
@@ -45,6 +46,8 @@ void Menu::mostrarMenu()
         switch(op)
         {
         case 1:
+            ///cargar imagen
+            cout<<"=============== INSERT IMAGE ===============\n"<<endl;
             cout<<"Ingrese nombre de carpeta en disco C: donde se encuentran archivos: "<<endl;
             cin>>carpetaRaiz;
             cout<<"Ingrese nombre de carpeta donde se encuentran Imagen: "<<endl;
@@ -54,41 +57,58 @@ void Menu::mostrarMenu()
             rutaImagen ="C:/"+carpetaRaiz +"/"+ carpeta +"/";
             rutaSinArchivo = rutaImagen;
             rutaImagen = string(rutaImagen)+string(csv);
-            cout<<rutaImagen<<endl;
-            cout<<rutaSinArchivo<<endl;
             obj2.insertarNodo(raiz,carpeta,rutaImagen.c_str(),rutaSinArchivo.c_str());
             break;
         case 2:
-            seleccionarImagenArbol();
+            ///seleccionar imagen
+            seleccionarImagenArbol(imagenSeleccionada);
             break;
         case 3:
-            //obj.limpiarLista(p);
-            //
-            temp = obj2.buscar(raiz,"R");
-            cout<<temp->nombreIMG<<endl;
-            temp->cubo.generarCss("prueba");
-            temp->cubo.generarHTML("prueba");
+            ///apply filters
+
             break;
         case 4:
+            ///manual editing
             menuReportes();
             break;
         case 5:
-            menuReportes();
+            ///export image
+            if(imagenSeleccionada.empty())
+            {
+                cout<<"=============== EXPORT IMAGE ===============\n"<<endl;
+                cout<<"Seleccione una imagen antes de importar"<<endl;
+            }
+            else
+            {
+                temp = obj2.buscar(raiz,imagenSeleccionada);
+                if(temp!=NULL)
+                {
+                    temp->cubo.generarCss(imagenSeleccionada);
+                    temp->cubo.generarHTML(imagenSeleccionada);
+                }
+                else
+                {
+                    cout<<"imagen buscada no encontrada"<<endl;
+                }
+            }
             break;
         case 6:
+            ///reportes
             menuReportes();
             break;
         case 7:
             system("exit");
             break;
         }
-    }while(op!=7);
+    }
+    while(op!=7);
 }
 
 void Menu::menuReportes()
 {
     int op=0;
-    do{
+    do
+    {
         cout<<"=============== REPORTS ==============="<<endl;
         cout<<"1.- Imported Images Report"<<endl;
         cout<<"2.- Image Layer Report"<<endl;
@@ -98,27 +118,31 @@ void Menu::menuReportes()
         cout<<"6.- Exit"<<endl;
         cin>>op;
         system("cls");
-        switch(op){
-            case 1:
-                obj2.graficarArbol(raiz);
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                traversalReport();
-                break;
-            case 5:
-                break;
+        switch(op)
+        {
+        case 1:
+            obj2.graficarArbol(raiz);
+            break;
+        case 2:
+            imageLayerReport(imagenGCapa);
+            break;
+        case 3:
+            break;
+        case 4:
+            traversalReport();
+            break;
+        case 5:
+            break;
         }
-    }while(op!=6);
+    }
+    while(op!=6);
 }
 
 void Menu:: traversalReport()
 {
     int op=0;
-    do{
+    do
+    {
         cout<<"=============== TRAVERSAL REPORT ==============="<<endl;
         cout<<"1.- Inorder Traversal"<<endl;
         cout<<"2.- Postorder Traversal"<<endl;
@@ -126,57 +150,105 @@ void Menu:: traversalReport()
         cout<<"4.- Exit"<<endl;
         cin>>op;
         system("cls");
-        switch(op){
-            case 1:
-                obj2.graficaLista(raiz);
-                break;
-            case 2:
-                obj2.graficaListaPostOrden(raiz);
-                break;
-            case 3:
-                 obj2.graficaListaPreOrden(raiz);
-                break;
+        switch(op)
+        {
+        case 1:
+            obj2.graficaLista(raiz);
+            break;
+        case 2:
+            obj2.graficaListaPostOrden(raiz);
+            break;
+        case 3:
+            obj2.graficaListaPreOrden(raiz);
+            break;
         }
-    }while(op!=4);
+    }
+    while(op!=4);
 }
 
 
-void Menu::seleccionarImagenArbol(){
+void Menu::imageLayerReport(string& image)
+{
+    int numCapa =0;
+    bool exist;
+    if(image.empty())
+    {
+        cout<<"=============== IMAGE LAYER REPORT ===============\n"<<endl;
+        obj2.recorridoInO(raiz);
+        cout<<"\nIngrese Nombre de Imagen: "<<endl;
+        cin>>image;
+        temp = obj2.buscar(raiz,image);
+        if(temp!=NULL)
+        {
+            system("cls");
+            cout<<"=============== IMAGE LAYER REPORT ===============\n"<<endl;
+            temp->cubo.mostrar();
+            do{
+             cout<<"Ingrese numero de capa valido: "<<endl;
+             cin>>numCapa;
+             exist = temp->cubo.existeCapa(numCapa);
+            }while(exist==false&&numCapa!=0);
+            temp->cubo.generarGraficaCapa(numCapa,image);
+        }
+        else
+        {
+            cout<<"imagen no generada"<<endl;
+        }
+    }
+    else
+    {
+        cout<<"=============== IMAGE LAYER REPORT ===============\n"<<endl;
+
+    }
+}
+
+///seleccionar imagen
+void Menu::seleccionarImagenArbol(string& imagen)
+{
     cout<<"=============== SELECT IMAGE ==============="<<endl;
     obj2.recorridoInO(raiz);
     cout<<"\nIngrese Nombre de Imagen: "<<endl;
-    cin>>imagenSeleccionada;
+    cin>>imagen;
     system("cls");
 }
 
-void Menu::leerArchivoCapas(string archivo){
+void Menu::leerArchivoCapas(string archivo)
+{
     ifstream file(archivo);
-    if(!file.is_open()) cout<<"Error: Archivo no abierto"<<'\n';
+    if(!file.is_open())
+        cout<<"Error: Archivo no abierto"<<'\n';
     string layer;
     string nameFile;
-    while(file.good()){
+    while(file.good())
+    {
         layer="";
         nameFile="";
         getline(file,layer,',');
         getline(file,nameFile,'\n');
-            if(layer!=" "&&layer!="\n"&&layer!=""){
-                if(nameFile!=" "&&nameFile!="\n"&&nameFile!=""){
-                    if(nameFile!="File"&&layer!="Layer"){
-                            //objL.insertarCapa(stringToInt(layer),nameFile);
-                    }
+        if(layer!=" "&&layer!="\n"&&layer!="")
+        {
+            if(nameFile!=" "&&nameFile!="\n"&&nameFile!="")
+            {
+                if(nameFile!="File"&&layer!="Layer")
+                {
+                    //objL.insertarCapa(stringToInt(layer),nameFile);
                 }
             }
+        }
     }
     file.close();
 }
 
 ////////////////////leer archivo de configuracion
-void Menu::leerArchivoConfig(string archivo){
+void Menu::leerArchivoConfig(string archivo)
+{
     ifstream file(archivo);
-    if(!file.is_open()) cout<<"Error: Archivo no abierto"<<'\n';
+    if(!file.is_open())
+        cout<<"Error: Archivo no abierto"<<'\n';
     string config;
     string value;
-    while(file.good()){
+    while(file.good())
+    {
         config="";
         value="";
         getline(file,config,',');
@@ -194,3 +266,7 @@ int Menu::stringToInt(string s)
     cast >> x;
     return x;
 }
+
+/*temp = obj2.buscar(raiz,"hora_de_aventura");
+           temp->cubo.generarCss("prueba");
+           temp->cubo.generarHTML("prueba");*/

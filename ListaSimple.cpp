@@ -5,7 +5,7 @@
 #include<bits/stdc++.h>
 #include <direct.h>
 using namespace std;
-int f=0;
+int contadorLinealizacion=1;
 nodoLista::nodoLista()
 {
     numeroCapa = 0;
@@ -30,8 +30,10 @@ void ListaSimple::insertarCapa(int capa,string nom,string temp,string nombreImag
     nuevo->nombreArchivo = nom;
     nuevo->numeroCapa = capa;
     nuevo->rutaSinArchivo = temp;
-    if(nom!="config.csv"){
+    if(nom!="config.csv"&&nom!="Config.csv"){
         insertarDatosMatriz(ruta.c_str(),nuevo,nombreImagen);
+        insertarDatosMatrizArchivoOriginal(ruta.c_str(),nuevo,nombreImagen);
+
     }
     if(estaVacia()){
         primero = nuevo;
@@ -42,20 +44,44 @@ void ListaSimple::insertarCapa(int capa,string nom,string temp,string nombreImag
 }
 
 void ListaSimple::mostrar(){
-    if(estaVacia()){
-        cout<<"esta vacia"<<endl;
-    }else{
+    if(estaVacia())
+    {
+        cout<<"listado de capas vacio"<<endl;
+    }
+    else
+    {
         nodoLista *temp = primero;
-        while(temp!=NULL){
-            cout<<"capa"<<intToString(temp->numeroCapa)<<endl;
-            cout<<"nombreArchivo:"<<temp->nombreArchivo<<endl;
+        while(temp!=NULL)
+        {
+            cout<<"Nombre Archivo: "<<temp->nombreArchivo<<"  Numero Capa: "<<intToString(temp->numeroCapa)<<endl;
             temp = temp->siguiente;
         }
 
     }
 }
 
+bool ListaSimple::existeCapa(int capa){
+    bool existe = false;
+    if(estaVacia())
+    {
+        cout<<"listado de capas vacio"<<endl;
+        return existe;
+    }
+    else
+    {
+        nodoLista *temp = primero;
+        while(temp!=NULL)
+        {
+            if(temp->numeroCapa==capa){
+                return true;
+            }
+            temp = temp->siguiente;
+        }
+    }
+}
+
 ///funciones reportes
+
 string ListaSimple::retornarRutaPrimero(){
     string rut;
     if(estaVacia()){
@@ -66,6 +92,7 @@ string ListaSimple::retornarRutaPrimero(){
     }
     return rut;
 }
+///para insertar valores que seran pintados
 
 void ListaSimple::insertarDatosMatriz(string datMatriz,nodoLista *&nuevo,string nombreImagen){
     ifstream file(datMatriz.c_str());
@@ -79,7 +106,7 @@ void ListaSimple::insertarDatosMatriz(string datMatriz,nodoLista *&nuevo,string 
        stringstream s(RGBU);
        c=0;
        while(getline(s,RGB,',')){
-        if(RGB!="x"&&RGB!=" "&&RGB!="\n"){
+        if(RGB!="X"&&RGB!="x"&&RGB!=" "&&RGB!="\n"){
            nuevo->capa.insertarNodo(fi,c,RGB);
         }
         c++;
@@ -87,11 +114,57 @@ void ListaSimple::insertarDatosMatriz(string datMatriz,nodoLista *&nuevo,string 
        fi++;
     }
     file.close();
-    //////////////servira para graficar matriz x capa
-    string nomArchivo = nombreImagen+"capa"+intToString(nuevo->numeroCapa);
-    nuevo->capa.escribirDot(nomArchivo.c_str());
 }
 
+void ListaSimple::generarGraficaCapa(int capa,string nombreImagen){
+     if(estaVacia())
+    {
+        cout<<"listado de capas vacio"<<endl;
+    }
+    else
+    {
+        nodoLista *temp = primero;
+        while(temp!=NULL)
+        {
+            if(temp->numeroCapa==capa){
+                break;
+            }
+            temp = temp->siguiente;
+        }
+        string nomArchivo = nombreImagen+"capa"+intToString(temp->numeroCapa);
+        temp->capa.escribirDot(nomArchivo.c_str());
+    }
+}
+
+/*
+     //////////////servira para graficar matriz x capa
+    string nomArchivo = nombreImagen+"capa"+intToString(nuevo->numeroCapa);
+    nuevo->capa.escribirDot(nomArchivo.c_str());*/
+///para contar nodos columna
+
+void ListaSimple::insertarDatosMatrizArchivoOriginal(string datMatriz,nodoLista *&nuevo,string nombreImagen){
+    ifstream file(datMatriz.c_str());
+    if(!file.is_open()) cout<<"Error: Archivo no abierto"<<'\n';
+    string RGB;
+    string RGBU;
+    int c=1;
+    int fi=1;
+    while(file.good()){
+       getline(file,RGBU,'\n');
+       stringstream s(RGBU);
+       c=1;
+       while(getline(s,RGB,',')){
+        if(RGB!=" "&&RGB!="\n"){
+           nuevo->archivoOriginal.insertarNodo(fi,c,RGB);
+        }
+        c++;
+       }
+       fi++;
+    }
+    file.close();
+}
+
+///metodo string
 string ListaSimple::intToString(int val)
 {
     string cad="";
@@ -162,17 +235,18 @@ void ListaSimple::generarCss(string nomImg){
     archivo.close();
 }
 
-
 string ListaSimple::divCSS(){
     string div = "";
+    int col=0;
     nodoLista *temp = primero;
+    col=temp->archivoOriginal.numeroColumnas();
+    cout<<intToString(col)<<endl;
     while(temp!=NULL){
-        div += temp->capa.LinMF();
+        div += temp->capa.LinMF(temp->nombreArchivo,col);
         temp = temp->siguiente;
     }
     return div;
 }
-
 
 string ListaSimple::leerArchivoConfig(string archivo){
     string c="";
@@ -205,13 +279,14 @@ string ListaSimple::leerArchivoConfig(string archivo){
     canvasW = multiply(imageW,pixelW);
     canvasH = multiply(imageH,pixelH);
     c += ".canvas {\n";
-    c += "width:"+ intToString(canvasH)+"px;\n";
-    c += "height:"+intToString(canvasW)+"px;\n";
+    c += "width:"+ intToString(canvasW)+"px;\n";
+    c += "height:"+intToString(canvasH)+"px;\n";
     c += "}\n\n";
     c += ".pixel {\n";
     c += "width:"+intToString(pixelW)+"px;\n";
     c += "height:"+intToString(pixelH)+"px;\n";
     c += "float: left;\n";
+    c += "box-shadow: 0px 0px 1px #fff;\n";
     c +="}\n\n";
     return c;
 }
@@ -236,6 +311,7 @@ int ListaSimple::leerInicialIW(string archivo){
 
     return imageW;
 }
+
 int ListaSimple::leerInicialIH(string archivo){
     string c="";
     ifstream file(archivo);
@@ -257,7 +333,6 @@ int ListaSimple::leerInicialIH(string archivo){
     return imageH;
 }
 
-
 string ListaSimple::escribirDivHTML(int imageW,int imageH){
     string div ="";
     int cantidadD =0;
@@ -267,7 +342,6 @@ string ListaSimple::escribirDivHTML(int imageW,int imageH){
     }
     return div;
 }
-
 
 int ListaSimple::stringToInt(string s)
 {

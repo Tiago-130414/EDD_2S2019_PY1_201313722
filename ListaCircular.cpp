@@ -27,7 +27,7 @@ nodoListaCircular* ListaCircular::crearNodo(string filtroAP)
 
 bool ListaCircular :: estaVacia()
 {
-  return(primero==NULL)? true:false;
+    return(primero==NULL)? true:false;
 }
 
 void ListaCircular :: insertar(string filtro)
@@ -37,11 +37,14 @@ void ListaCircular :: insertar(string filtro)
 
     if(estaVacia())
     {
-      nuevo->siguiente = nuevo;
-      nuevo->anterior = nuevo;
-      primero = nuevo;
-    }else{
-        while(temp->siguiente!=primero){
+        nuevo->siguiente = nuevo;
+        nuevo->anterior = nuevo;
+        primero = nuevo;
+    }
+    else
+    {
+        while(temp->siguiente!=primero)
+        {
             temp = temp->siguiente;
         }
         nuevo->anterior = temp;
@@ -53,29 +56,38 @@ void ListaCircular :: insertar(string filtro)
 
 void ListaCircular :: Mostrar()
 {
-    if(estaVacia()){
-     cout<<"Lista Filtros Vacia"<<endl;
-    }else{
+    if(estaVacia())
+    {
+        cout<<"Lista Filtros Vacia"<<endl;
+    }
+    else
+    {
         nodoListaCircular *temp = primero;
-        do{
+        do
+        {
             cout<<temp->filtroAP<<endl;
             temp = temp->siguiente;
-        }while(temp!=primero);
+        }
+        while(temp!=primero);
     }
 }
 
 void ListaCircular :: limpiarLista()
 {
-    if(estaVacia()){
+    if(estaVacia())
+    {
         cout<<"Lista Filtros Vacia"<<endl;
-    }else{
+    }
+    else
+    {
         primero->siguiente = NULL;
         primero->anterior = NULL;
         primero = NULL;
     }
 }
 
-void ListaCircular::graficaListaCircular(){
+void ListaCircular::graficaListaCircular()
+{
     string cad2="";
     string cad4="";
     ofstream archivo;
@@ -108,16 +120,22 @@ void ListaCircular::graficaListaCircular(){
     system("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\listaCircular.png");
 }
 
-string ListaCircular::listarNodos(){
+string ListaCircular::listarNodos()
+{
     string c="";
-    if(estaVacia()){
+    if(estaVacia())
+    {
         cout<<"Lista Filtros Vacia"<<endl;
-    }else{
+    }
+    else
+    {
         nodoListaCircular *temp = primero;
-        do{
+        do
+        {
             c += "\tFiltro" + temp->filtroAP+"[label=\"{ |"+temp->filtroAP+"| }\"];\n";
             temp = temp->siguiente;
-        }while(temp!=primero);
+        }
+        while(temp!=primero);
     }
     return c;
 }
@@ -128,13 +146,17 @@ string ListaCircular :: apuntadores()
     if(estaVacia())
     {
         return c="";
-    }else{
+    }
+    else
+    {
         nodoListaCircular *temp = primero;
-        do{
-        c+="\tFiltro"+ temp->filtroAP+"->"+"Filtro"+temp->siguiente->filtroAP+"\n";
-        c+="\tFiltro"+ temp->siguiente->filtroAP+"->Filtro"+temp->filtroAP+"\n";
-        temp = temp->siguiente;
-        }while(temp!=primero);
+        do
+        {
+            c+="\tFiltro"+ temp->filtroAP+"->"+"Filtro"+temp->siguiente->filtroAP+"\n";
+            c+="\tFiltro"+ temp->siguiente->filtroAP+"->Filtro"+temp->filtroAP+"\n";
+            temp = temp->siguiente;
+        }
+        while(temp!=primero);
     }
     return c;
 }

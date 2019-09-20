@@ -3,6 +3,7 @@ graph [ranksep="0.5", nodesep="0.5"];
 
 Matriz[width = 1.0 group = "Mt0",  style=filled,shape="underline",fillcolor="yellow:blue" label="Matriz"];
 
+F1[label="1"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
 F2[label="2"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
 F3[label="3"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
 F4[label="4"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
@@ -13,138 +14,744 @@ F8[label="8"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", 
 F9[label="9"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
 F10[label="10"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
 F11[label="11"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
-F2->F3;
-F3->F2;
-F3->F4;
-F4->F3;
-F4->F5;
-F5->F4;
-F5->F6;
-F6->F5;
-F6->F7;
-F7->F6;
-F7->F8;
-F8->F7;
-F8->F9;
-F9->F8;
-F9->F10;
-F10->F9;
-F10->F11;
-F11->F10;
+F12[label="12"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
+F13[label="13"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
+F14[label="14"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
+F15[label="15"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group = Mt0] ;
+F1->F2 [dir=both];
+F2->F3 [dir=both];
+F3->F4 [dir=both];
+F4->F5 [dir=both];
+F5->F6 [dir=both];
+F6->F7 [dir=both];
+F7->F8 [dir=both];
+F8->F9 [dir=both];
+F9->F10 [dir=both];
+F10->F11 [dir=both];
+F11->F12 [dir=both];
+F12->F13 [dir=both];
+F13->F14 [dir=both];
+F14->F15 [dir=both];
 
 C1[label="1"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
 C2[label="2"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
 C3[label="3"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
 C4[label="4"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
-C1->C2;
-C2->C1;
-C2->C3;
-C3->C2;
-C3->C4;
-C4->C3;
-{rank = same; Matriz;C1;C2;C3;C4}
+C5[label="5"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =5] ;
+C6[label="6"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =6] ;
+C7[label="7"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =7] ;
+C8[label="8"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =8] ;
+C9[label="9"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
+C10[label="10"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =10] ;
+C11[label="11"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =11] ;
+C12[label="12"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =12] ;
+C13[label="13"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =13] ;
+C1->C2 [dir=both];
+C2->C3 [dir=both];
+C3->C4 [dir=both];
+C4->C5 [dir=both];
+C5->C6 [dir=both];
+C6->C7 [dir=both];
+C7->C8 [dir=both];
+C8->C9 [dir=both];
+C9->C10 [dir=both];
+C10->C11 [dir=both];
+C11->C12 [dir=both];
+C12->C13 [dir=both];
+{rank = same; Matriz;C1;C2;C3;C4;C5;C6;C7;C8;C9;C10;C11;C12;C13}
 Matriz ->C1;
-Matriz ->F2;
+Matriz ->F1;
 
-21[label="153-204-255"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
-31[label="153-204-255"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
-41[label="153-204-255"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
-51[label="153-204-255"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
-61[label="153-204-255"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
-71[label="153-204-255"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
-81[label="153-204-255"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
-91[label="153-204-255"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
-101[label="153-204-255"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
-111[label="153-204-255"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
-F2->21[constraint = false];
-21->F2[constraint = false];
-F3->31[constraint = false];
-31->F3[constraint = false];
-F4->41[constraint = false];
-41->F4[constraint = false];
-F5->51[constraint = false];
-51->F5[constraint = false];
-F6->61[constraint = false];
-61->F6[constraint = false];
-F7->71[constraint = false];
-71->F7[constraint = false];
-F8->81[constraint = false];
-81->F8[constraint = false];
-F9->91[constraint = false];
-91->F9[constraint = false];
-F10->101[constraint = false];
-101->F10[constraint = false];
-F11->111[constraint = false];
-111->F11[constraint = false];
-22[label="153-204-255"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
-23[label="153-204-255"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
-34[label="153-204-255"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
-44[label="153-204-255"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
-54[label="153-204-255"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
-64[label="153-204-255"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
-21->22[constraint = false];
+13[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
+23[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
+32[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
+42[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
+52[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
+64[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
+73[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
+82[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
+91[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
+101[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
+111[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
+121[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
+133[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
+142[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
+151[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =1] ;
+F1->13[dir=both,constraint = false];
+F2->23[dir=both,constraint = false];
+F3->32[dir=both,constraint = false];
+F4->42[dir=both,constraint = false];
+F5->52[dir=both,constraint = false];
+F6->64[dir=both,constraint = false];
+F7->73[dir=both,constraint = false];
+F8->82[dir=both,constraint = false];
+F9->91[dir=both,constraint = false];
+F10->101[dir=both,constraint = false];
+F11->111[dir=both,constraint = false];
+F12->121[dir=both,constraint = false];
+F13->133[dir=both,constraint = false];
+F14->142[dir=both,constraint = false];
+F15->151[dir=both,constraint = false];
+14[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
+15[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =5] ;
+16[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =6] ;
+17[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =7] ;
+18[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =8] ;
+19[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
+110[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =10] ;
+24[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
+25[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =5] ;
+26[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =6] ;
+27[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =7] ;
+28[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =8] ;
+29[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
+210[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =10] ;
+33[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
+34[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
+35[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =5] ;
+36[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =6] ;
+37[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =7] ;
+38[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =8] ;
+39[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
+310[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =10] ;
+311[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =11] ;
+312[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =12] ;
+43[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
+44[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
+45[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =5] ;
+46[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =6] ;
+47[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =7] ;
+48[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =8] ;
+49[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
+410[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =10] ;
+411[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =11] ;
+412[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =12] ;
+413[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =13] ;
+53[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
+54[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
+55[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =5] ;
+56[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =6] ;
+57[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =7] ;
+58[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =8] ;
+59[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
+510[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =10] ;
+511[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =11] ;
+512[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =12] ;
+65[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =5] ;
+66[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =6] ;
+67[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =7] ;
+68[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =8] ;
+69[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
+74[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
+75[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =5] ;
+76[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =6] ;
+77[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =7] ;
+83[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
+84[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
+85[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =5] ;
+86[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =6] ;
+87[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =7] ;
+88[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =8] ;
+89[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
+810[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =10] ;
+811[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =11] ;
+812[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =12] ;
+92[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
+93[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
+94[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
+95[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =5] ;
+96[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =6] ;
+97[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =7] ;
+98[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =8] ;
+99[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
+910[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =10] ;
+911[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =11] ;
+912[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =12] ;
+102[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
+103[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
+104[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
+105[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =5] ;
+106[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =6] ;
+107[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =7] ;
+108[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =8] ;
+109[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
+1010[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =10] ;
+1011[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =11] ;
+1012[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =12] ;
+112[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
+113[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
+114[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
+115[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =5] ;
+116[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =6] ;
+117[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =7] ;
+118[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =8] ;
+119[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
+1110[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =10] ;
+1111[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =11] ;
+1112[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =12] ;
+122[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
+123[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
+124[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
+125[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =5] ;
+126[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =6] ;
+127[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =7] ;
+128[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =8] ;
+129[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
+1210[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =10] ;
+1211[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =11] ;
+1212[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =12] ;
+134[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
+135[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =5] ;
+138[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =8] ;
+139[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
+1310[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =10] ;
+143[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
+144[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
+149[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
+1410[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =10] ;
+1411[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =11] ;
+152[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =2] ;
+153[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =3] ;
+154[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =4] ;
+159[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =9] ;
+1510[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =10] ;
+1511[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =11] ;
+1512[label="255-229-204"width = 1.0 style = filled,shape="rectangle", fillcolor = "yellow", group =12] ;
+13->14[dir=both,constraint = false];
 
-22->21[constraint = false];
-22->23[constraint = false];
+14->15[dir=both,constraint = false];
 
-23->22[constraint = false];
-31->34[constraint = false];
+15->16[dir=both,constraint = false];
 
-34->31[constraint = false];
-41->44[constraint = false];
+16->17[dir=both,constraint = false];
 
-44->41[constraint = false];
-51->54[constraint = false];
+17->18[dir=both,constraint = false];
 
-54->51[constraint = false];
-61->64[constraint = false];
+18->19[dir=both,constraint = false];
 
-64->61[constraint = false];
+19->110[dir=both,constraint = false];
 
-{rank = same;F2;21;22;23;}
-{rank = same;F3;31;34;}
-{rank = same;F4;41;44;}
-{rank = same;F5;51;54;}
-{rank = same;F6;61;64;}
-{rank = same;F7;71;}
-{rank = same;F8;81;}
-{rank = same;F9;91;}
-{rank = same;F10;101;}
-{rank = same;F11;111;}
+23->24[dir=both,constraint = false];
 
-C1->21;
-21->C1;
-C2->22;
-22->C2;
-C3->23;
-23->C3;
-C4->34;
-34->C4;
+24->25[dir=both,constraint = false];
 
-21->31
-31->21[constraint = false];
-31->41
-41->31[constraint = false];
-41->51
-51->41[constraint = false];
-51->61
-61->51[constraint = false];
-61->71
-71->61[constraint = false];
-71->81
-81->71[constraint = false];
-81->91
-91->81[constraint = false];
+25->26[dir=both,constraint = false];
+
+26->27[dir=both,constraint = false];
+
+27->28[dir=both,constraint = false];
+
+28->29[dir=both,constraint = false];
+
+29->210[dir=both,constraint = false];
+
+32->33[dir=both,constraint = false];
+
+33->34[dir=both,constraint = false];
+
+34->35[dir=both,constraint = false];
+
+35->36[dir=both,constraint = false];
+
+36->37[dir=both,constraint = false];
+
+37->38[dir=both,constraint = false];
+
+38->39[dir=both,constraint = false];
+
+39->310[dir=both,constraint = false];
+
+310->311[dir=both,constraint = false];
+
+311->312[dir=both,constraint = false];
+
+42->43[dir=both,constraint = false];
+
+43->44[dir=both,constraint = false];
+
+44->45[dir=both,constraint = false];
+
+45->46[dir=both,constraint = false];
+
+46->47[dir=both,constraint = false];
+
+47->48[dir=both,constraint = false];
+
+48->49[dir=both,constraint = false];
+
+49->410[dir=both,constraint = false];
+
+410->411[dir=both,constraint = false];
+
+411->412[dir=both,constraint = false];
+
+412->413[dir=both,constraint = false];
+
+52->53[dir=both,constraint = false];
+
+53->54[dir=both,constraint = false];
+
+54->55[dir=both,constraint = false];
+
+55->56[dir=both,constraint = false];
+
+56->57[dir=both,constraint = false];
+
+57->58[dir=both,constraint = false];
+
+58->59[dir=both,constraint = false];
+
+59->510[dir=both,constraint = false];
+
+510->511[dir=both,constraint = false];
+
+511->512[dir=both,constraint = false];
+
+64->65[dir=both,constraint = false];
+
+65->66[dir=both,constraint = false];
+
+66->67[dir=both,constraint = false];
+
+67->68[dir=both,constraint = false];
+
+68->69[dir=both,constraint = false];
+
+73->74[dir=both,constraint = false];
+
+74->75[dir=both,constraint = false];
+
+75->76[dir=both,constraint = false];
+
+76->77[dir=both,constraint = false];
+
+82->83[dir=both,constraint = false];
+
+83->84[dir=both,constraint = false];
+
+84->85[dir=both,constraint = false];
+
+85->86[dir=both,constraint = false];
+
+86->87[dir=both,constraint = false];
+
+87->88[dir=both,constraint = false];
+
+88->89[dir=both,constraint = false];
+
+89->810[dir=both,constraint = false];
+
+810->811[dir=both,constraint = false];
+
+811->812[dir=both,constraint = false];
+
+91->92[dir=both,constraint = false];
+
+92->93[dir=both,constraint = false];
+
+93->94[dir=both,constraint = false];
+
+94->95[dir=both,constraint = false];
+
+95->96[dir=both,constraint = false];
+
+96->97[dir=both,constraint = false];
+
+97->98[dir=both,constraint = false];
+
+98->99[dir=both,constraint = false];
+
+99->910[dir=both,constraint = false];
+
+910->911[dir=both,constraint = false];
+
+911->912[dir=both,constraint = false];
+
+101->102[dir=both,constraint = false];
+
+102->103[dir=both,constraint = false];
+
+103->104[dir=both,constraint = false];
+
+104->105[dir=both,constraint = false];
+
+105->106[dir=both,constraint = false];
+
+106->107[dir=both,constraint = false];
+
+107->108[dir=both,constraint = false];
+
+108->109[dir=both,constraint = false];
+
+109->1010[dir=both,constraint = false];
+
+1010->1011[dir=both,constraint = false];
+
+1011->1012[dir=both,constraint = false];
+
+111->112[dir=both,constraint = false];
+
+112->113[dir=both,constraint = false];
+
+113->114[dir=both,constraint = false];
+
+114->115[dir=both,constraint = false];
+
+115->116[dir=both,constraint = false];
+
+116->117[dir=both,constraint = false];
+
+117->118[dir=both,constraint = false];
+
+118->119[dir=both,constraint = false];
+
+119->1110[dir=both,constraint = false];
+
+1110->1111[dir=both,constraint = false];
+
+1111->1112[dir=both,constraint = false];
+
+121->122[dir=both,constraint = false];
+
+122->123[dir=both,constraint = false];
+
+123->124[dir=both,constraint = false];
+
+124->125[dir=both,constraint = false];
+
+125->126[dir=both,constraint = false];
+
+126->127[dir=both,constraint = false];
+
+127->128[dir=both,constraint = false];
+
+128->129[dir=both,constraint = false];
+
+129->1210[dir=both,constraint = false];
+
+1210->1211[dir=both,constraint = false];
+
+1211->1212[dir=both,constraint = false];
+
+133->134[dir=both,constraint = false];
+
+134->135[dir=both,constraint = false];
+
+135->138[dir=both,constraint = false];
+
+138->139[dir=both,constraint = false];
+
+139->1310[dir=both,constraint = false];
+
+142->143[dir=both,constraint = false];
+
+143->144[dir=both,constraint = false];
+
+144->149[dir=both,constraint = false];
+
+149->1410[dir=both,constraint = false];
+
+1410->1411[dir=both,constraint = false];
+
+151->152[dir=both,constraint = false];
+
+152->153[dir=both,constraint = false];
+
+153->154[dir=both,constraint = false];
+
+154->159[dir=both,constraint = false];
+
+159->1510[dir=both,constraint = false];
+
+1510->1511[dir=both,constraint = false];
+
+1511->1512[dir=both,constraint = false];
+
+
+{rank = same;F1;13;14;15;16;17;18;19;110;}
+{rank = same;F2;23;24;25;26;27;28;29;210;}
+{rank = same;F3;32;33;34;35;36;37;38;39;310;311;312;}
+{rank = same;F4;42;43;44;45;46;47;48;49;410;411;412;413;}
+{rank = same;F5;52;53;54;55;56;57;58;59;510;511;512;}
+{rank = same;F6;64;65;66;67;68;69;}
+{rank = same;F7;73;74;75;76;77;}
+{rank = same;F8;82;83;84;85;86;87;88;89;810;811;812;}
+{rank = same;F9;91;92;93;94;95;96;97;98;99;910;911;912;}
+{rank = same;F10;101;102;103;104;105;106;107;108;109;1010;1011;1012;}
+{rank = same;F11;111;112;113;114;115;116;117;118;119;1110;1111;1112;}
+{rank = same;F12;121;122;123;124;125;126;127;128;129;1210;1211;1212;}
+{rank = same;F13;133;134;135;138;139;1310;}
+{rank = same;F14;142;143;144;149;1410;1411;}
+{rank = same;F15;151;152;153;154;159;1510;1511;1512;}
+
+C1->91[dir=both];
+C2->32[dir=both];
+C3->13[dir=both];
+C4->14[dir=both];
+C5->15[dir=both];
+C6->16[dir=both];
+C7->17[dir=both];
+C8->18[dir=both];
+C9->19[dir=both];
+C10->110[dir=both];
+C11->311[dir=both];
+C12->312[dir=both];
+C13->413[dir=both];
+
 91->101
-101->91[constraint = false];
+[dir=both];
 101->111
-111->101[constraint = false];
+[dir=both];
+111->121
+[dir=both];
+121->151
+[dir=both];
+32->42
+[dir=both];
+42->52
+[dir=both];
+52->82
+[dir=both];
+82->92
+[dir=both];
+92->102
+[dir=both];
+102->112
+[dir=both];
+112->122
+[dir=both];
+122->142
+[dir=both];
+142->152
+[dir=both];
+13->23
+[dir=both];
+23->33
+[dir=both];
+33->43
+[dir=both];
+43->53
+[dir=both];
+53->73
+[dir=both];
+73->83
+[dir=both];
+83->93
+[dir=both];
+93->103
+[dir=both];
+103->113
+[dir=both];
+113->123
+[dir=both];
+123->133
+[dir=both];
+133->143
+[dir=both];
+143->153
+[dir=both];
+14->24
+[dir=both];
+24->34
+[dir=both];
 34->44
-44->34[constraint = false];
+[dir=both];
 44->54
-54->44[constraint = false];
+[dir=both];
 54->64
-64->54[constraint = false];
+[dir=both];
+64->74
+[dir=both];
+74->84
+[dir=both];
+84->94
+[dir=both];
+94->104
+[dir=both];
+104->114
+[dir=both];
+114->124
+[dir=both];
+124->134
+[dir=both];
+134->144
+[dir=both];
+144->154
+[dir=both];
+15->25
+[dir=both];
+25->35
+[dir=both];
+35->45
+[dir=both];
+45->55
+[dir=both];
+55->65
+[dir=both];
+65->75
+[dir=both];
+75->85
+[dir=both];
+85->95
+[dir=both];
+95->105
+[dir=both];
+105->115
+[dir=both];
+115->125
+[dir=both];
+125->135
+[dir=both];
+16->26
+[dir=both];
+26->36
+[dir=both];
+36->46
+[dir=both];
+46->56
+[dir=both];
+56->66
+[dir=both];
+66->76
+[dir=both];
+76->86
+[dir=both];
+86->96
+[dir=both];
+96->106
+[dir=both];
+106->116
+[dir=both];
+116->126
+[dir=both];
+17->27
+[dir=both];
+27->37
+[dir=both];
+37->47
+[dir=both];
+47->57
+[dir=both];
+57->67
+[dir=both];
+67->77
+[dir=both];
+77->87
+[dir=both];
+87->97
+[dir=both];
+97->107
+[dir=both];
+107->117
+[dir=both];
+117->127
+[dir=both];
+18->28
+[dir=both];
+28->38
+[dir=both];
+38->48
+[dir=both];
+48->58
+[dir=both];
+58->68
+[dir=both];
+68->88
+[dir=both];
+88->98
+[dir=both];
+98->108
+[dir=both];
+108->118
+[dir=both];
+118->128
+[dir=both];
+128->138
+[dir=both];
+19->29
+[dir=both];
+29->39
+[dir=both];
+39->49
+[dir=both];
+49->59
+[dir=both];
+59->69
+[dir=both];
+69->89
+[dir=both];
+89->99
+[dir=both];
+99->109
+[dir=both];
+109->119
+[dir=both];
+119->129
+[dir=both];
+129->139
+[dir=both];
+139->149
+[dir=both];
+149->159
+[dir=both];
+110->210
+[dir=both];
+210->310
+[dir=both];
+310->410
+[dir=both];
+410->510
+[dir=both];
+510->810
+[dir=both];
+810->910
+[dir=both];
+910->1010
+[dir=both];
+1010->1110
+[dir=both];
+1110->1210
+[dir=both];
+1210->1310
+[dir=both];
+1310->1410
+[dir=both];
+1410->1510
+[dir=both];
+311->411
+[dir=both];
+411->511
+[dir=both];
+511->811
+[dir=both];
+811->911
+[dir=both];
+911->1011
+[dir=both];
+1011->1111
+[dir=both];
+1111->1211
+[dir=both];
+1211->1411
+[dir=both];
+1411->1511
+[dir=both];
+312->412
+[dir=both];
+412->512
+[dir=both];
+512->812
+[dir=both];
+812->912
+[dir=both];
+912->1012
+[dir=both];
+1012->1112
+[dir=both];
+1112->1212
+[dir=both];
+1212->1512
+[dir=both];
 
 
 

@@ -203,11 +203,11 @@ string Matriz::creandoNodosFilaGuia()
             cad+="F"+static_cast<std::ostringstream*>(&(std::ostringstream() << filaG->fila))->str();
             cad+="->";
             cad+="F"+static_cast<std::ostringstream*>(&(std::ostringstream() << filaG->abajo->fila))->str();
-            cad+=";\n";
-            cad+="F"+static_cast<std::ostringstream*>(&(std::ostringstream() << filaG->abajo->fila))->str();
+            cad+=" [dir=both];\n";
+            /*cad+="F"+static_cast<std::ostringstream*>(&(std::ostringstream() << filaG->abajo->fila))->str();
             cad+="->";
             cad+="F"+static_cast<std::ostringstream*>(&(std::ostringstream() << filaG->fila))->str();
-            cad+=";\n";
+            cad+=";\n";*/
         }
 
         filaG = filaG->abajo;
@@ -244,11 +244,11 @@ string Matriz::creandoNodosColumnaGuia()
             cad+="C"+static_cast<std::ostringstream*>(&(std::ostringstream() << columnaG->columna))->str();
             cad+="->";
             cad+="C"+static_cast<std::ostringstream*>(&(std::ostringstream() << columnaG->siguiente->columna))->str();
-            cad+=";\n";
-            cad+="C"+static_cast<std::ostringstream*>(&(std::ostringstream() << columnaG->siguiente->columna))->str();
+            cad+=" [dir=both];\n";
+            /*cad+="C"+static_cast<std::ostringstream*>(&(std::ostringstream() << columnaG->siguiente->columna))->str();
             cad+="->";
             cad+="C"+static_cast<std::ostringstream*>(&(std::ostringstream() << columnaG->columna))->str();
-            cad+=";\n";
+            cad+=";\n";*/
         }
         columnaG = columnaG->siguiente;
     }
@@ -301,12 +301,12 @@ string Matriz::nodosContenidoFila()
             cad+="->";
             cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << enlace->siguiente->fila))->str();
             cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << enlace->siguiente->columna))->str();
-            cad+="[constraint = false];\n";
-            cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << enlace->siguiente->fila))->str();
+            cad+="[dir=both,constraint = false];\n";
+            /*cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << enlace->siguiente->fila))->str();
             cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << enlace->siguiente->columna))->str();
             cad+="->";
             cad+="F" + static_cast<std::ostringstream*>(&(std::ostringstream() << enlace->fila))->str();
-            cad+="[constraint = false];\n";
+            cad+="[constraint = false];\n";*/
         }
         enlace = enlace->abajo;
     }
@@ -346,14 +346,14 @@ string Matriz::nodosContenidoFila()
                     cad+="->";
                     cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->siguiente->fila))->str();
                     cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->siguiente->columna))->str();
-                    cad+="[constraint = false];\n";
+                    cad+="[dir=both,constraint = false];\n";
                     cad+="\n";
-                    cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->siguiente->fila))->str();
+                    /*cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->siguiente->fila))->str();
                     cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->siguiente->columna))->str();
                     cad+="->";
                     cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->fila))->str();
                     cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->columna))->str();
-                    cad+="[constraint = false];\n";
+                    cad+="[constraint = false];\n";*/
                 }
                 primero = primero->siguiente;
             }
@@ -403,12 +403,12 @@ string Matriz::enlazarColumnaConNodo()
             cad+="->";
             cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << auxColNod->abajo->fila))->str();
             cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << auxColNod->abajo->columna))->str();
-            cad+=";\n";
-            cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << auxColNod->abajo->fila))->str();
+            cad+="[dir=both];\n";
+            /*cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << auxColNod->abajo->fila))->str();
             cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << auxColNod->abajo->columna))->str();
             cad+="->";
             cad+="C"+static_cast<std::ostringstream*>(&(std::ostringstream() << auxColNod->columna))->str();
-            cad+=";\n";
+            cad+=";\n";*/
         }
         auxColNod = auxColNod->siguiente;
     }
@@ -436,12 +436,12 @@ string Matriz::enlazarNodosMediosColumna()
                     cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->abajo->fila))->str();
                     cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->abajo->columna))->str();
                     cad+="\n";
-                    cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->abajo->fila))->str();
+                    /*cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->abajo->fila))->str();
                     cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->abajo->columna))->str();
                     cad+="->";
                     cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->fila))->str();
-                    cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->columna))->str();
-                    cad+="[constraint = false];\n";
+                    cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->columna))->str();*/
+                    cad+="[dir=both];\n";
                 }
                 primero = primero->abajo;
             }
@@ -468,7 +468,8 @@ int Matriz::stringToInt(string s)
 }
 
 ///grafica linealizacion
-void Matriz::linealizarFilas(){
+void Matriz::linealizarFilas()
+{
     NodoFC *tempoF = filas;
     cout<<tempoF->siguiente->color<<endl;
     while(tempoF!=NULL)
@@ -476,7 +477,7 @@ void Matriz::linealizarFilas(){
         NodoFC *tempInterior = tempoF->siguiente;
         while(tempInterior!=NULL)
         {
-             linealizarF.insertarNodo(tempInterior->fila,tempInterior->columna,tempInterior->color);
+            linealizarF.insertarNodo(tempInterior->fila,tempInterior->columna,tempInterior->color);
             tempInterior = tempInterior->siguiente;
         }
         tempoF = tempoF->abajo;
@@ -492,7 +493,7 @@ void Matriz::linealizarColumnas()
         NodoFC *tempInterior = tempoC->abajo;
         while(tempInterior!=NULL)
         {
-             linealizarC.insertarNodo(tempInterior->fila,tempInterior->columna,tempInterior->color);
+            linealizarC.insertarNodo(tempInterior->fila,tempInterior->columna,tempInterior->color);
             tempInterior = tempInterior->abajo;
         }
         tempoC = tempoC->siguiente;
@@ -502,7 +503,8 @@ void Matriz::linealizarColumnas()
 }
 
 ///numero columnas
-int Matriz::numeroColumnas(){
+int Matriz::numeroColumnas()
+{
     int nc=0;
     NodoFC *tempoC = columnas;
     while(tempoC!=NULL)
@@ -510,10 +512,12 @@ int Matriz::numeroColumnas(){
         nc+=1;
         tempoC = tempoC->siguiente;
     }
+
     return nc;
 }
 ///numero filas
-int Matriz::numeroFilas(){
+int Matriz::numeroFilas()
+{
     int nf=0;
     NodoFC *tempoF = filas;
     while(tempoF!=NULL)
@@ -525,13 +529,15 @@ int Matriz::numeroFilas(){
 }
 ///vector de linealizacion
 
-string Matriz::LinMF(){
-    string datosLinealizados="";
+string Matriz::LinMF(string nomCapa,int contador)
+{
+    string datosLinealizados="/*"+nomCapa+"*/\n";
     NodoFC *tempoF = filas;
     NodoFC *tempoC = columnas;
     while(tempoF!=NULL)
     {
         NodoFC *tempInterior = tempoF->siguiente;
+
         while(tempInterior!=NULL)
         {
             stringstream s(tempInterior->color);
@@ -554,34 +560,46 @@ string Matriz::LinMF(){
             RGB = rgbToHex(R,G,B,true);
             i = tempInterior->fila;
             j = tempInterior->columna;
-            k = calcularK(i,j);
-            cout<<intToString(i)<<endl;
-            cout<<intToString(j)<<endl;
-            cout<<intToString(k)<<endl;
+            k = calcularK(i,j,contador)+1;
             datosLinealizados += ".pixel:nth-child("+intToString(k)+"){\n";
-            datosLinealizados += "background: "+ RGB+";\n";
+            datosLinealizados += "  background: "+ RGB+";\n";
             datosLinealizados +="}\n";
             tempInterior = tempInterior->siguiente;
         }
         tempoF = tempoF->abajo;
     }
-
     return datosLinealizados;
 }
 
-int Matriz::calcularK(int fila,int columna){
+
+int Matriz::calcularK(int fila,int columna,int numeroCol)
+{
     int K=0;
-    K =fila*numeroColumnas() + columna;
+    numeroCol = esPar(numeroCol);
+    K = (fila)*(numeroCol)+(columna);
     return K;
 }
-
 
 ///convertir rgb a hex
 string Matriz::rgbToHex(int r, int g, int b, bool with_head)
 {
-	stringstream ss;
-	if (with_head)
-		ss << "#";
-	ss << hex << (r << 16 | g << 8 | b);
-	return ss.str();
+    stringstream ss;
+    if (with_head)
+        ss << "#";
+    ss << hex << (r << 16 | g << 8 | b);
+    return ss.str();
+}
+
+
+int Matriz::esPar(int num)
+{
+    if(num % 2 == 0)
+    {
+        return num;
+    }
+    else
+    {
+        return num-1;
+    }
+
 }

@@ -32,15 +32,22 @@ ArbolBB* ArbolBB::crearNodo(string imagen,string rutaArchivo,string rutaSinArchi
     return nuevo_nodo;
 }
 
-void ArbolBB::insertarNodo(ArbolBB *&raiz,string imagen,string rutaArchivoCSV,string rutaSinAr){
-    if(raiz==NULL){
+void ArbolBB::insertarNodo(ArbolBB *&raiz,string imagen,string rutaArchivoCSV,string rutaSinAr)
+{
+    if(raiz==NULL)
+    {
         ArbolBB *nuevo = crearNodo(imagen,rutaArchivoCSV,rutaSinAr);
         raiz = nuevo;
-    }else{
+    }
+    else
+    {
         string r = raiz->nombreIMG;
-        if(imagen<r){
+        if(imagen<r)
+        {
             insertarNodo(raiz->izquierda,imagen,rutaArchivoCSV,rutaSinAr);
-        }else{
+        }
+        else
+        {
             insertarNodo(raiz->derecha,imagen,rutaArchivoCSV,rutaSinAr);
         }
     }
@@ -48,24 +55,30 @@ void ArbolBB::insertarNodo(ArbolBB *&raiz,string imagen,string rutaArchivoCSV,st
 
 ///insercion de datos en estructuras mediante archivos csv
 
-void ArbolBB::leerArchivoCapas(string archivo,ArbolBB *&nuevo,string rutaTemp,string nombreImagen){
+void ArbolBB::leerArchivoCapas(string archivo,ArbolBB *&nuevo,string rutaTemp,string nombreImagen)
+{
     ifstream file(archivo.c_str());
-    if(!file.is_open()) cout<<"Error: Archivo abierto"<<'\n';
+    if(!file.is_open())
+        cout<<"Error: Archivo abierto"<<'\n';
     string layer;
     string nameFile;
-    while(file.good()){
+    while(file.good())
+    {
         layer="";
         nameFile="";
         getline(file,layer,',');
         getline(file,nameFile,'\n');
-            if(layer!=" "&&layer!="\n"&&layer!=""){
-                if(nameFile!=" "&&nameFile!="\n"&&nameFile!=""){
-                    if(nameFile!="File"&&layer!="Layer"){
-                            //aqui me quede
-                        nuevo->cubo.insertarCapa(stringToInt(layer),nameFile,rutaTemp,nombreImagen);
-                    }
+        if(layer!=" "&&layer!="\n"&&layer!="")
+        {
+            if(nameFile!=" "&&nameFile!="\n"&&nameFile!="")
+            {
+                if(nameFile!="File"&&layer!="Layer")
+                {
+                    //aqui me quede
+                    nuevo->cubo.insertarCapa(stringToInt(layer),nameFile,rutaTemp,nombreImagen);
                 }
             }
+        }
     }
     file.close();
 }
@@ -73,15 +86,22 @@ void ArbolBB::leerArchivoCapas(string archivo,ArbolBB *&nuevo,string rutaTemp,st
 ////////////BUSCAR NODO EN ARBOL
 ArbolBB* ArbolBB::buscar(ArbolBB *&raiz, string key)
 {
-   if(estaVacio(raiz)){
+    if(estaVacio(raiz))
+    {
         return NULL;
-   }else if(raiz->nombreIMG==key){
+    }
+    else if(raiz->nombreIMG==key)
+    {
         return raiz;
-   }else if(key<raiz->nombreIMG){
+    }
+    else if(key<raiz->nombreIMG)
+    {
         return buscar(raiz->izquierda,key);
-   }else{
+    }
+    else
+    {
         return buscar(raiz->derecha,key);
-   }
+    }
 }
 ////////////RECORRIDOS ARBOL
 void ArbolBB::recorridoPre(ArbolBB *&raiz)
@@ -90,7 +110,8 @@ void ArbolBB::recorridoPre(ArbolBB *&raiz)
     {
         return;
 
-    }else
+    }
+    else
     {
         cout<<raiz->nombreIMG<<"-";
         recorridoPre(raiz->izquierda);
@@ -103,7 +124,8 @@ void ArbolBB::recorridoInO(ArbolBB *&raiz)
     if(estaVacio(raiz))
     {
         return;
-    }else
+    }
+    else
     {
         recorridoInO(raiz->izquierda);
         cout<<raiz->nombreIMG<<endl;;
@@ -118,7 +140,8 @@ void ArbolBB::recorridoPost(ArbolBB *&raiz)
     {
         return;
 
-    }else
+    }
+    else
     {
         recorridoPost(raiz->izquierda);
         recorridoPost(raiz->derecha);
@@ -130,13 +153,14 @@ void ArbolBB::recorridoPost(ArbolBB *&raiz)
 
 ArbolBB* ArbolBB::eliminarNodo(ArbolBB *&raiz,string elimina)
 {
-    if(estaVacio(raiz)){
+    if(estaVacio(raiz))
+    {
         return raiz;
     }
     if(raiz->nombreIMG>elimina)
     {
-       raiz->izquierda=eliminarNodo(raiz->izquierda,elimina);
-       return raiz;
+        raiz->izquierda=eliminarNodo(raiz->izquierda,elimina);
+        return raiz;
     }
     else if(raiz->nombreIMG<elimina)
     {
@@ -156,10 +180,12 @@ ArbolBB* ArbolBB::eliminarNodo(ArbolBB *&raiz,string elimina)
         delete raiz;
         return temp;
     }
-    else{
+    else
+    {
         ArbolBB *scc = raiz->derecha;
         ArbolBB *temp = raiz->derecha;
-        while(temp->izquierda!=NULL){
+        while(temp->izquierda!=NULL)
+        {
             scc = temp;
             temp = temp->izquierda;
         }
@@ -214,7 +240,8 @@ string ArbolBB::listadoNodos(ArbolBB *&raiz)
     if(estaVacio(raiz))
     {
         return cad;
-    }else
+    }
+    else
     {
         listadoNodos(raiz->izquierda);
         cad+= "\tNodo"+raiz->nombreIMG+"[label=\"<izquierda>|"+raiz->nombreIMG+"|<derecha>\"];\n";
@@ -225,20 +252,23 @@ string ArbolBB::listadoNodos(ArbolBB *&raiz)
 
 string ArbolBB::apuntadores(ArbolBB *raiz)
 {
-      if(estaVacio(raiz))
+    if(estaVacio(raiz))
     {
         return cad3;
-    }else
+    }
+    else
     {
 
         apuntadores(raiz->izquierda);
-        if(raiz->izquierda!=nullptr){
-        cad3 += "\tNodo"+raiz->nombreIMG+":izquierda->Nodo"+raiz->izquierda->nombreIMG+";\n";
+        if(raiz->izquierda!=nullptr)
+        {
+            cad3 += "\tNodo"+raiz->nombreIMG+":izquierda->Nodo"+raiz->izquierda->nombreIMG+";\n";
         }
 
-        if(raiz->derecha!=nullptr){
-        cad3 += "\tNodo"+raiz->nombreIMG+":derecha->Nodo"+raiz->derecha->nombreIMG+";\n";
-         }
+        if(raiz->derecha!=nullptr)
+        {
+            cad3 += "\tNodo"+raiz->nombreIMG+":derecha->Nodo"+raiz->derecha->nombreIMG+";\n";
+        }
         apuntadores(raiz->derecha);
 
     }
@@ -247,7 +277,8 @@ string ArbolBB::apuntadores(ArbolBB *raiz)
 
 
 ///////////GRAFICA RECORRIDO INORDEN
-void ArbolBB::graficaLista(ArbolBB *&raiz){
+void ArbolBB::graficaLista(ArbolBB *&raiz)
+{
     string cad5="";
     string cad6="";
     ofstream archivo;
@@ -285,11 +316,13 @@ void ArbolBB::graficaLista(ArbolBB *&raiz){
     limpiarCadenas();
 }
 
-string ArbolBB::listadoNodosInorder(ArbolBB *raiz){
+string ArbolBB::listadoNodosInorder(ArbolBB *raiz)
+{
     if(estaVacio(raiz))
     {
         return cadInO;
-    }else
+    }
+    else
     {
         listadoNodosInorder(raiz->izquierda);
         cadInO+= "\tNodo"+raiz->nombreIMG+"[label=\""+raiz->nombreIMG+"\"];\n";
@@ -298,11 +331,13 @@ string ArbolBB::listadoNodosInorder(ArbolBB *raiz){
     return cadInO;
 }
 
-string ArbolBB::apuntadoresInorder(ArbolBB *raiz){
-     if(estaVacio(raiz))
+string ArbolBB::apuntadoresInorder(ArbolBB *raiz)
+{
+    if(estaVacio(raiz))
     {
         return apIno;
-    }else
+    }
+    else
     {
 
         apuntadoresInorder(raiz->izquierda);
@@ -314,7 +349,8 @@ string ArbolBB::apuntadoresInorder(ArbolBB *raiz){
 }
 
 //////////GRAFICA RECORRIDO POSTORDER
-void ArbolBB::graficaListaPostOrden(ArbolBB *raiz){
+void ArbolBB::graficaListaPostOrden(ArbolBB *raiz)
+{
     string cad5="";
     string cad6="";
     ofstream archivo;
@@ -353,12 +389,14 @@ void ArbolBB::graficaListaPostOrden(ArbolBB *raiz){
 
 }
 
-string ArbolBB::listadoNodosPostorder(ArbolBB *raiz){
+string ArbolBB::listadoNodosPostorder(ArbolBB *raiz)
+{
     if(estaVacio(raiz))
     {
         return cadInO;
 
-    }else
+    }
+    else
     {
         listadoNodosPostorder(raiz->izquierda);
         listadoNodosPostorder(raiz->derecha);
@@ -367,12 +405,14 @@ string ArbolBB::listadoNodosPostorder(ArbolBB *raiz){
     return cadInO;
 }
 
-string ArbolBB::apuntadorNodosPostorder(ArbolBB *raiz){
+string ArbolBB::apuntadorNodosPostorder(ArbolBB *raiz)
+{
     if(estaVacio(raiz))
     {
         return apIno;
 
-    }else
+    }
+    else
     {
         apuntadorNodosPostorder(raiz->izquierda);
         apuntadorNodosPostorder(raiz->derecha);
@@ -382,8 +422,9 @@ string ArbolBB::apuntadorNodosPostorder(ArbolBB *raiz){
 }
 
 //////////GRAFICA RECORRIDO PREORDER
-void ArbolBB::graficaListaPreOrden(ArbolBB *raiz){
-  string cad5="";
+void ArbolBB::graficaListaPreOrden(ArbolBB *raiz)
+{
+    string cad5="";
     string cad6="";
     ofstream archivo;
     archivo.open("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\arbolPre.dot",ios::out);
@@ -420,12 +461,14 @@ void ArbolBB::graficaListaPreOrden(ArbolBB *raiz){
     limpiarCadenas();
 }
 
-string ArbolBB::listadoNodosPreorder(ArbolBB *raiz){
-     if(estaVacio(raiz))
+string ArbolBB::listadoNodosPreorder(ArbolBB *raiz)
+{
+    if(estaVacio(raiz))
     {
         return cadInO;
 
-    }else
+    }
+    else
     {
         cadInO+= "\tNodo"+raiz->nombreIMG+"[label=\""+raiz->nombreIMG+"\"];\n";
         listadoNodosPreorder(raiz->izquierda);
@@ -434,12 +477,14 @@ string ArbolBB::listadoNodosPreorder(ArbolBB *raiz){
     return cadInO;
 }
 
-string ArbolBB::apuntadorNodosPreorder(ArbolBB *raiz){
+string ArbolBB::apuntadorNodosPreorder(ArbolBB *raiz)
+{
     if(estaVacio(raiz))
     {
         return apIno;
 
-    }else
+    }
+    else
     {
         apIno += "Nodo"+raiz->nombreIMG+"->";
         apuntadorNodosPreorder(raiz->izquierda);
@@ -449,33 +494,41 @@ string ArbolBB::apuntadorNodosPreorder(ArbolBB *raiz){
 }
 
 //////////METODOS STRING
-void ArbolBB::limpiarCadenas(){
+void ArbolBB::limpiarCadenas()
+{
     cad = "";
     cad3= "";
     apIno = "\t";
     cadInO="";
 }
 
-string ArbolBB::eliminarUltimaFlecha(string c){
+string ArbolBB::eliminarUltimaFlecha(string c)
+{
     int tam = c.length();
     c= c.erase(tam-2);
     return c;
 }
 
-string ArbolBB::limpiarEspaciosBlanco(string c){
- string out ="";
- string in =c;
- for(int i = 0; i < in.length(); i++) {
-        if(in[i] == ' ') {
+string ArbolBB::limpiarEspaciosBlanco(string c)
+{
+    string out ="";
+    string in =c;
+    for(int i = 0; i < in.length(); i++)
+    {
+        if(in[i] == ' ')
+        {
             continue;
-        } else {
-             out+= in[i];
+        }
+        else
+        {
+            out+= in[i];
         }
     }
     return out;
 }
 
-int ArbolBB::stringToInt(string n){
+int ArbolBB::stringToInt(string n)
+{
     stringstream cast(n);
     int x =0;
     cast>>x;

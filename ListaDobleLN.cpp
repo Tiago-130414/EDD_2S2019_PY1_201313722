@@ -17,18 +17,18 @@ ListaDobleLN::ListaDobleLN()
 
 bool ListaDobleLN::estaVacia()
 {
- return (primero==NULL)? true:false;
+    return (primero==NULL)? true:false;
 }
 
 nodoListaDobleLN* ListaDobleLN::crearNodo(int posX,int posY,string color)
 {
-   nodoListaDobleLN *nuevo_nodo = new nodoListaDobleLN();
-   nuevo_nodo->posicionX = posX;
-   nuevo_nodo->posicionY = posY;
-   nuevo_nodo->colorRGB = color;
-   nuevo_nodo->siguiente = NULL;
-   nuevo_nodo->anterior =NULL;
-   return nuevo_nodo;
+    nodoListaDobleLN *nuevo_nodo = new nodoListaDobleLN();
+    nuevo_nodo->posicionX = posX;
+    nuevo_nodo->posicionY = posY;
+    nuevo_nodo->colorRGB = color;
+    nuevo_nodo->siguiente = NULL;
+    nuevo_nodo->anterior =NULL;
+    return nuevo_nodo;
 }
 
 void ListaDobleLN::insertarNodo(int pX,int pY,string co)
@@ -38,7 +38,8 @@ void ListaDobleLN::insertarNodo(int pX,int pY,string co)
     {
         primero = nuevo;
         cout<<"insertado al inicio"<<endl;
-    }else
+    }
+    else
     {
         nodoListaDobleLN *temp = primero;
         while(temp->siguiente!=NULL)
@@ -53,18 +54,23 @@ void ListaDobleLN::insertarNodo(int pX,int pY,string co)
 
 void ListaDobleLN::mostrar()
 {
-    if(estaVacia()){
+    if(estaVacia())
+    {
         cout<<"esta vacia"<<endl;
-    }else{
+    }
+    else
+    {
         nodoListaDobleLN *temp = primero;
-        while(temp!=NULL){
+        while(temp!=NULL)
+        {
             cout<<temp->colorRGB<<endl;
             temp = temp->siguiente;
         }
     }
 }
 
-void ListaDobleLN::graficaLista(){
+void ListaDobleLN::graficaLista()
+{
     string cad2;
     string cad4;
     ofstream archivo;
@@ -99,17 +105,20 @@ void ListaDobleLN::graficaLista(){
 
 string ListaDobleLN::defineNodos()
 {
-   string cad="";
-   if(estaVacia())
-   {
-       cout<<"No fue posible linealizar"<<endl;
-   }else{
+    string cad="";
+    if(estaVacia())
+    {
+        cout<<"No fue posible linealizar"<<endl;
+    }
+    else
+    {
         nodoListaDobleLN *temp = primero;
-        while(temp!=NULL){
+        while(temp!=NULL)
+        {
             cad += "\tNodo"+temp->colorRGB+"X"+intToString(temp->posicionX)+"Y"+intToString(temp->posicionY)+"[label=\"{("+intToString(temp->posicionX)+","+intToString(temp->posicionY)+")"+temp->colorRGB+"}\"];\n";
             temp = temp->siguiente;
         }
-   }
+    }
     return cad;
 }
 
@@ -117,11 +126,15 @@ string ListaDobleLN::defineNodos()
 string ListaDobleLN::apuntarNodos()
 {
     string cad="";
-    if(estaVacia()){
+    if(estaVacia())
+    {
         cout<<"no fue posible linealizar"<<endl;
-    }else{
+    }
+    else
+    {
         nodoListaDobleLN *temp = primero;
-        while(temp->siguiente!=NULL){
+        while(temp->siguiente!=NULL)
+        {
             cad += "\tNodo"+temp->colorRGB+"X"+intToString(temp->posicionX)+"Y"+intToString(temp->posicionY)+"->"+"Nodo"+temp->siguiente->colorRGB+"X"+intToString(temp->siguiente->posicionX)+"Y"+intToString(temp->siguiente->posicionY)+";\n";
             temp = temp->siguiente;
         }

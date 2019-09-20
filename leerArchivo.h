@@ -4,13 +4,13 @@
 using namespace std;
 class leerArchivo
 {
-    public:
-        leerArchivo();
-        void leer(string archivo);
+public:
+    leerArchivo();
+    void leer(string archivo);
 
-    protected:
+protected:
 
-    private:
+private:
 };
 
 #endif // LEERARCHIVO_H
