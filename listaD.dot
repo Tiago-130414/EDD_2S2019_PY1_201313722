@@ -8,15 +8,17 @@ digraph arbol
 	labelloc=t;
 	node [shape = record, style="filled"fillcolor="orange:red",width=0.7,height=0.5];
 
-	NodoblancoX1Y2[label="{(1,2)blanco}"];
-	NodonegroX2Y2[label="{(2,2)negro}"];
-	NodoazulX5Y2[label="{(5,2)azul}"];
-	NodorojoX9Y9[label="{(9,9)rojo}"];
+	NodoX7Y2[label="{(7,2)102-255-102}"];
+	NodoX9Y2[label="{(9,2)102-255-102}"];
+	NodoX7Y3[label="{(7,3)102-255-102}"];
+	NodoX10Y3[label="{(10,3)102-255-102}"];
+	NodoX11Y4[label="{(11,4)102-255-102}"];
 
 
-	NodoblancoX1Y2->NodonegroX2Y2;
-	NodonegroX2Y2->NodoazulX5Y2;
-	NodoazulX5Y2->NodorojoX9Y9;
+	NodoX7Y2->NodoX9Y2;
+	NodoX9Y2->NodoX7Y3;
+	NodoX7Y3->NodoX10Y3;
+	NodoX10Y3->NodoX11Y4;
 
 
 	label="Linealizacion Por:";

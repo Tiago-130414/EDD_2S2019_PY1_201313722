@@ -24,7 +24,7 @@ public:
     nodoListaDobleLN* crearNodo(int posX,int posY,string color);
     void insertarNodo(int pX,int pY,string co);
     void mostrar();
-    void graficaLista();
+    void graficaLista(string nomGrafica, string tipoLN);
     string defineNodos();
     string apuntarNodos();
     string intToString(int val);

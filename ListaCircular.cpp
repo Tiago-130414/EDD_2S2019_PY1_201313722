@@ -18,10 +18,11 @@ ListaCircular::ListaCircular()
     primero = NULL;
 }
 
-nodoListaCircular* ListaCircular::crearNodo(string filtroAP)
+nodoListaCircular* ListaCircular::crearNodo(string filtroAP,ListaSimple copiaC)
 {
     nodoListaCircular *nuevo_nodo = new nodoListaCircular();
     nuevo_nodo->filtroAP = filtroAP;
+    nuevo_nodo->copiaCubo = copiaC;
     return nuevo_nodo;
 }
 
@@ -30,10 +31,10 @@ bool ListaCircular :: estaVacia()
     return(primero==NULL)? true:false;
 }
 
-void ListaCircular :: insertar(string filtro)
+void ListaCircular :: insertar(string filtro,ListaSimple copia)
 {
     nodoListaCircular *temp = primero;
-    nodoListaCircular *nuevo = crearNodo(filtro);
+    nodoListaCircular *nuevo = crearNodo(filtro,copia);
 
     if(estaVacia())
     {
@@ -91,7 +92,7 @@ void ListaCircular::graficaListaCircular()
     string cad2="";
     string cad4="";
     ofstream archivo;
-    archivo.open("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\listaCircular.dot",ios::out);
+    archivo.open("C:/GRAFICAS_PROYECTO/listaCircular.dot",ios::out);
     if(archivo.fail())
     {
         cout<<"Error al crear archivo";
@@ -116,8 +117,8 @@ void ListaCircular::graficaListaCircular()
     archivo<<"\t}"<<endl;
     archivo<<"}"<<endl;
     archivo.close();
-    system("dot C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\listaCircular.dot -o C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\listaCircular.png -Tpng -Gcharset=utf8");
-    system("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\listaCircular.png");
+    system("dot C:/GRAFICAS_PROYECTO/listaCircular.dot -o C:/GRAFICAS_PROYECTO/listaCircular.png -Tpng -Gcharset=utf8");
+    system("C:/GRAFICAS_PROYECTO/listaCircular.png");
 }
 
 string ListaCircular::listarNodos()
@@ -161,4 +162,120 @@ string ListaCircular :: apuntadores()
     return c;
 }
 
+///graficarCuboCompletoNegativo
+void ListaCircular::generarCssNegativo(string key)
+{
+    if(estaVacia())
+    {
+        cout<<"Lista Filtros Vacia"<<endl;
+    }
+    else
+    {
+        nodoListaCircular *temp = primero;
+        do
+        {
+            if(temp->filtroAP==key)
+            {
+                temp->copiaCubo.aplicarFiltroNegativoCubo();
+                break;
+            }
+            temp = temp->siguiente;
+        }
+        while(temp!=primero);
 
+    }
+}
+
+void ListaCircular::generarCssNegativoPorCapa(string key,int cap)
+{
+    if(estaVacia())
+    {
+        cout<<"Lista Filtros Vacia"<<endl;
+    }
+    else
+    {
+        nodoListaCircular *temp = primero;
+        do
+        {
+            if(temp->filtroAP==key)
+            {
+                temp->copiaCubo.aplicarFiltroNegativoCapa(cap);
+                break;
+            }
+            temp = temp->siguiente;
+        }
+        while(temp!=primero);
+
+    }
+}
+
+void ListaCircular::generarEscalaGrises(string key)
+{
+    if(estaVacia())
+    {
+        cout<<"Lista Filtros Vacia"<<endl;
+    }
+    else
+    {
+        nodoListaCircular *temp = primero;
+        do
+        {
+            if(temp->filtroAP==key)
+            {
+                temp->copiaCubo.aplicarFiltroEscalaCubo();
+                break;
+            }
+            temp = temp->siguiente;
+        }
+        while(temp!=primero);
+
+    }
+}
+
+void ListaCircular::generarEscalaGrisesPorCapa(string key,int cap)
+{
+    if(estaVacia())
+    {
+        cout<<"Lista Filtros Vacia"<<endl;
+    }
+    else
+    {
+        nodoListaCircular *temp = primero;
+        do
+        {
+            if(temp->filtroAP==key)
+            {
+                temp->copiaCubo.aplicarFiltroEscalaCapa(cap);
+                break;
+            }
+            temp = temp->siguiente;
+        }
+        while(temp!=primero);
+
+    }
+}
+
+void ListaCircular::exportarImagen(string k,string nom){
+    string fil = nom + "FiltroNegativo";
+    if(estaVacia())
+    {
+        cout<<"Lista Filtros Vacia"<<endl;
+    }
+    else
+    {
+        nodoListaCircular *temp = primero;
+        do
+        {
+            if(temp->filtroAP==k)
+            {
+                temp->copiaCubo.generarCss(fil.c_str());
+                temp->copiaCubo.generarHTML(fil.c_str());
+                break;
+            }
+            temp = temp->siguiente;
+        }
+        while(temp!=primero);
+
+    }
+
+}

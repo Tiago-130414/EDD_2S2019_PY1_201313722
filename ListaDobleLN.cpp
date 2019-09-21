@@ -37,7 +37,6 @@ void ListaDobleLN::insertarNodo(int pX,int pY,string co)
     if(estaVacia())
     {
         primero = nuevo;
-        cout<<"insertado al inicio"<<endl;
     }
     else
     {
@@ -48,7 +47,6 @@ void ListaDobleLN::insertarNodo(int pX,int pY,string co)
         }
         temp->siguiente= nuevo;
         nuevo->anterior = temp;
-        cout<<"insertado al final"<<endl;
     }
 }
 
@@ -69,12 +67,16 @@ void ListaDobleLN::mostrar()
     }
 }
 
-void ListaDobleLN::graficaLista()
+void ListaDobleLN::graficaLista(string nomGrafica, string tipoLN)
 {
+    string crearDot = "C:/GRAFICAS_PROYECTO/"+nomGrafica+".dot";
+    string compilarDot;
+    string abrirDot;
     string cad2;
     string cad4;
+    string tipL = "\tlabel=\"Linealizacion Por:"+tipoLN+"\";\n\n";
     ofstream archivo;
-    archivo.open("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\listaD.dot",ios::out);
+    archivo.open(crearDot.c_str(),ios::out);
     if(archivo.fail())
     {
         cout<<"Error al crear archivo";
@@ -95,12 +97,14 @@ void ListaDobleLN::graficaLista()
     archivo<<"\n";
     archivo<<cad4<<endl;
     archivo<<"\n";
-    archivo<<"\tlabel=\"Linealizacion Por:\";\n\n"<<endl;
+    archivo<<tipL.c_str()<<endl;
     archivo<<"\t}"<<endl;
     archivo<<"}"<<endl;
     archivo.close();
-    system("dot C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\listaD.dot -o C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\listaD.png -Tpng -Gcharset=utf8");
-    system("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\listaD.png");
+    compilarDot = "dot C:/GRAFICAS_PROYECTO/"+nomGrafica+".dot -o C:/GRAFICAS_PROYECTO/"+nomGrafica+".png -Tpng -Gcharset=utf8";
+    system(compilarDot.c_str());
+    abrirDot ="C:/GRAFICAS_PROYECTO/"+nomGrafica+".png";
+    system(abrirDot.c_str());
 }
 
 string ListaDobleLN::defineNodos()
@@ -115,7 +119,7 @@ string ListaDobleLN::defineNodos()
         nodoListaDobleLN *temp = primero;
         while(temp!=NULL)
         {
-            cad += "\tNodo"+temp->colorRGB+"X"+intToString(temp->posicionX)+"Y"+intToString(temp->posicionY)+"[label=\"{("+intToString(temp->posicionX)+","+intToString(temp->posicionY)+")"+temp->colorRGB+"}\"];\n";
+            cad += "\tNodoX"+intToString(temp->posicionX)+"Y"+intToString(temp->posicionY)+"[label=\"{("+intToString(temp->posicionX)+","+intToString(temp->posicionY)+")"+temp->colorRGB+"}\"];\n";
             temp = temp->siguiente;
         }
     }
@@ -135,7 +139,7 @@ string ListaDobleLN::apuntarNodos()
         nodoListaDobleLN *temp = primero;
         while(temp->siguiente!=NULL)
         {
-            cad += "\tNodo"+temp->colorRGB+"X"+intToString(temp->posicionX)+"Y"+intToString(temp->posicionY)+"->"+"Nodo"+temp->siguiente->colorRGB+"X"+intToString(temp->siguiente->posicionX)+"Y"+intToString(temp->siguiente->posicionY)+";\n";
+            cad += "\tNodoX"+intToString(temp->posicionX)+"Y"+intToString(temp->posicionY)+"->"+"Nodo"+"X"+intToString(temp->siguiente->posicionX)+"Y"+intToString(temp->siguiente->posicionY)+";\n";
             temp = temp->siguiente;
         }
     }

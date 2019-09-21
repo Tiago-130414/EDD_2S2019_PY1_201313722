@@ -136,6 +136,46 @@ void ListaSimple::generarGraficaCapa(int capa,string nombreImagen){
     }
 }
 
+void ListaSimple::generarGraficaLinealizacionFilas(int capa,string nom){
+    if(estaVacia())
+    {
+        cout<<"listado de capas vacio"<<endl;
+    }
+    else
+    {
+        nodoLista *temp = primero;
+        while(temp!=NULL)
+        {
+            if(temp->numeroCapa==capa){
+                break;
+            }
+            temp = temp->siguiente;
+        }
+        string nomArchivo = nom+"PorFilas";
+        temp->capa.linealizarFilas(nomArchivo);
+    }
+}
+
+void ListaSimple::generarGraficaLinealizacionColumnas(int capa,string nom){
+    if(estaVacia())
+    {
+        cout<<"listado de capas vacio"<<endl;
+    }
+    else
+    {
+        nodoLista *temp = primero;
+        while(temp!=NULL)
+        {
+            if(temp->numeroCapa==capa){
+                break;
+            }
+            temp = temp->siguiente;
+        }
+        string nomArchivo = nom+"PorColumnas";
+        temp->capa.linealizarColumnas(nomArchivo);
+    }
+}
+
 /*
      //////////////servira para graficar matriz x capa
     string nomArchivo = nombreImagen+"capa"+intToString(nuevo->numeroCapa);
@@ -355,4 +395,85 @@ int ListaSimple::multiply(int x,int y){
     int multiplication=0;
     multiplication = x*y;
     return multiplication;
+}
+///filtros al cubo completo
+void ListaSimple::aplicarFiltroNegativoCubo()
+{
+       if(estaVacia())
+    {
+        cout<<"listado de capas vacio"<<endl;
+    }
+    else
+    {
+        nodoLista *temp = primero;
+        while(temp!=NULL)
+        {
+            temp->capa.aplicarNegativo();
+            temp = temp->siguiente;
+        }
+
+    }
+}
+
+void ListaSimple::aplicarFiltroEscalaCubo()
+{
+       if(estaVacia())
+    {
+        cout<<"listado de capas vacio"<<endl;
+    }
+    else
+    {
+        nodoLista *temp = primero;
+        while(temp!=NULL)
+        {
+            temp->capa.aplicarEscalaGrises();
+            temp = temp->siguiente;
+        }
+
+    }
+}
+
+///filtros a una capa del cubo
+
+void ListaSimple::aplicarFiltroNegativoCapa(int numCapa)
+{
+       if(estaVacia())
+    {
+        cout<<"listado de capas vacio"<<endl;
+    }
+    else
+    {
+        nodoLista *temp = primero;
+        while(temp!=NULL)
+        {
+           if(temp->numeroCapa==numCapa){
+             temp->capa.aplicarNegativo();
+             break;
+           }
+           temp = temp->siguiente;
+        }
+
+    }
+}
+
+void ListaSimple::aplicarFiltroEscalaCapa(int key)
+{
+       if(estaVacia())
+    {
+        cout<<"listado de capas vacio"<<endl;
+    }
+    else
+    {
+        nodoLista *temp = primero;
+        while(temp!=NULL)
+        {
+            if(temp->numeroCapa==key){
+                temp->capa.aplicarEscalaGrises();
+
+             break;
+           }
+           temp = temp->siguiente;
+        }
+
+    }
 }

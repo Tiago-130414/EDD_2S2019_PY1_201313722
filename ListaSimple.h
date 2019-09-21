@@ -41,6 +41,13 @@ public:
     bool existeCapa(int capa);
     void imageLayerReport(string& image);
     void generarGraficaCapa(int capa,string nombreImagen);
+    void generarGraficaLinealizacionFilas(int capa,string nom);
+    void generarGraficaLinealizacionColumnas(int capa,string nom);
+    ///filtros
+    void aplicarFiltroNegativoCubo();
+    void aplicarFiltroEscalaCubo();
+    void aplicarFiltroEscalaCapa(int key);
+    void aplicarFiltroNegativoCapa(int numCapa);
 protected:
 
 private:

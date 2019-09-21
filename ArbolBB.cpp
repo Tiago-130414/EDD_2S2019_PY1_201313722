@@ -204,7 +204,7 @@ void ArbolBB::graficarArbol(ArbolBB *&raiz)
     string cad2;
     string cad4;
     ofstream archivo;
-    archivo.open("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\arbol.dot",ios::out);
+    archivo.open("C:/GRAFICAS_PROYECTO/arbol.dot",ios::out);
     if(archivo.fail())
     {
         cout<<"Error al crear archivo";
@@ -230,8 +230,8 @@ void ArbolBB::graficarArbol(ArbolBB *&raiz)
     archivo<<"\t}"<<endl;
     archivo<<"}"<<endl;
     archivo.close();
-    system("dot C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\arbol.dot -o C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\arbol.png -Tpng -Gcharset=utf8");
-    system("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\arbol.png");
+    system("dot C:/GRAFICAS_PROYECTO/arbol.dot -o C:/GRAFICAS_PROYECTO/arbol.png -Tpng -Gcharset=utf8");
+    system("C:/GRAFICAS_PROYECTO/arbol.png");
     limpiarCadenas();
 }
 

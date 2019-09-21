@@ -132,11 +132,10 @@ void Matriz::enlazarFila(NodoFC *&pivote,NodoFC *&nuevoFil,int fila)
 ///mostrar matriz en consola
 void Matriz::imprimir()
 {
-    NodoFC *tempoF = filas;
+
     NodoFC *tempoC = columnas;
     while(tempoC!=NULL)
     {
-        //cout<<tempoC->color<<"-Fila: "<<tempoC->fila<<"-Columna: "<<tempoC->columna<<endl;
         NodoFC *tempInterior = tempoC->abajo;
         while(tempInterior!=NULL)
         {
@@ -154,7 +153,7 @@ void Matriz::escribirDot(string nomImg)
     string compilarDot;
     string abrirImagen;
     ofstream archivo;
-    archivo.open("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\"+arrCad,ios::out);
+    archivo.open("C:/GRAFICAS_PROYECTO/"+arrCad,ios::out);
     if(archivo.fail())
     {
         cout<<"Error al crear archivo";
@@ -171,12 +170,10 @@ void Matriz::escribirDot(string nomImg)
     archivo<<"\n"<<endl;
     archivo<<"\n}"<<endl;
     archivo.close();
-    compilarDot = "dot C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\"+nomImg+".dot -o C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\"+nomImg+".png -Tpng -Gcharset=utf8";
+    compilarDot = "dot C:/GRAFICAS_PROYECTO/"+nomImg+".dot -o C:/GRAFICAS_PROYECTO/"+nomImg+".png -Tpng -Gcharset=utf8";
     system(compilarDot.c_str());
-    abrirImagen ="C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\"+nomImg+".png";
+    abrirImagen ="C:/GRAFICAS_PROYECTO/"+nomImg+".png";
     system(abrirImagen.c_str());
-    //system("dot C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\grafica.dot -o C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\grafica.png -Tpng -Gcharset=utf8");
-    //system("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\grafica.png");
 }
 
 
@@ -204,10 +201,6 @@ string Matriz::creandoNodosFilaGuia()
             cad+="->";
             cad+="F"+static_cast<std::ostringstream*>(&(std::ostringstream() << filaG->abajo->fila))->str();
             cad+=" [dir=both];\n";
-            /*cad+="F"+static_cast<std::ostringstream*>(&(std::ostringstream() << filaG->abajo->fila))->str();
-            cad+="->";
-            cad+="F"+static_cast<std::ostringstream*>(&(std::ostringstream() << filaG->fila))->str();
-            cad+=";\n";*/
         }
 
         filaG = filaG->abajo;
@@ -245,10 +238,6 @@ string Matriz::creandoNodosColumnaGuia()
             cad+="->";
             cad+="C"+static_cast<std::ostringstream*>(&(std::ostringstream() << columnaG->siguiente->columna))->str();
             cad+=" [dir=both];\n";
-            /*cad+="C"+static_cast<std::ostringstream*>(&(std::ostringstream() << columnaG->siguiente->columna))->str();
-            cad+="->";
-            cad+="C"+static_cast<std::ostringstream*>(&(std::ostringstream() << columnaG->columna))->str();
-            cad+=";\n";*/
         }
         columnaG = columnaG->siguiente;
     }
@@ -276,7 +265,7 @@ string Matriz::nodosContenidoFila()
     string cad="";
     NodoFC *filCont = filas;//baja
     NodoFC *enlace = filas;//hacer enlaces fila guia primer nodo
-    NodoFC *aux;//verificar si hay nodos despues del primero
+
     NodoFC *primero;
     while(filCont!=NULL)
     {
@@ -302,11 +291,6 @@ string Matriz::nodosContenidoFila()
             cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << enlace->siguiente->fila))->str();
             cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << enlace->siguiente->columna))->str();
             cad+="[dir=both,constraint = false];\n";
-            /*cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << enlace->siguiente->fila))->str();
-            cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << enlace->siguiente->columna))->str();
-            cad+="->";
-            cad+="F" + static_cast<std::ostringstream*>(&(std::ostringstream() << enlace->fila))->str();
-            cad+="[constraint = false];\n";*/
         }
         enlace = enlace->abajo;
     }
@@ -348,12 +332,6 @@ string Matriz::nodosContenidoFila()
                     cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->siguiente->columna))->str();
                     cad+="[dir=both,constraint = false];\n";
                     cad+="\n";
-                    /*cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->siguiente->fila))->str();
-                    cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->siguiente->columna))->str();
-                    cad+="->";
-                    cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->fila))->str();
-                    cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->columna))->str();
-                    cad+="[constraint = false];\n";*/
                 }
                 primero = primero->siguiente;
             }
@@ -404,11 +382,6 @@ string Matriz::enlazarColumnaConNodo()
             cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << auxColNod->abajo->fila))->str();
             cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << auxColNod->abajo->columna))->str();
             cad+="[dir=both];\n";
-            /*cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << auxColNod->abajo->fila))->str();
-            cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << auxColNod->abajo->columna))->str();
-            cad+="->";
-            cad+="C"+static_cast<std::ostringstream*>(&(std::ostringstream() << auxColNod->columna))->str();
-            cad+=";\n";*/
         }
         auxColNod = auxColNod->siguiente;
     }
@@ -436,11 +409,6 @@ string Matriz::enlazarNodosMediosColumna()
                     cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->abajo->fila))->str();
                     cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->abajo->columna))->str();
                     cad+="\n";
-                    /*cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->abajo->fila))->str();
-                    cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->abajo->columna))->str();
-                    cad+="->";
-                    cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->fila))->str();
-                    cad+=static_cast<std::ostringstream*>(&(std::ostringstream() << primero->columna))->str();*/
                     cad+="[dir=both];\n";
                 }
                 primero = primero->abajo;
@@ -468,10 +436,9 @@ int Matriz::stringToInt(string s)
 }
 
 ///grafica linealizacion
-void Matriz::linealizarFilas()
+void Matriz::linealizarFilas(string nom)
 {
     NodoFC *tempoF = filas;
-    cout<<tempoF->siguiente->color<<endl;
     while(tempoF!=NULL)
     {
         NodoFC *tempInterior = tempoF->siguiente;
@@ -482,10 +449,10 @@ void Matriz::linealizarFilas()
         }
         tempoF = tempoF->abajo;
     }
-    linealizarF.graficaLista();
+    linealizarF.graficaLista(nom,"Por Filas");
 }
 
-void Matriz::linealizarColumnas()
+void Matriz::linealizarColumnas(string nom)
 {
     NodoFC *tempoC = columnas;
     while(tempoC!=NULL)
@@ -498,7 +465,7 @@ void Matriz::linealizarColumnas()
         }
         tempoC = tempoC->siguiente;
     }
-    linealizarC.graficaLista();
+    linealizarC.graficaLista(nom,"Por Columnas");
 
 }
 
@@ -533,7 +500,7 @@ string Matriz::LinMF(string nomCapa,int contador)
 {
     string datosLinealizados="/*"+nomCapa+"*/\n";
     NodoFC *tempoF = filas;
-    NodoFC *tempoC = columnas;
+
     while(tempoF!=NULL)
     {
         NodoFC *tempInterior = tempoF->siguiente;
@@ -570,6 +537,79 @@ string Matriz::LinMF(string nomCapa,int contador)
     }
     return datosLinealizados;
 }
+///aplicar negativoRGB
+void Matriz::aplicarNegativo(){
+
+    NodoFC *tempoC = columnas;
+    while(tempoC!=NULL)
+    {
+        NodoFC *tempInterior = tempoC->abajo;
+        while(tempInterior!=NULL)
+        {
+            stringstream s(tempInterior->color);
+            string r="";
+            string g="";
+            string b="";
+            string RGB="";
+            getline(s,r,'-');
+            getline(s,g,'-');
+            getline(s,b,'\n');
+            RGB = negativoRGB(stringToInt(r),stringToInt(g),stringToInt(b));
+            tempInterior->color = RGB;
+            tempInterior = tempInterior->abajo;
+        }
+        tempoC = tempoC->siguiente;
+    }
+}
+///negativo RGB
+string Matriz::negativoRGB(int r,int g,int b)
+{
+    string color="";
+    int R;
+    int G;
+    int B;
+    R = 255-r;
+    G = 255-g;
+    B = 255-b;
+    color = intToString(R)+"-"+intToString(G)+"-"+intToString(B);
+    color = color.c_str();
+    return color;
+}
+///aplicar escala grises
+void Matriz::aplicarEscalaGrises(){
+
+    NodoFC *tempoC = columnas;
+    while(tempoC!=NULL)
+    {
+        NodoFC *tempInterior = tempoC->abajo;
+        while(tempInterior!=NULL)
+        {
+            stringstream s(tempInterior->color);
+            string r="";
+            string g="";
+            string b="";
+            string RGB="";
+            getline(s,r,'-');
+            getline(s,g,'-');
+            getline(s,b,'\n');
+            RGB = escalaGrises(stringToInt(r),stringToInt(g),stringToInt(b));
+            tempInterior->color = RGB;
+            tempInterior = tempInterior->abajo;
+        }
+        tempoC = tempoC->siguiente;
+    }
+}
+
+
+///escala grises
+string Matriz::escalaGrises(int r,int g,int b){
+    string color="";
+    double R;
+    R = (double)((r*0.0457) + (g*0.6074) + (b*0.3469));
+    color = to_string(R)+"-"+to_string(R)+"-"+to_string(R);
+    color = color.c_str();
+    return color;
+}
 
 
 int Matriz::calcularK(int fila,int columna,int numeroCol)
@@ -589,7 +629,6 @@ string Matriz::rgbToHex(int r, int g, int b, bool with_head)
     ss << hex << (r << 16 | g << 8 | b);
     return ss.str();
 }
-
 
 int Matriz::esPar(int num)
 {

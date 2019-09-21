@@ -40,8 +40,8 @@ public:
     string rankSame();
     string enlazarColumnaConNodo();
     string enlazarNodosMediosColumna();
-    void linealizarFilas();
-    void linealizarColumnas();
+    void linealizarFilas(string nom);
+    void linealizarColumnas(string nom);
     ///cantidad de filas y columnas
     int numeroFilas();
     int numeroColumnas();
@@ -50,6 +50,12 @@ public:
     int calcularK(int,int,int);
     int esPar(int num);
     string rgbToHex(int r, int g, int b, bool with_head = false);
+    ///filtro
+    void aplicarNegativo();
+    string negativoRGB(int r,int g,int b);
+    ///escala grises
+    void aplicarEscalaGrises();
+    string escalaGrises(int r,int g,int b);
 protected:
 
 private:

@@ -14,6 +14,13 @@ public:
     int stringToInt(string s);
     void seleccionarImagenArbol(string& imagen);
     void imageLayerReport(string& image);
+    void linearMatrixReport(string& img);
+    void aplicarFiltro(string& im);
+    void menuNegativo(string& im);
+    void negativoPorCapa(string &im);
+    void menuEscalaGrises(string& im);
+    void exportarImagen();
+
 
 
 protected:
