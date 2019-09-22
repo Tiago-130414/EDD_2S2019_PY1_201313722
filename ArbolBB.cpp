@@ -103,6 +103,12 @@ ArbolBB* ArbolBB::buscar(ArbolBB *&raiz, string key)
         return buscar(raiz->derecha,key);
     }
 }
+
+ListaSimple ArbolBB::retornarLista(ArbolBB *&raiz,string k)
+{
+    ArbolBB *temp = buscar(raiz,k);
+    return temp->cubo;
+}
 ////////////RECORRIDOS ARBOL
 void ArbolBB::recorridoPre(ArbolBB *&raiz)
 {
@@ -282,7 +288,7 @@ void ArbolBB::graficaLista(ArbolBB *&raiz)
     string cad5="";
     string cad6="";
     ofstream archivo;
-    archivo.open("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\arbolIno.dot",ios::out);
+    archivo.open("C:/GRAFICAS_PROYECTO/arbolIno.dot",ios::out);
     if(archivo.fail())
     {
         cout<<"Error al crear archivo";
@@ -311,8 +317,8 @@ void ArbolBB::graficaLista(ArbolBB *&raiz)
     archivo<<"\t}"<<endl;
     archivo<<"}"<<endl;
     archivo.close();
-    system("dot C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\arbolIno.dot -o C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\arbolIno.png -Tpng -Gcharset=utf8");
-    system("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\arbolIno.png");
+    system("dot C:/GRAFICAS_PROYECTO/arbolIno.dot -o C:/GRAFICAS_PROYECTO/arbolIno.png -Tpng -Gcharset=utf8");
+    system("C:/GRAFICAS_PROYECTO/arbolIno.png");
     limpiarCadenas();
 }
 
@@ -354,7 +360,7 @@ void ArbolBB::graficaListaPostOrden(ArbolBB *raiz)
     string cad5="";
     string cad6="";
     ofstream archivo;
-    archivo.open("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\arbolPost.dot",ios::out);
+    archivo.open("C:/GRAFICAS_PROYECTO/arbolPost.dot",ios::out);
     if(archivo.fail())
     {
         cout<<"Error al crear archivo";
@@ -383,8 +389,8 @@ void ArbolBB::graficaListaPostOrden(ArbolBB *raiz)
     archivo<<"\t}"<<endl;
     archivo<<"}"<<endl;
     archivo.close();
-    system("dot C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\arbolPost.dot -o C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\arbolPost.png -Tpng -Gcharset=utf8");
-    system("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\arbolPost.png");
+    system("dot C:/GRAFICAS_PROYECTO/arbolPost.dot -o C:/GRAFICAS_PROYECTO/arbolPost.png -Tpng -Gcharset=utf8");
+    system("C:/GRAFICAS_PROYECTO/arbolPost.png");
     limpiarCadenas();
 
 }
@@ -427,7 +433,7 @@ void ArbolBB::graficaListaPreOrden(ArbolBB *raiz)
     string cad5="";
     string cad6="";
     ofstream archivo;
-    archivo.open("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\arbolPre.dot",ios::out);
+    archivo.open("C:/GRAFICAS_PROYECTO/arbolPre.dot",ios::out);
     if(archivo.fail())
     {
         cout<<"Error al crear archivo";
@@ -456,8 +462,8 @@ void ArbolBB::graficaListaPreOrden(ArbolBB *raiz)
     archivo<<"\t}"<<endl;
     archivo<<"}"<<endl;
     archivo.close();
-    system("dot C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\arbolPre.dot -o C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\arbolPre.png -Tpng -Gcharset=utf8");
-    system("C:\\Users\\santi\\OneDrive\\Desktop\\EDD_2S2019_PY1_201313722\\arbolPre.png");
+    system("dot C:/GRAFICAS_PROYECTO/arbolPre.dot -o C:/GRAFICAS_PROYECTO/arbolPre.png -Tpng -Gcharset=utf8");
+    system("C:/GRAFICAS_PROYECTO/arbolPre.png");
     limpiarCadenas();
 }
 
@@ -534,3 +540,5 @@ int ArbolBB::stringToInt(string n)
     cast>>x;
     return x;
 }
+
+

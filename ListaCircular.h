@@ -39,6 +39,7 @@ public:
     void generarEscalaGrisesPorCapa(string key,int cap);
     ///exportar imagen
     void exportarImagen(string k,string nom);
+    ListaSimple buscar(string filtro);
 
 
 protected:

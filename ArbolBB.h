@@ -47,6 +47,8 @@ public:
     ///metodos string
     int stringToInt(string n);
     ArbolBB* buscar(ArbolBB *&raiz, string key);
+    ListaSimple retornarLista(ArbolBB *&raiz, string key);
+    //retornar valores
 protected:
 
 private:

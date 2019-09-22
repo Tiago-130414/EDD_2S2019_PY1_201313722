@@ -20,6 +20,12 @@ public:
     void negativoPorCapa(string &im);
     void menuEscalaGrises(string& im);
     void exportarImagen();
+    void espejo(string& ima);
+    void reporteFiltros();
+    void escalaGPorCapa(string &im);
+    void reporteFiltrosIndividuales();
+    void reportesindividuales();
+    void manualEditing();
 
 
 

@@ -48,6 +48,13 @@ public:
     void aplicarFiltroEscalaCubo();
     void aplicarFiltroEscalaCapa(int key);
     void aplicarFiltroNegativoCapa(int numCapa);
+    ///rotaciones imagenes
+    void generarCssRH(string nomImg);
+    void generarCssRV(string nomImg);
+    void generarCssRHV(string nomImg);
+    void generarGraficaCapaX(int capa,string nombreImagen);
+    void generarGraficaCapaY(int capa,string nombreImagen);
+    void modificar(int x,int y,int numeroC,string color);
 protected:
 
 private:

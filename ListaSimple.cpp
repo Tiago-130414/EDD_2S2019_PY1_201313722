@@ -136,6 +136,50 @@ void ListaSimple::generarGraficaCapa(int capa,string nombreImagen){
     }
 }
 
+void ListaSimple::generarGraficaCapaX(int capa,string nombreImagen)
+{
+     if(estaVacia())
+    {
+        cout<<"listado de capas vacio"<<endl;
+    }
+    else
+    {
+        nodoLista *temp = primero;
+        while(temp!=NULL)
+        {
+            if(temp->numeroCapa==capa){
+                break;
+            }
+            temp = temp->siguiente;
+        }
+        string nomArchivo = nombreImagen+"capa"+intToString(temp->numeroCapa);
+        temp->capa.escribirDotHorizontal(nomArchivo.c_str());
+    }
+}
+
+void ListaSimple::generarGraficaCapaY(int capa,string nombreImagen){
+     if(estaVacia())
+    {
+        cout<<"listado de capas vacio"<<endl;
+    }
+    else
+    {
+        nodoLista *temp = primero;
+        while(temp!=NULL)
+        {
+            if(temp->numeroCapa==capa){
+                break;
+            }
+            temp = temp->siguiente;
+        }
+        string nomArchivo = nombreImagen+"capa"+intToString(temp->numeroCapa);
+        temp->capa.escribirDotVertical(nomArchivo.c_str());
+    }
+}
+
+
+
+
 void ListaSimple::generarGraficaLinealizacionFilas(int capa,string nom){
     if(estaVacia())
     {
@@ -245,6 +289,7 @@ void ListaSimple::generarHTML(string nomImg){
     archivo<<"</body>"<<endl;
     archivo<<"</html>"<<endl;
     archivo.close();
+    system(rt.c_str());
 }
 
 void ListaSimple::generarCss(string nomImg){
@@ -275,12 +320,112 @@ void ListaSimple::generarCss(string nomImg){
     archivo.close();
 }
 
+///generar css rotacion horizontal
+void ListaSimple::generarCssRH(string nomImg){
+    string divS="";
+    string nomCSS = nomImg+".css";
+    string rt="C:/EXPORT/";
+    rt= string(rt) + string(nomImg);
+    mkdir(rt.c_str());
+    rt += "/"+nomCSS;
+    ofstream archivo;
+    archivo.open(rt.c_str(),ios::out);
+    if(archivo.fail())
+    {
+        cout<<"Error al crear archivo";
+        exit(1);
+    }
+    archivo<<"body{"<<endl;
+    archivo<<"background: #333333;"<<endl;
+    archivo<<"height: 100vh;"<<endl;
+    archivo<<"display: flex;"<<endl;
+    archivo<<"justify-content: center;"<<endl;
+    archivo<<"align-items: center;"<<endl;
+    archivo<<"-moz-transform: scaleX(-1);"<<endl;
+    archivo<<"-o-transform: scaleX(-1);"<<endl;
+    archivo<<"-webkit-transform: scaleX(-1);"<<endl;
+    archivo<<" transform: scaleX(-1);"<<endl;
+    archivo<<"filter: FlipH;"<<endl;
+    archivo<<"-ms-filter: \"FlipH\";"<<endl;
+    archivo<<"}\n\n"<<endl;
+    string ruta= string(retornarRutaPrimero())+string("config.csv");
+    archivo<<leerArchivoConfig(ruta.c_str())<<endl;
+    divS = divCSS();
+    archivo<<divS<<endl;
+    archivo.close();
+}
+///generar css rotacion vertical
+void ListaSimple::generarCssRV(string nomImg){
+    string divS="";
+    string nomCSS = nomImg+".css";
+    string rt="C:/EXPORT/";
+    rt= string(rt) + string(nomImg);
+    mkdir(rt.c_str());
+    rt += "/"+nomCSS;
+    ofstream archivo;
+    archivo.open(rt.c_str(),ios::out);
+    if(archivo.fail())
+    {
+        cout<<"Error al crear archivo";
+        exit(1);
+    }
+    archivo<<"body{"<<endl;
+    archivo<<"background: #333333;"<<endl;
+    archivo<<"height: 100vh;"<<endl;
+    archivo<<"display: flex;"<<endl;
+    archivo<<"justify-content: center;"<<endl;
+    archivo<<"align-items: center;"<<endl;
+    archivo<<"-moz-transform: scaleY(-1);"<<endl;
+    archivo<<"-o-transform: scaleY(-1);"<<endl;
+    archivo<<"-webkit-transform: scaleY(-1);"<<endl;
+    archivo<<" transform: scaleY(-1);"<<endl;
+    archivo<<"filter: FlipV;"<<endl;
+    archivo<<"-ms-filter: \"FlipV\";"<<endl;
+    archivo<<"}\n\n"<<endl;
+    string ruta= string(retornarRutaPrimero())+string("config.csv");
+    archivo<<leerArchivoConfig(ruta.c_str())<<endl;
+    divS = divCSS();
+    archivo<<divS<<endl;
+    archivo.close();
+}
+
+void ListaSimple::generarCssRHV(string nomImg){
+    string divS="";
+    string nomCSS = nomImg+".css";
+    string rt="C:/EXPORT/";
+    rt= string(rt) + string(nomImg);
+    mkdir(rt.c_str());
+    rt += "/"+nomCSS;
+    ofstream archivo;
+    archivo.open(rt.c_str(),ios::out);
+    if(archivo.fail())
+    {
+        cout<<"Error al crear archivo";
+        exit(1);
+    }
+    archivo<<"body{"<<endl;
+    archivo<<"background: #333333;"<<endl;
+    archivo<<"height: 100vh;"<<endl;
+    archivo<<"display: flex;"<<endl;
+    archivo<<"justify-content: center;"<<endl;
+    archivo<<"align-items: center;"<<endl;
+    archivo<<"-moz-transform: scale(-1,-1);"<<endl;
+    archivo<<"-o-transform: scale(-1,-1);"<<endl;
+    archivo<<"-webkit-transform: scale(-1,-1);"<<endl;
+    archivo<<" transform: scale(-1,-1);"<<endl;
+    archivo<<"}\n\n"<<endl;
+    string ruta= string(retornarRutaPrimero())+string("config.csv");
+    archivo<<leerArchivoConfig(ruta.c_str())<<endl;
+    divS = divCSS();
+    archivo<<divS<<endl;
+    archivo.close();
+}
+
 string ListaSimple::divCSS(){
     string div = "";
     int col=0;
     nodoLista *temp = primero;
     col=temp->archivoOriginal.numeroColumnas();
-    cout<<intToString(col)<<endl;
     while(temp!=NULL){
         div += temp->capa.LinMF(temp->nombreArchivo,col);
         temp = temp->siguiente;
@@ -476,4 +621,25 @@ void ListaSimple::aplicarFiltroEscalaCapa(int key)
         }
 
     }
+}
+
+void ListaSimple::modificar(int x,int y,int numeroC,string color){
+    if(estaVacia())
+    {
+        cout<<"listado de capas vacio"<<endl;
+    }
+    else
+    {
+        nodoLista *temp = primero;
+        while(temp!=NULL)
+        {
+            if(temp->numeroCapa==numeroC){
+                temp->capa.modificarNodo(x,y,color);
+             break;
+           }
+           temp = temp->siguiente;
+        }
+
+    }
+
 }

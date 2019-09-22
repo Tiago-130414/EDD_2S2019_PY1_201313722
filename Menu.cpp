@@ -84,7 +84,7 @@ void Menu::mostrarMenu()
             break;
         case 4:
             ///manual editing
-
+            manualEditing();
             break;
         case 5:
             ///export image
@@ -140,6 +140,7 @@ void Menu::menuReportes()
             break;
         case 5:
             ///lista circular
+            reporteFiltros();
             break;
         }
     }
@@ -173,8 +174,6 @@ void Menu:: traversalReport()
     }
     while(op!=4);
 }
-
-
 
 void Menu::imageLayerReport(string& image)
 {
@@ -276,6 +275,7 @@ void Menu::seleccionarImagenArbol(string& imagen)
     cin>>imagen;
     system("cls");
 }
+
 ///aplicar filtros
 void Menu::aplicarFiltro(string& ima)
 {
@@ -286,9 +286,7 @@ void Menu::aplicarFiltro(string& ima)
         cout<<"1.- Negative(Negativo)"<<endl;
         cout<<"2.- Grayscale(Escala De Grises)"<<endl;
         cout<<"3.- Mirror(Espejo)"<<endl;
-        cout<<"4.- Collage(Collage)"<<endl;
-        cout<<"5.- Mosaic(mosaico)"<<endl;
-        cout<<"6.- Exit"<<endl;
+        cout<<"4.- Exit"<<endl;
         cin>>op;
         switch(op)
         {
@@ -302,20 +300,137 @@ void Menu::aplicarFiltro(string& ima)
             break;
 
         case 3:
+            espejo(ima);
+            break;
+        }
+    }
+    while(op!=4);
+
+}
+/// menu espejo
+void Menu::espejo(string& ima)
+{
+    int op=0;
+    temp = obj2.buscar(raiz,ima);
+    do
+    {
+        cout<<"=============== MIRROR ==============="<<endl;
+        cout<<"1.- X-MIRROR(Espejo En eje X)"<<endl;
+        cout<<"2.- Y-MIRROR(Espejo En Eje Y)"<<endl;
+        cout<<"3.- DOUBLE MIRROR(Espejo En Ambos Ejes)"<<endl;
+        cout<<"4.- Exit"<<endl;
+        cin>>op;
+        system("cls");
+        switch(op)
+        {
+        case 1:
+            if(temp!=NULL)
+            {
+                objL = temp->cubo;
+                obj.insertar("XMIRROR",objL);
+            }
+            break;
+
+        case 2:
+            if(temp!=NULL)
+            {
+                objL = temp->cubo;
+                obj.insertar("YMIRROR",objL);
+            }
 
             break;
 
-        case 4:
+        case 3:
 
-            break;
-
-        case 5:
+            if(temp!=NULL)
+            {
+                objL = temp->cubo;
+                obj.insertar("DOUBLE MIRROR",objL);
+            }
 
             break;
         }
     }
-    while(op!=6);
+    while(op!=4);
 }
+
+///MENU REPORTE DE FILTROS
+void Menu::reporteFiltros()
+{
+    string rot;
+    int op=0;
+
+    do
+    {
+        cout<<"=============== FILTERS REPORT ==============="<<endl;
+        cout<<"1.- All Filters Report"<<endl;
+        cout<<"2.- Individual Filter Report"<<endl;
+        cout<<"3.- Exit"<<endl;
+        cin>>op;
+        system("cls");
+        switch(op)
+        {
+        case 1:
+            obj.graficaListaCircular();
+            break;
+
+        case 2:
+            reportesindividuales();
+            break;
+        }
+    }
+    while(op!=3);
+}
+
+
+void Menu::reportesindividuales()
+{
+    int numCapa =0;
+    string image="";
+    bool exist=false;
+    cout<<"=============== INDIVIDUAL FILTER REPORT ===============\n"<<endl;
+    obj.Mostrar();
+    cout<<"\nIngrese Nombre de Filtro: "<<endl;
+    cin>>image;
+    objL = obj.buscar(image);
+    system("cls");
+    cout<<"=============== INDIVIDUAL FILTER REPORT ===============\n"<<endl;
+    objL.mostrar();
+    do
+    {
+        cout<<"Ingrese numero de capa valido: "<<endl;
+        cin>>numCapa;
+        if(numCapa!=0)
+        {
+            exist = objL.existeCapa(numCapa);
+        }
+        else
+        {
+            cout<<"!Error capa 0 unicamente de configuracion!"<<endl;
+        }
+    }
+    while(exist==false);
+    if(image=="XMIRROR")
+    {
+        objL.generarGraficaCapaX(numCapa,image);
+    }
+    else if(image=="YMIRROR")
+    {
+        objL.generarGraficaCapaX(numCapa,image);
+    }
+    else if(image=="DOUBLE MIRROR")
+    {
+        return;
+    }
+    else
+    {
+        objL.generarGraficaCapa(numCapa,image);
+    }
+    system("cls");
+}
+
+
+
 ///menu filtro negativo
 void Menu::menuNegativo(string& im)
 {
@@ -338,10 +453,12 @@ void Menu::menuNegativo(string& im)
                 cout<<"2.- Per Layer"<<endl;
                 cout<<"3.- Exit"<<endl;
                 cin>>op;
+                system("cls");
                 switch(op)
                 {
                 case 1:
-                    obj.insertar("Negativo",tempFiltro->cubo);
+                    objL = obj2.retornarLista(raiz,im);
+                    obj.insertar("Negativo",objL);
                     obj.generarCssNegativo("Negativo");
                     cout<<"Filtro Negativo Aplicado"<<endl;
                     break;
@@ -360,8 +477,10 @@ void Menu::menuNegativo(string& im)
     }
 }
 
-void Menu::negativoPorCapa(string &im){
-int numCapa =0;
+
+void Menu::negativoPorCapa(string &im)
+{
+    int numCapa =0;
     bool exist = false;
     if(tempFiltro!=NULL)
     {
@@ -383,7 +502,8 @@ int numCapa =0;
         }
         while(exist==false);
         string nombreImg= "NegativoPorCapa" + numCapa;
-        obj.insertar(nombreImg.c_str(),tempFiltro->cubo);
+        objL = tempFiltro->cubo;
+        obj.insertar(nombreImg.c_str(),objL);
         obj.generarCssNegativoPorCapa(nombreImg.c_str(),numCapa);
         system("cls");
     }
@@ -397,6 +517,7 @@ int numCapa =0;
 void Menu::menuEscalaGrises(string& im)
 {
     int op=0;
+    system("cls");
     if(im.empty())
     {
         cout<<"=============== GRAYSCALE ===============\n"<<endl;
@@ -417,13 +538,14 @@ void Menu::menuEscalaGrises(string& im)
                 switch(op)
                 {
                 case 1:
-                    obj.insertar("Escala_Grises",tempFiltro->cubo);
+                    objL = tempFiltro->cubo;
+                    obj.insertar("Escala_Grises",objL);
                     obj.generarEscalaGrises("Escala_Grises");
-                    cout<<"Filtro Negativo Aplicado"<<endl;
+                    cout<<"Filtro Escala Grises Aplicado"<<endl;
                     break;
 
                 case 2:
-
+                    escalaGPorCapa(im);
 
                     break;
                 }
@@ -437,6 +559,41 @@ void Menu::menuEscalaGrises(string& im)
     }
 }
 
+
+void Menu::escalaGPorCapa(string &im)
+{
+    int numCapa =0;
+    bool exist = false;
+    if(tempFiltro!=NULL)
+    {
+        system("cls");
+        cout<<"=============== GRAYSCALE FILTER ===============\n"<<endl;
+        tempFiltro->cubo.mostrar();
+        do
+        {
+            cout<<"Ingrese numero de capa valido: "<<endl;
+            cin>>numCapa;
+            if(numCapa!=0)
+            {
+                exist = tempFiltro->cubo.existeCapa(numCapa);
+            }
+            else
+            {
+                cout<<"!Error capa 0 unicamente de configuracion!"<<endl;
+            }
+        }
+        while(exist==false);
+        string nombreImg= "EscalaDeGrisesPorCapa" + numCapa;
+        objL = tempFiltro->cubo;
+        obj.insertar(nombreImg.c_str(),objL);
+        obj.generarEscalaGrisesPorCapa(nombreImg.c_str(),numCapa);
+        system("cls");
+    }
+    else
+    {
+        cout<<"imagen no generada"<<endl;
+    }
+}
 
 
 
@@ -495,41 +652,110 @@ int Menu::stringToInt(string s)
     return x;
 }
 
-void Menu::exportarImagen(){
-      int op;
-      string filter;
-      do
+void Menu::exportarImagen()
+{
+    int op;
+    string filter;
+    string rot;
+    tempFiltro = obj2.buscar(raiz,imagenSeleccionada);
+    do
+    {
+        cout<<"=============== EXPORT IMAGE ===============\n"<<endl;
+        cout<<"1.- Full Picture"<<endl;
+        cout<<"2.- Per Filter"<<endl;
+        cout<<"3.- Exit"<<endl;
+        cin>>op;
+        system("cls");
+        switch(op)
+        {
+        case 1:
+            if(tempFiltro!=NULL)
             {
-
-                cout<<"=============== EXPORT IMAGE ===============\n"<<endl;
-                cout<<"1.- Full Picture"<<endl;
-                cout<<"2.- Per Filter"<<endl;
-                cout<<"3.- Exit"<<endl;
-                cin>>op;
-                system("cls");
-                switch(op)
-                {
-                case 1:
-                     temp = obj2.buscar(raiz,imagenSeleccionada);
-                    if(temp!=NULL)
-                    {
-                        temp->cubo.generarCss(imagenSeleccionada);
-                        temp->cubo.generarHTML(imagenSeleccionada);
-                        cout<<"Imagen generada con exito"<<endl;
-                    }
-                    else
-                    {
-                        cout<<"imagen buscada no encontrada"<<endl;
-                    }
-                    break;
-                case 2:
-                    cout<<"=============== EXPORT IMAGE ===============\n"<<endl;
-                    obj.Mostrar();
-                    cout<<"\nIngrese el nombre del filtro a exportar: "<<endl;
-                    cin>>filter;
-                     obj.exportarImagen(filter,imagenSeleccionada);
-                    break;
-                }
+                tempFiltro->cubo.generarCss(imagenSeleccionada);
+                tempFiltro->cubo.generarHTML(imagenSeleccionada);
+                cout<<"Imagen generada con exito"<<endl;
             }
-            while(op!=3);
+            else
+            {
+                cout<<"imagen buscada no encontrada"<<endl;
+            }
+            break;
+        case 2:
+            if(obj.estaVacia())
+            {
+                return;
+            }
+            else
+            {
+                cout<<"=============== EXPORT IMAGE ===============\n"<<endl;
+                obj.Mostrar();
+                cout<<"\nIngrese el nombre del filtro a exportar: "<<endl;
+                cin>>filter;
+                if(filter=="XMIRROR")
+                {
+                    rot = imagenSeleccionada+"xmirror";
+                    tempFiltro->cubo.generarCssRH(rot.c_str());
+                    tempFiltro->cubo.generarHTML(rot.c_str());
+                }
+                else if(filter=="YMIRROR")
+                {
+                    rot = imagenSeleccionada+"ymirror";
+                    tempFiltro->cubo.generarCssRV(rot.c_str());
+                    tempFiltro->cubo.generarHTML(rot.c_str());
+                }
+                else if(filter=="DOUBLE MIRROR")
+                {
+                    rot = imagenSeleccionada+"xymirror";
+                    tempFiltro->cubo.generarCssRHV(rot.c_str());
+                    tempFiltro->cubo.generarHTML(rot.c_str());
+                }
+                else
+                {
+                    obj.exportarImagen(filter,imagenSeleccionada);
+                }
+
+
+            }
+            break;
+        }
+    }
+    while(op!=3);
+}
+
+
+void Menu::manualEditing()
+{
+    int x;
+    int y;
+    int numeroCapa;
+    if(imagenSeleccionada.empty())
+    {
+        cout<<"=============== MANUAL EDITING ===============\n"<<endl;
+        cout<<"seleccione una imagen"<<endl;
+    }
+    else
+    {
+        string color;
+        cout<<"=============== MANUAL EDITING ===============\n"<<endl;
+        cout<<"Ingrese coordenada X: "<<endl;
+        cin>>x;
+        cout<<"Ingrese coordenada Y: "<<endl;
+        cin>>y;
+        cout<<"Ingrese numero de capa: "<<endl;
+        cin>>numeroCapa;
+        cout<<"Ingrese nuevo color R-G-B"<<endl;
+        cin>>color;
+        temp = obj2.buscar(raiz,imagenSeleccionada);
+        if(temp!=NULL){
+            objL = temp->cubo;
+            if(objL.existeCapa(numeroCapa)){
+                objL.modificar(x,y,numeroCapa,color);
+            }else{
+                cout<<"numero de capa invalido"<<endl;
+            }
+        }else{
+            cout<<"imagen buscada no encontrada"<<endl;
+        }
+    }
+
 }

@@ -56,6 +56,11 @@ public:
     ///escala grises
     void aplicarEscalaGrises();
     string escalaGrises(int r,int g,int b);
+    ///reportes rotaciones
+    void escribirDotHorizontal(string nomImg);
+    void escribirDotVertical(string nomImg);
+    ///manual editing
+    void modificarNodo(int x, int y,string rgb);
 protected:
 
 private:

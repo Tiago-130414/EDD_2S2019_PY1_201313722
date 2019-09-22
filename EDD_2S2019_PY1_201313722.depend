@@ -3,10 +3,10 @@
 	<iostream>
 	"Menu.h"
 
-1569063666 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\menu.h
+1569130192 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\menu.h
 	<string>
 
-1569063823 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\menu.cpp
+1569130400 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\menu.cpp
 	"Menu.h"
 	"ArbolBB.h"
 	"ListaCircular.h"
@@ -17,8 +17,9 @@
 	<iostream>
 	<fstream>
 
-1569058278 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listacircular.cpp
+1569127705 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listacircular.cpp
 	"ListaCircular.h"
+	"ListaSimple.h"
 	<iostream>
 	<string>
 	<sstream>
@@ -26,12 +27,12 @@
 	<conio.h>
 	<fstream>
 
-1569058278 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listacircular.h
+1569124069 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listacircular.h
 	<string>
 	<iostream>
 	"ListaSimple.h"
 
-1569028200 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\arbolbb.cpp
+1569127705 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\arbolbb.cpp
 	"ArbolBB.h"
 	<iostream>
 	<sstream>
@@ -41,7 +42,7 @@
 	<string>
 	<fstream>
 
-1568952490 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\arbolbb.h
+1569126169 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\arbolbb.h
 	"ListaSimple.h"
 	<iostream>
 	<string>
@@ -50,7 +51,7 @@
 	<stdlib.h>
 	<conio.h>
 
-1569056327 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\matriz.cpp
+1569130400 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\matriz.cpp
 	"Matriz.h"
 	<string>
 	<iostream>
@@ -59,7 +60,7 @@
 	<bits/stdc++.h>
 	"ListaDobleLN.h"
 
-1569053963 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\matriz.h
+1569129348 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\matriz.h
 	<string>
 	<iostream>
 	<bits/stdc++.h>
@@ -74,7 +75,7 @@
 1569025924 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listadobleln.h
 	<string>
 
-1569058040 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listasimple.cpp
+1569130213 source:c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listasimple.cpp
 	"ListaSimple.h"
 	<string>
 	<sstream>
@@ -82,7 +83,7 @@
 	<bits/stdc++.h>
 	<direct.h>
 
-1569058040 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listasimple.h
+1569130205 c:\users\santi\onedrive\desktop\edd_2s2019_py1_201313722\listasimple.h
 	"Matriz.h"
 	<string>
 

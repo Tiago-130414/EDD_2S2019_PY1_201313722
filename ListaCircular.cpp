@@ -1,4 +1,5 @@
 #include "ListaCircular.h"
+#include "ListaSimple.h"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -255,8 +256,32 @@ void ListaCircular::generarEscalaGrisesPorCapa(string key,int cap)
     }
 }
 
-void ListaCircular::exportarImagen(string k,string nom){
-    string fil = nom + "FiltroNegativo";
+
+ListaSimple ListaCircular::buscar(string filtro)
+{
+    if(estaVacia())
+    {
+        cout<<"Lista Filtros Vacia"<<endl;
+    }
+    else
+    {
+        nodoListaCircular *temp = primero;
+        do
+        {
+            if(temp->filtroAP==filtro)
+            {
+                return temp->copiaCubo;
+            }
+            temp = temp->siguiente;
+        }
+        while(temp!=primero);
+    }
+}
+
+
+void ListaCircular::exportarImagen(string k,string nom)
+{
+    string fil = nom;
     if(estaVacia())
     {
         cout<<"Lista Filtros Vacia"<<endl;
@@ -279,3 +304,5 @@ void ListaCircular::exportarImagen(string k,string nom){
     }
 
 }
+
+

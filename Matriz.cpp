@@ -176,7 +176,6 @@ void Matriz::escribirDot(string nomImg)
     system(abrirImagen.c_str());
 }
 
-
 string Matriz::creandoNodosFilaGuia()
 {
     NodoFC *filaG = filas;
@@ -538,7 +537,8 @@ string Matriz::LinMF(string nomCapa,int contador)
     return datosLinealizados;
 }
 ///aplicar negativoRGB
-void Matriz::aplicarNegativo(){
+void Matriz::aplicarNegativo()
+{
 
     NodoFC *tempoC = columnas;
     while(tempoC!=NULL)
@@ -576,7 +576,8 @@ string Matriz::negativoRGB(int r,int g,int b)
     return color;
 }
 ///aplicar escala grises
-void Matriz::aplicarEscalaGrises(){
+void Matriz::aplicarEscalaGrises()
+{
 
     NodoFC *tempoC = columnas;
     while(tempoC!=NULL)
@@ -602,7 +603,8 @@ void Matriz::aplicarEscalaGrises(){
 
 
 ///escala grises
-string Matriz::escalaGrises(int r,int g,int b){
+string Matriz::escalaGrises(int r,int g,int b)
+{
     string color="";
     double R;
     R = (double)((r*0.0457) + (g*0.6074) + (b*0.3469));
@@ -639,6 +641,106 @@ int Matriz::esPar(int num)
     else
     {
         return num-1;
+    }
+
+}
+
+
+void Matriz::escribirDotHorizontal(string nomImg)
+{
+    string arrCad = nomImg+".dot";
+    string compilarDot;
+    string abrirImagen;
+    ofstream archivo;
+    archivo.open("C:/GRAFICAS_PROYECTO/"+arrCad,ios::out);
+    if(archivo.fail())
+    {
+        cout<<"Error al crear archivo";
+        exit(1);
+    }
+    archivo<<"digraph G {\ngraph [rankdir=RL,ranksep=\"0.5\", nodesep=\"0.5\"];\n"<<endl;
+    archivo<<"Matriz[width = 1.0 group = \"Mt0\",  style=filled,shape=\"underline\",fillcolor=\"yellow:blue\" label=\"Matriz\"];\n"<<endl;
+    archivo<<creandoNodosFilaGuia()<<endl;
+    archivo<<creandoNodosColumnaGuia()<<endl;
+    archivo<<nodosContenidoFila()<<endl;
+    archivo<<rankSame()<<endl;
+    archivo<<enlazarColumnaConNodo()<<endl;
+    archivo<<enlazarNodosMediosColumna()<<endl;
+    archivo<<"\n"<<endl;
+    archivo<<"\n}"<<endl;
+    archivo.close();
+    compilarDot = "dot C:/GRAFICAS_PROYECTO/"+nomImg+".dot -o C:/GRAFICAS_PROYECTO/"+nomImg+".png -Tpng -Gcharset=utf8";
+    system(compilarDot.c_str());
+    abrirImagen ="C:/GRAFICAS_PROYECTO/"+nomImg+".png";
+    system(abrirImagen.c_str());
+}
+
+void Matriz::escribirDotVertical(string nomImg)
+{
+    string arrCad = nomImg+".dot";
+    string compilarDot;
+    string abrirImagen;
+    ofstream archivo;
+    archivo.open("C:/GRAFICAS_PROYECTO/"+arrCad,ios::out);
+    if(archivo.fail())
+    {
+        cout<<"Error al crear archivo";
+        exit(1);
+    }
+    archivo<<"digraph G {\ngraph [rankdir=BT,ranksep=\"0.5\", nodesep=\"0.5\"];\n"<<endl;
+    archivo<<"Matriz[width = 1.0 group = \"Mt0\",  style=filled,shape=\"underline\",fillcolor=\"yellow:blue\" label=\"Matriz\"];\n"<<endl;
+    archivo<<creandoNodosFilaGuia()<<endl;
+    archivo<<creandoNodosColumnaGuia()<<endl;
+    archivo<<nodosContenidoFila()<<endl;
+    archivo<<rankSame()<<endl;
+    archivo<<enlazarColumnaConNodo()<<endl;
+    archivo<<enlazarNodosMediosColumna()<<endl;
+    archivo<<"\n"<<endl;
+    archivo<<"\n}"<<endl;
+    archivo.close();
+    compilarDot = "dot C:/GRAFICAS_PROYECTO/"+nomImg+".dot -o C:/GRAFICAS_PROYECTO/"+nomImg+".png -Tpng -Gcharset=utf8";
+    system(compilarDot.c_str());
+    abrirImagen ="C:/GRAFICAS_PROYECTO/"+nomImg+".png";
+    system(abrirImagen.c_str());
+}
+
+
+void Matriz::modificarNodo(int x, int y,string rgb)
+{
+    NodoFC *tempoC = columnas;
+    while(tempoC!=NULL)
+    {
+        if(tempoC->columna==x)
+        {
+            break;
+        }
+        tempoC = tempoC->siguiente;
+    }
+
+    if(tempoC->columna==x)
+    {
+
+        NodoFC *tempInterior = tempoC->abajo;
+        while(tempInterior!=NULL)
+        {
+           if(tempInterior->fila==y){
+                break;
+           }
+            tempInterior = tempInterior->abajo;
+        }
+
+        if(tempInterior->fila==y){
+            tempInterior->color = rgb;
+            cout<<"Nodo modificado correctamente"<<endl;
+        }else{
+            cout<<"nodo buscado no encontrado"<<endl;
+            return;
+        }
+
+    }else{
+
+        cout<<"nodo buscado no encontrado"<<endl;
+        return;
     }
 
 }
